@@ -8,8 +8,8 @@
 #### 第2章 AREX的安装与配置
 
 - chapter2/: 第2章 AREX 的安装与配置
-- chapter2/demo.md: demo安装
-- chapter2/installarch.md: 安装整体架构
+- chapter2/arexsetup.md: AREX安装
+- chapter2/agentsetup.md: Agent配置
 
 
 #### 第3章 AREX的API测试

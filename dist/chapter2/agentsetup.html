@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>API管理? 模板管理 AREX入门教程</title>
-    <meta name="description" content="todo">
+    <title>Getting Started AREX入门教程</title>
+    <meta name="description" content="In the Java, there are two ways to install AREX&#x27;s agent:">
     <link rel="stylesheet" type="text/css" href="../css/main.css?v=1.21.11">
     <link rel="stylesheet" type="text/css" href="../css/tocbot.css?v=1.21.11">
     <link rel="stylesheet" type="text/css" href="../css/media.css?v=1.21.11">
@@ -32,7 +32,7 @@
         </div>
       </article>
     </header>
-    <div class="warpper-content warpper sidebar notocs">
+    <div class="warpper-content warpper sidebar">
       <div class="sidebar-border">
         <aside class="sidebar" role="navigation">
           <div>
@@ -40,8 +40,8 @@
             <a href="../chapter1/introduce.html" class="">AREX介绍</a>
             <a href="../chapter1/framework.html" class="">AREX架构</a>
             <label>第2章 AREX 的安装与配置</label>
-            <a href="../chapter2/arexsetup.html" class="">AREX安装</a>
-            <a href="../chapter2/agentsetup.html" class="">Agent配置</a>
+            <a href="arexsetup.html" class="">AREX安装</a>
+            <a href="agentsetup.html" class="">Agent配置</a>
             <label>第3章 AREX的API测试</label>
             <a href="../chapter3/normal.test.html" class="">常规测试</a>
             <label>第4章 AREX的比对测试</label>
@@ -52,10 +52,10 @@
             <a href="../chapter6/cases.html" class="">用例管理</a>
             <a href="../chapter6/templates.html" class="">模板管理</a>
             <label>第7章 Script</label>
-            <a href="script.html" class="">脚本介绍</a>
-            <a href="reference.html" class="">参考</a>
-            <a href="prepare.html" class="">前置</a>
-            <a href="test.html" class="">测试</a>
+            <a href="../chapter7/script.html" class="">脚本介绍</a>
+            <a href="../chapter7/reference.html" class="">参考</a>
+            <a href="../chapter7/prepare.html" class="">前置</a>
+            <a href="../chapter7/test.html" class="">测试</a>
             <a href="../Contributing.html" class="">贡献指南</a>
             <a href="../express.html" class="">鸣谢</a>
             <a href="../License.html" class="">License</a>
@@ -64,17 +64,36 @@
         </aside>
       </div>
       <markdown-style>
+        <h3 id="installation-arexs-agent"><a aria-hidden="true" tabindex="-1" href="#installation-arexs-agent" class="anchor"><span class="icon icon-link"></span></a>Installation AREX's Agent</h3>
+        <p>In the Java, there are two ways to install AREX's agent:</p>
+        <ol>
+          <li>Use the JVM parameter <code>-javaagent</code>, the example is as follows:
+            <pre><code class="language-jvm code-highlight"><span class="code-line line-number" line="1">java -javaagent:/path/to/agent.jar -jar myapp.jar
+</span></code><input type="hidden" value="java -javaagent:/path/to/agent.jar -jar myapp.jar
+"><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+          </li>
+          <li>Write an application yourself using VirtualMachine's attach API. For more information, you can find online examples.</li>
+        </ol>
+        <p>Note that there are additional parameters in our AREX's Agent required:<code>arex.service.name</code> and <code>arex.storge.model</code>.</p>
+        <p>More information on installation can be found <a href="https://github.com/arextest/arex-agent-java#installation">here</a>.</p>
         <div class="previous"><span></span><a class="next" href="../chapter1/introduce.html"><span>AREX介绍
 </span><svg viewBox="0 0 1024 1024" width="16" height="16" fill="currentColor">
               <path d="M544 522.666667c0-8.533333-4.266667-17.066667-10.666667-23.466667L192 189.866667c-12.8-12.8-34.133333-10.666667-44.8 2.133333-12.8 12.8-10.666667 34.133333 2.133333 44.8l315.733334 285.866667L149.333333 808.533333c-12.8 12.8-14.933333 32-2.133333 44.8 6.4 6.4 14.933333 10.666667 23.466667 10.666667 8.533333 0 14.933333-2.133333 21.333333-8.533333l341.333333-309.333334c6.4-6.4 10.666667-14.933333 10.666667-23.466666z"></path>
               <path d="M864 499.2l-341.333333-309.333333c-12.8-12.8-34.133333-10.666667-44.8 2.133333-12.8 12.8-10.666667 34.133333 2.133333 44.8l315.733333 285.866667-315.733333 285.866666c-12.8 12.8-14.933333 32-2.133333 44.8 6.4 6.4 14.933333 10.666667 23.466666 10.666667 8.533333 0 14.933333-2.133333 21.333334-8.533333l341.333333-309.333334c6.4-6.4 10.666667-14.933333 10.666667-23.466666 0-8.533333-4.266667-17.066667-10.666667-23.466667z"></path>
             </svg></a></div>
-        <section class="article-footer"><a href="https://github.com/arextest/arex-doc/blob/main/docs\chapter7\test.md" class="edit-button" target="_blank" rel="noopener noreferrer"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <section class="article-footer"><a href="https://github.com/arextest/arex-doc/blob/main/docs\chapter2\agentsetup.md" class="edit-button" target="_blank" rel="noopener noreferrer"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
             </svg>
 <span>Edit this page on GitHub</span>
 </a><span class="atime">2022/08/04</span></section>
       </markdown-style>
+      <nav class="tocs">
+        <aside class="inner toc">
+          <ol class="tocs-list">
+            <li><a href="#installation-arexs-agent" class="tocs-link">Installation AREX's Agent</a></li>
+          </ol>
+        </aside>
+      </nav>
     </div>
     <script src="../js/demo-preview.js?v=1.21.11"></script>
     <div class="footer warpper">Released under the MIT License. Copyright © 2022 AREX TEST<br>Generated by <a href="http://www.arextest.com" target="_blank">idoc</a></div>
