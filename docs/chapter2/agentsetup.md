@@ -57,14 +57,14 @@ java -cp "./arex-cli-parent/arex-cli/target/arex-cli.jar" io.arex.cli.ArexCli
 ```
 #### 支持的命令如下:
 - **record**- record data or set record rate  
-	`[option: -r/--rate]` set record rate, default value 1, record once every 60 seconds  
-	`[option: -c/--close]` shut down record  
+    - `[option: -r/--rate]` set record rate, default value 1, record once every 60 seconds  
+    - `[option: -c/--close]` shut down record  
 - **replay**- replay recorded data and view differences
-	`[option: -n/--num]` replay numbers, default the latest 10  
+    - `[option: -n/--num]` replay numbers, default the latest 10  
 - **watch**- view replay result and differences  
-	`[option: -r/--replayId]` replay id, multiple are separated by spaces  
+    - `[option: -r/--replayId]` replay id, multiple are separated by spaces  
 - **debug**- local debugging of specific cases  
-	`[option: -r/--recordId]` record id, required Option  
+    - `[option: -r/--recordId]` record id, required Option  
 
 ![](../resource/arexcli.png)
   
@@ -72,8 +72,7 @@ java -cp "./arex-cli-parent/arex-cli/target/arex-cli.jar" io.arex.cli.ArexCli
 
 
 
-## Getting Started
-
+## Agent Setup (En)
 
 ***Enable the instrumentation agent by configuring a `javaagent` flag to the JVM to run arex：***
 
