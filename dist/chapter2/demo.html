@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Getting Started AREX入门教程</title>
-    <meta name="description" content="In the Java, there are two ways to install AREX&#x27;s agent:">
+    <title>AREX AREX入门教程</title>
+    <meta name="description" content="在业务的全生命周期内，在发布 PipeLine 上设置质量卡点，自动化回归测试【接口 + 链路】，保障接口与链路两个维度的质量，把控发布质量，守好上线前的最后一道防线。本文将介绍基于 AREX 的接口 RECORD、REPLAY &#x26; DIF">
     <link rel="stylesheet" type="text/css" href="../css/main.css?v=1.21.11">
     <link rel="stylesheet" type="text/css" href="../css/tocbot.css?v=1.21.11">
     <link rel="stylesheet" type="text/css" href="../css/media.css?v=1.21.11">
@@ -25,6 +25,7 @@
           <ul class="menu">
             <li><a href="../index.html" target="" class="">Home</a></li>
             <li><a href="../about.html" target="" class="">About</a></li>
+            <li><a href="http://www.arextest.com" target="" class="">AREXTest</a></li>
           </ul><a href="https://github.com/arextest" target="_blank" rel="noopener noreferrer" title="Github" name="Github" class="github"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
             </svg></a>
@@ -32,16 +33,17 @@
         </div>
       </article>
     </header>
-    <div class="warpper-content warpper sidebar notocs">
+    <div class="warpper-content warpper sidebar">
       <div class="sidebar-border">
         <aside class="sidebar" role="navigation">
           <div>
             <label>第1章 初识 AREX</label>
             <a href="../chapter1/introduce.html" class="">AREX介绍</a>
-            <a href="../chapter1/framework.html" class="">AREX架构</a>
+            <a href="../chapter1/framework.html" class="">AREX模块</a>
             <label>第2章 AREX 的安装与配置</label>
-            <a href="demo.html" class="">demo安装</a>
-            <a href="installarch.html" class="">安装整体架构</a>
+            <a href="demo.html" class="">新手指南</a>
+            <a href="arexsetup.html" class="">AREX安装</a>
+            <a href="agentsetup.html" class="">Agent配置</a>
             <label>第3章 AREX的API测试</label>
             <a href="../chapter3/normal.test.html" class="">常规测试</a>
             <label>第4章 AREX的比对测试</label>
@@ -59,11 +61,71 @@
             <a href="../Contributing.html" class="">贡献指南</a>
             <a href="../express.html" class="">鸣谢</a>
             <a href="../License.html" class="">License</a>
-            <a href="../about.html" class="">About</a>
           </div>
         </aside>
       </div>
       <markdown-style>
+        <h2 id="新手指南"><a aria-hidden="true" tabindex="-1" href="#新手指南" class="anchor"><span class="icon icon-link"></span></a>新手指南</h2>
+        <p><a href="https://testerhome.com/topics/33978">感谢TesterHome: imath60 编写的"AREX上手体验浅谈", 访问原文点我</a></p>
+        <h3 id="背景介绍"><a aria-hidden="true" tabindex="-1" href="#背景介绍" class="anchor"><span class="icon icon-link"></span></a>背景介绍</h3>
+        <p>在业务的全生命周期内，在发布 PipeLine 上设置质量卡点，自动化回归测试【接口 + 链路】，保障接口与链路两个维度的质量，把控发布质量，守好上线前的最后一道防线。本文将介绍基于 AREX 的接口 RECORD、REPLAY &#x26; DIFF 能力。</p>
+        <h3 id="新手指南-1"><a aria-hidden="true" tabindex="-1" href="#新手指南-1" class="anchor"><span class="icon icon-link"></span></a>新手指南</h3>
+        <h4 id="arex-部署"><a aria-hidden="true" tabindex="-1" href="#arex-部署" class="anchor"><span class="icon icon-link"></span></a>AREX 部署</h4>
+        <pre><code class="code-highlight"><span class="code-line line-number" line="1">git clone git@github.com:arextest/deployments.git
+</span><span class="code-line line-number" line="2">cd deployments
+</span><span class="code-line line-number" line="3">docker-compose up
+</span></code><input type="hidden" value="git clone git@github.com:arextest/deployments.git
+cd deployments
+docker-compose up
+"><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+        <p>部署成功效果：<br>
+          <img src="..\resource\c2.demo.1.png!large" alt="">
+        </p>
+        <h4 id="编译-arex-agent"><a aria-hidden="true" tabindex="-1" href="#编译-arex-agent" class="anchor"><span class="icon icon-link"></span></a>编译 AREX-AGENT</h4>
+        <pre><code class="code-highlight"><span class="code-line line-number" line="1">git clone git@github.com:arextest/arex-agent-java.git
+</span><span class="code-line line-number" line="2">mvn clean install
+</span></code><input type="hidden" value="git clone git@github.com:arextest/arex-agent-java.git
+mvn clean install
+"><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+        <p>编译成功效果：<br>
+          <img src="..\resource\c2.demo.2.png" alt="">
+        </p>
+        <h4 id="将-arex-agent-注入被测服务完成录制"><a aria-hidden="true" tabindex="-1" href="#将-arex-agent-注入被测服务完成录制" class="anchor"><span class="icon icon-link"></span></a>将 AREX-AGENT 注入被测服务，完成录制</h4>
+        <pre><code class="code-highlight"><span class="code-line line-number" line="1">java -javaagent:./arex-agent-0.0.1.jar 
+</span><span class="code-line line-number" line="2">     -Darex.config.path=./arex.agent.conf 
+</span><span class="code-line line-number" line="3">     -jar spring-petclinic-2.7.0-SNAPSHOT.jar
+</span></code><input type="hidden" value="java -javaagent:./arex-agent-0.0.1.jar 
+     -Darex.config.path=./arex.agent.conf 
+     -jar spring-petclinic-2.7.0-SNAPSHOT.jar
+"><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+        <p>注入启动成功效果：<br>
+          <img src="..\resource\c2.demo.3.png" alt="">
+        </p>
+        <h3 id="使用-arex-ui-完成回放与-diff"><a aria-hidden="true" tabindex="-1" href="#使用-arex-ui-完成回放与-diff" class="anchor"><span class="icon icon-link"></span></a>使用 AREX-UI 完成回放与 DIFF</h3>
+        <h4 id="启动回放"><a aria-hidden="true" tabindex="-1" href="#启动回放" class="anchor"><span class="icon icon-link"></span></a>启动回放</h4>
+        <p>
+          <img src="..\resource\c2.demo.4.png" alt="">
+        </p>
+        <h4 id="回放执行"><a aria-hidden="true" tabindex="-1" href="#回放执行" class="anchor"><span class="icon icon-link"></span></a>回放执行</h4>
+        <p>
+          <img src="..\resource\c2.demo.5.png" alt="">
+        </p>
+        <h4 id="回放结果"><a aria-hidden="true" tabindex="-1" href="#回放结果" class="anchor"><span class="icon icon-link"></span></a>回放结果</h4>
+        <p>
+          <img src="..\resource\c2.demo.6.png" alt="">
+        </p>
+        <h4 id="回放报告"><a aria-hidden="true" tabindex="-1" href="#回放报告" class="anchor"><span class="icon icon-link"></span></a>回放报告</h4>
+        <p>
+          <img src="..\resource\c2.demo.7.png" alt="">
+        </p>
+        <h3 id="优化建议"><a aria-hidden="true" tabindex="-1" href="#优化建议" class="anchor"><span class="icon icon-link"></span></a>优化建议</h3>
+        <p>
+          1、 优先完善文档系统建设，包括但不限于部署文档、使用文档、开发文档等；
+          2、 deployments 及 集成 arex-agent 的 demo 项目持续完善 力争开箱即用 减少初期因文档不完善，上手问题阻塞影响；
+          3、 开始 arex-ui 的本地化工作，中文&#x26;英文同步更新。
+        </p>
+        <h3 id="未来展望"><a aria-hidden="true" tabindex="-1" href="#未来展望" class="anchor"><span class="icon icon-link"></span></a>未来展望</h3>
+        <p>1、 基于 arex 的接口流量录制&#x26;回放能力，与人工编写接口接口测试脚本结合打造接口质量验证能力；<br>2、 结合接口流量录制的 spanid，traceid 透传，完成链路维度的透传，与现有基于人工编写的场景用例结合，打造链路质量验证能力；<br>3、 将上述能力与自动化测试任务集像关联，结合精准测试与代码染色构建的正反双向追溯系统，基于代码变更，给出变更范围与影响范围，推荐自动化测试用例集并执行，根据代码染色计算变更及影响覆盖率，结合发布流水线的质量卡点阈值，支撑发布决策。</p>
         <div class="previous"><span></span><a class="next" href="../chapter1/introduce.html"><span>AREX介绍
 </span><svg viewBox="0 0 1024 1024" width="16" height="16" fill="currentColor">
               <path d="M544 522.666667c0-8.533333-4.266667-17.066667-10.666667-23.466667L192 189.866667c-12.8-12.8-34.133333-10.666667-44.8 2.133333-12.8 12.8-10.666667 34.133333 2.133333 44.8l315.733334 285.866667L149.333333 808.533333c-12.8 12.8-14.933333 32-2.133333 44.8 6.4 6.4 14.933333 10.666667 23.466667 10.666667 8.533333 0 14.933333-2.133333 21.333333-8.533333l341.333333-309.333334c6.4-6.4 10.666667-14.933333 10.666667-23.466666z"></path>
@@ -73,11 +135,39 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
             </svg>
 <span>Edit this page on GitHub</span>
-</a><span class="atime">2022/08/04</span></section>
+</a><span class="atime">2022/08/05</span></section>
       </markdown-style>
+      <nav class="tocs">
+        <aside class="inner toc">
+          <ol class="tocs-list">
+            <li><a href="#新手指南" class="tocs-link">新手指南</a>
+              <ol class="tocs-list is-collapsed">
+                <li><a href="#背景介绍" class="tocs-link">背景介绍</a></li>
+                <li><a href="#新手指南-1" class="tocs-link">新手指南</a>
+                  <ol class="tocs-list is-collapsed">
+                    <li><a href="#arex-部署" class="tocs-link">AREX 部署</a></li>
+                    <li><a href="#编译-arex-agent" class="tocs-link">编译 AREX-AGENT</a></li>
+                    <li><a href="#将-arex-agent-注入被测服务完成录制" class="tocs-link">将 AREX-AGENT 注入被测服务，完成录制</a></li>
+                  </ol>
+                </li>
+                <li><a href="#使用-arex-ui-完成回放与-diff" class="tocs-link">使用 AREX-UI 完成回放与 DIFF</a>
+                  <ol class="tocs-list is-collapsed">
+                    <li><a href="#启动回放" class="tocs-link">启动回放</a></li>
+                    <li><a href="#回放执行" class="tocs-link">回放执行</a></li>
+                    <li><a href="#回放结果" class="tocs-link">回放结果</a></li>
+                    <li><a href="#回放报告" class="tocs-link">回放报告</a></li>
+                  </ol>
+                </li>
+                <li><a href="#优化建议" class="tocs-link">优化建议</a></li>
+                <li><a href="#未来展望" class="tocs-link">未来展望</a></li>
+              </ol>
+            </li>
+          </ol>
+        </aside>
+      </nav>
     </div>
     <script src="../js/demo-preview.js?v=1.21.11"></script>
-    <div class="footer warpper">Released under the MIT License. Copyright © 2022 AREX TEST<br>Generated by <a href="http://www.arextest.com" target="_blank">idoc</a></div>
+    <div class="footer warpper">Released under the MIT License. Copyright © 2022 arextest.com<br>Generated by <a href="http://www.arextest.com" target="_blank">idoc</a></div>
     <script src="../js/tocbot.js?v=1.21.11"></script>
   </body>
 </html>

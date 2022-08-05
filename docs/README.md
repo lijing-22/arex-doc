@@ -1,9 +1,11 @@
 # <img src="https://avatars.githubusercontent.com/u/103105168?s=200&v=4" alt="Arex Icon" width="27" height=""/>AREX  
 **Real automated API testing with real data.**   
 
-**Relieve the pain points**:  
-	1. Reduce the cost of the API testing  
-	2. Improve interface test coverage  
-	
-**The Application Programming Interface testing** is a type of software testing, which includes two types of testing: in a narrow sense, it refers to testing directly against the functions of the application program interface (abbreviated as API testing); Indicators such as functional completion, reliability, security and performance. The activities of interface testing include, test design, test case writing, test script writing, test data construction, test execution, and further, in the process of continuous development and maintenance, Ongoing inspection and maintenance of these four active outputs is to be carried out.  
-**AREX it can** minimize the implementation cost of test activities, improve test coverage, improve quality, and release more development engineers and test engineers' time.  
+## 解决痛点  
+1. 降低接口测试成本
+2. 提高接口测试覆盖率  
+
+**接口测试**是软件测试的一种，它包括两种测试类型：狭义上指的是直接针对应用程序接口（缩写API测试）的功能进行的测试；广义上指集成测试中，通过调用API测试整体的功能完成度、可靠性、安全性与性能等指标. 接口测试的活动包括,测试设计, 测试用例编写, 测试脚本编写,测试数据构造,测试执行, 更进一步的是,在持续开发维护过程中,要对此四种活动输出物进行持续的检查和维护. 
+  
+**AREX**可以最大程度的降低测试活动的实施成本,提高测试覆盖率, 提升质量, 释放更多开发工程师和测试工程师的时间.
+  

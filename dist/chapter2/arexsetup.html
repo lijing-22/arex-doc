@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Getting Started AREX入门教程</title>
-    <meta name="description" content="In the Java, we use Service Provider Interface mechanism to load services dynamically.">
+    <title>AREX AREX入门教程</title>
+    <meta name="description" content="接口测试是软件测试的一种，它包括两种测试类型：狭义上指的是直接针对应用程序接口（缩写API测试）的功能进行的测试；广义上指集成测试中，通过调用API测试整体的功能完成度、可靠性、安全性与性能等指标. 接口测试的活动包括,测试设计, 测试用例">
     <link rel="stylesheet" type="text/css" href="../css/main.css?v=1.21.11">
     <link rel="stylesheet" type="text/css" href="../css/tocbot.css?v=1.21.11">
     <link rel="stylesheet" type="text/css" href="../css/media.css?v=1.21.11">
@@ -25,6 +25,7 @@
           <ul class="menu">
             <li><a href="../index.html" target="" class="">Home</a></li>
             <li><a href="../about.html" target="" class="">About</a></li>
+            <li><a href="http://www.arextest.com" target="" class="">AREXTest</a></li>
           </ul><a href="https://github.com/arextest" target="_blank" rel="noopener noreferrer" title="Github" name="Github" class="github"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
             </svg></a>
@@ -38,8 +39,9 @@
           <div>
             <label>第1章 初识 AREX</label>
             <a href="../chapter1/introduce.html" class="">AREX介绍</a>
-            <a href="../chapter1/framework.html" class="">AREX架构</a>
+            <a href="../chapter1/framework.html" class="">AREX模块</a>
             <label>第2章 AREX 的安装与配置</label>
+            <a href="demo.html" class="">新手指南</a>
             <a href="arexsetup.html" class="">AREX安装</a>
             <a href="agentsetup.html" class="">Agent配置</a>
             <label>第3章 AREX的API测试</label>
@@ -59,16 +61,15 @@
             <a href="../Contributing.html" class="">贡献指南</a>
             <a href="../express.html" class="">鸣谢</a>
             <a href="../License.html" class="">License</a>
-            <a href="../about.html" class="">About</a>
           </div>
         </aside>
       </div>
       <markdown-style>
-        <h2 id="arex-arch"><a aria-hidden="true" tabindex="-1" href="#arex-arch" class="anchor"><span class="icon icon-link"></span></a>AREX Arch</h2>
+        <h2 id="arex服务安装"><a aria-hidden="true" tabindex="-1" href="#arex服务安装" class="anchor"><span class="icon icon-link"></span></a>AREX服务安装</h2>
         <p>
-          <img src="..\resource\arch.jpg" alt="">
+          <img src="..\resource\arch.png" alt="">
         </p>
-        <h2 id="install-arexs-services"><a aria-hidden="true" tabindex="-1" href="#install-arexs-services" class="anchor"><span class="icon icon-link"></span></a>Install AREX's Services</h2>
+        <h3 id="快速安装-fast-install"><a aria-hidden="true" tabindex="-1" href="#快速安装-fast-install" class="anchor"><span class="icon icon-link"></span></a>快速安装 Fast Install</h3>
         <pre><code class="code-highlight"><span class="code-line line-number" line="1">git clone https://github.com/arextest/deployments.git
 </span><span class="code-line line-number" line="2">cd deployments
 </span><span class="code-line line-number" line="3">docker-compose up -d
@@ -76,11 +77,273 @@
 cd deployments
 docker-compose up -d
 "><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
-        <h2 id="extension-by-yourself"><a aria-hidden="true" tabindex="-1" href="#extension-by-yourself" class="anchor"><span class="icon icon-link"></span></a>Extension by yourself</h2>
-        <p>In the Java, we use <a href="https://docs.oracle.com/javase/tutorial/ext/basics/spi.html">Service Provider Interface</a> mechanism to load services dynamically.</p>
-        <p>You can find service contracts in our components listed above.</p>
-        <h2 id="a-live-demo"><a aria-hidden="true" tabindex="-1" href="#a-live-demo" class="anchor"><span class="icon icon-link"></span></a>A live demo</h2>
-        <p>There is a <a href="https://github.com/arextest/arex">live demo</a> created from <a href="https://github.com/spring-projects/spring-petclinic">Spring-Petclinic</a>.</p>
+        <h3 id="检查服务运行情况及端口"><a aria-hidden="true" tabindex="-1" href="#检查服务运行情况及端口" class="anchor"><span class="icon icon-link"></span></a>检查服务运行情况及端口</h3>
+        <pre><code class="code-highlight"><span class="code-line line-number" line="1">[~ deployments]# docker-compose ps
+</span><span class="code-line line-number" line="2">    Name                   Command               State                 Ports              
+</span><span class="code-line line-number" line="3">------------------------------------------------------------------------------------------
+</span><span class="code-line line-number" line="4">arex-config     catalina.sh run                  Up      0.0.0.0:8091->8080/tcp           
+</span><span class="code-line line-number" line="5">arex-front      docker-entrypoint.sh node  ...   Up      0.0.0.0:8088->8080/tcp           
+</span><span class="code-line line-number" line="6">arex-mongodb    docker-entrypoint.sh --auth      Up      0.0.0.0:27017->27017/tcp         
+</span><span class="code-line line-number" line="7">arex-mysql      docker-entrypoint.sh mysqld      Up      0.0.0.0:3306->3306/tcp, 33060/tcp
+</span><span class="code-line line-number" line="8">arex-redis      docker-entrypoint.sh --app ...   Up      0.0.0.0:6379->6379/tcp           
+</span><span class="code-line line-number" line="9">arex-report     catalina.sh run                  Up      0.0.0.0:8090->8080/tcp           
+</span><span class="code-line line-number" line="10">arex-schedule   catalina.sh run                  Up      0.0.0.0:8092->8080/tcp           
+</span><span class="code-line line-number" line="11">arex-storage    catalina.sh run                  Up      0.0.0.0:8093->8080/tcp  
+</span></code><input type="hidden" value="[~ deployments]# docker-compose ps
+    Name                   Command               State                 Ports              
+------------------------------------------------------------------------------------------
+arex-config     catalina.sh run                  Up      0.0.0.0:8091->8080/tcp           
+arex-front      docker-entrypoint.sh node  ...   Up      0.0.0.0:8088->8080/tcp           
+arex-mongodb    docker-entrypoint.sh --auth      Up      0.0.0.0:27017->27017/tcp         
+arex-mysql      docker-entrypoint.sh mysqld      Up      0.0.0.0:3306->3306/tcp, 33060/tcp
+arex-redis      docker-entrypoint.sh --app ...   Up      0.0.0.0:6379->6379/tcp           
+arex-report     catalina.sh run                  Up      0.0.0.0:8090->8080/tcp           
+arex-schedule   catalina.sh run                  Up      0.0.0.0:8092->8080/tcp           
+arex-storage    catalina.sh run                  Up      0.0.0.0:8093->8080/tcp  
+"><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+        <ul>
+          <li>检查所有服务日志命令</li>
+        </ul>
+        <pre><code class="code-highlight"><span class="code-line line-number" line="1">cd deployments
+</span><span class="code-line line-number" line="2">docker-compose logs 
+</span></code><input type="hidden" value="cd deployments
+docker-compose logs 
+"><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+        <ul>
+          <li>检查配置服务日志命令 docker-compose logs arex-config-service</li>
+          <li>检查调度服务日志命令 docker-compose logs arex-schedule-service</li>
+          <li>检查报告服务日志命令 docker-compose logs arex-report-service</li>
+          <li>检查存储服务日志命令 docker-compose logs arex-storage-service</li>
+        </ul>
+        <h2 id="docker-compose文件说明"><a aria-hidden="true" tabindex="-1" href="#docker-compose文件说明" class="anchor"><span class="icon icon-link"></span></a>Docker-Compose文件说明</h2>
+        <h3 id="arex前端"><a aria-hidden="true" tabindex="-1" href="#arex前端" class="anchor"><span class="icon icon-link"></span></a>AREX前端</h3>
+        <pre><code class="code-highlight"><span class="code-line line-number" line="1">arex-front-end:
+</span><span class="code-line line-number" line="2">    image: arexadmin01/replay-front-end:0.1
+</span><span class="code-line line-number" line="3">    container_name: arex-front
+</span><span class="code-line line-number" line="4">    restart: always
+</span><span class="code-line line-number" line="5">    ports:
+</span><span class="code-line line-number" line="6">      - '8088:8088'
+</span><span class="code-line line-number" line="7">    volumes:
+</span><span class="code-line line-number" line="8">      - ./arex-logs/arex-front:/usr/src/app/logs
+</span><span class="code-line line-number" line="9">    environment:
+</span><span class="code-line line-number" line="10">      - PAAS_ENV=DEMO
+</span><span class="code-line line-number" line="11">    depends_on:
+</span><span class="code-line line-number" line="12">      - arex-report-service
+</span><span class="code-line line-number" line="13">      - arex-config-service
+</span></code><input type="hidden" value="arex-front-end:
+    image: arexadmin01/replay-front-end:0.1
+    container_name: arex-front
+    restart: always
+    ports:
+      - &#x27;8088:8088&#x27;
+    volumes:
+      - ./arex-logs/arex-front:/usr/src/app/logs
+    environment:
+      - PAAS_ENV=DEMO
+    depends_on:
+      - arex-report-service
+      - arex-config-service
+"><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+        <h3 id="storage-service"><a aria-hidden="true" tabindex="-1" href="#storage-service" class="anchor"><span class="icon icon-link"></span></a>Storage Service</h3>
+        <pre><code class="code-highlight"><span class="code-line line-number" line="1">  arex-storage-service:
+</span><span class="code-line line-number" line="2">    image: arexadmin01/arex-storage-serive:0.1
+</span><span class="code-line line-number" line="3">    container_name: arex-storage
+</span><span class="code-line line-number" line="4">    restart: always
+</span><span class="code-line line-number" line="5">    ports:
+</span><span class="code-line line-number" line="6">      - '8093:8080'
+</span><span class="code-line line-number" line="7">    volumes:
+</span><span class="code-line line-number" line="8">      - ./arex-logs/arex-storage:/usr/local/tomcat/logs
+</span><span class="code-line line-number" line="9">    depends_on:
+</span><span class="code-line line-number" line="10">      - mongodb
+</span><span class="code-line line-number" line="11">      - redis
+</span></code><input type="hidden" value="  arex-storage-service:
+    image: arexadmin01/arex-storage-serive:0.1
+    container_name: arex-storage
+    restart: always
+    ports:
+      - &#x27;8093:8080&#x27;
+    volumes:
+      - ./arex-logs/arex-storage:/usr/local/tomcat/logs
+    depends_on:
+      - mongodb
+      - redis
+"><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+        <h3 id="调度服务-schedule-serive"><a aria-hidden="true" tabindex="-1" href="#调度服务-schedule-serive" class="anchor"><span class="icon icon-link"></span></a>调度服务 Schedule Serive</h3>
+        <pre><code class="code-highlight"><span class="code-line line-number" line="1">  arex-schedule-service:
+</span><span class="code-line line-number" line="2">    image: arexadmin01/arex-replay-schedule:0.1
+</span><span class="code-line line-number" line="3">    container_name: arex-schedule
+</span><span class="code-line line-number" line="4">    restart: always
+</span><span class="code-line line-number" line="5">    ports:
+</span><span class="code-line line-number" line="6">      - '8092:8080'
+</span><span class="code-line line-number" line="7">    volumes:
+</span><span class="code-line line-number" line="8">      - ./arex-logs/arex-schedule:/usr/local/tomcat/logs
+</span><span class="code-line line-number" line="9">    depends_on:
+</span><span class="code-line line-number" line="10">      - mysql
+</span><span class="code-line line-number" line="11">      - redis
+</span></code><input type="hidden" value="  arex-schedule-service:
+    image: arexadmin01/arex-replay-schedule:0.1
+    container_name: arex-schedule
+    restart: always
+    ports:
+      - &#x27;8092:8080&#x27;
+    volumes:
+      - ./arex-logs/arex-schedule:/usr/local/tomcat/logs
+    depends_on:
+      - mysql
+      - redis
+"><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+        <h3 id="report-service"><a aria-hidden="true" tabindex="-1" href="#report-service" class="anchor"><span class="icon icon-link"></span></a>Report service</h3>
+        <pre><code class="code-highlight"><span class="code-line line-number" line="1">arex-report-service:
+</span><span class="code-line line-number" line="2">    image: arexadmin01/arex-report:0.1
+</span><span class="code-line line-number" line="3">    container_name: arex-report
+</span><span class="code-line line-number" line="4">    restart: always
+</span><span class="code-line line-number" line="5">    ports:
+</span><span class="code-line line-number" line="6">      - '8090:8080'
+</span><span class="code-line line-number" line="7">    volumes:
+</span><span class="code-line line-number" line="8">      - ./arex-logs/arex-report:/usr/local/tomcat/logs
+</span><span class="code-line line-number" line="9">    depends_on:
+</span><span class="code-line line-number" line="10">      - mongodb  
+</span></code><input type="hidden" value="arex-report-service:
+    image: arexadmin01/arex-report:0.1
+    container_name: arex-report
+    restart: always
+    ports:
+      - &#x27;8090:8080&#x27;
+    volumes:
+      - ./arex-logs/arex-report:/usr/local/tomcat/logs
+    depends_on:
+      - mongodb  
+"><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+        <h3 id="config-service"><a aria-hidden="true" tabindex="-1" href="#config-service" class="anchor"><span class="icon icon-link"></span></a>Config Service</h3>
+        <ul>
+          <li>配置服务</li>
+        </ul>
+        <pre><code class="code-highlight"><span class="code-line line-number" line="1">  arex-config-service:
+</span><span class="code-line line-number" line="2">    image: arexadmin01/arex-config:0.1
+</span><span class="code-line line-number" line="3">    container_name: arex-config
+</span><span class="code-line line-number" line="4">    restart: always
+</span><span class="code-line line-number" line="5">    ports:
+</span><span class="code-line line-number" line="6">      - '8091:8080'
+</span><span class="code-line line-number" line="7">    volumes:
+</span><span class="code-line line-number" line="8">      - ./arex-logs/arex-config:/usr/local/tomcat/logs
+</span><span class="code-line line-number" line="9">    depends_on:
+</span><span class="code-line line-number" line="10">      - mysql
+</span></code><input type="hidden" value="  arex-config-service:
+    image: arexadmin01/arex-config:0.1
+    container_name: arex-config
+    restart: always
+    ports:
+      - &#x27;8091:8080&#x27;
+    volumes:
+      - ./arex-logs/arex-config:/usr/local/tomcat/logs
+    depends_on:
+      - mysql
+"><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+        <h3 id="redis"><a aria-hidden="true" tabindex="-1" href="#redis" class="anchor"><span class="icon icon-link"></span></a>Redis</h3>
+        <pre><code class="code-highlight"><span class="code-line line-number" line="1">  redis:
+</span><span class="code-line line-number" line="2">    image: redis:6.2.6
+</span><span class="code-line line-number" line="3">    container_name: arex-redis
+</span><span class="code-line line-number" line="4">    restart: always
+</span><span class="code-line line-number" line="5">    command: --appendonly yes
+</span><span class="code-line line-number" line="6">    ports:
+</span><span class="code-line line-number" line="7">      - 6379:6379
+</span><span class="code-line line-number" line="8">    volumes:
+</span><span class="code-line line-number" line="9">      - ./arex-data/redis:/data
+</span><span class="code-line line-number" line="10">      - ./arex-logs/redis:/var/log/redis
+</span></code><input type="hidden" value="  redis:
+    image: redis:6.2.6
+    container_name: arex-redis
+    restart: always
+    command: --appendonly yes
+    ports:
+      - 6379:6379
+    volumes:
+      - ./arex-data/redis:/data
+      - ./arex-logs/redis:/var/log/redis
+"><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+        <h3 id="mysql"><a aria-hidden="true" tabindex="-1" href="#mysql" class="anchor"><span class="icon icon-link"></span></a>MySQL</h3>
+        <ul>
+          <li>./mysql_init/目录下文件是mysql表结构初始化文件</li>
+          <li>你可以用帐号arex_admin/arex_admin_password来访问MySQL数据库</li>
+          <li>数据库如需备份,文件所在./arex-data/mysql</li>
+          <li>8.0.29版本在Linux和Mac M1上运行通过</li>
+        </ul>
+        <pre><code class="code-highlight"><span class="code-line line-number" line="1">mysql:
+</span><span class="code-line line-number" line="2">    image: mysql:8.0.29
+</span><span class="code-line line-number" line="3">    container_name: arex-mysql
+</span><span class="code-line line-number" line="4">    restart: always
+</span><span class="code-line line-number" line="5">    ports:
+</span><span class="code-line line-number" line="6">      - 3306:3306
+</span><span class="code-line line-number" line="7">    environment:
+</span><span class="code-line line-number" line="8">      - MYSQL_ROOT_PASSWORD=
+</span><span class="code-line line-number" line="9">      - MYSQL_ALLOW_EMPTY_PASSWORD=true
+</span><span class="code-line line-number" line="10">      - MYSQL_USER=arex_admin
+</span><span class="code-line line-number" line="11">      - MYSQL_PASSWORD=arex_admin_password
+</span><span class="code-line line-number" line="12">      - MYSQL_DATABASE=arexdb
+</span><span class="code-line line-number" line="13">    volumes:
+</span><span class="code-line line-number" line="14">      - ./mysql_init/:/docker-entrypoint-initdb.d/
+</span><span class="code-line line-number" line="15">      - ./conf.d:/etc/mysql/conf.d:ro
+</span><span class="code-line line-number" line="16">      - ./arex-data/mysql:/var/lib/mysql
+</span><span class="code-line line-number" line="17">      - ./arex-logs/mysql:/var/log/mysql.log
+</span></code><input type="hidden" value="mysql:
+    image: mysql:8.0.29
+    container_name: arex-mysql
+    restart: always
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=
+      - MYSQL_ALLOW_EMPTY_PASSWORD=true
+      - MYSQL_USER=arex_admin
+      - MYSQL_PASSWORD=arex_admin_password
+      - MYSQL_DATABASE=arexdb
+    volumes:
+      - ./mysql_init/:/docker-entrypoint-initdb.d/
+      - ./conf.d:/etc/mysql/conf.d:ro
+      - ./arex-data/mysql:/var/lib/mysql
+      - ./arex-logs/mysql:/var/log/mysql.log
+"><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+        <h3 id="mongodb"><a aria-hidden="true" tabindex="-1" href="#mongodb" class="anchor"><span class="icon icon-link"></span></a>Mongodb</h3>
+        <ul>
+          <li>目前已经验证过的版本 4.4.4, 5.0,两者都支持</li>
+          <li>mongo-allone-init.js文件包含了帐号初始化功能</li>
+          <li>数据文件放在当前目录的./arex-data/mongodb</li>
+        </ul>
+        <pre><code class="code-highlight"><span class="code-line line-number" line="1"> mongodb:
+</span><span class="code-line line-number" line="2">    image: mongo:4.4.4
+</span><span class="code-line line-number" line="3">    container_name: arex-mongodb
+</span><span class="code-line line-number" line="4">    restart: always
+</span><span class="code-line line-number" line="5">    ports:
+</span><span class="code-line line-number" line="6">      - 27017:27017
+</span><span class="code-line line-number" line="7">    volumes:
+</span><span class="code-line line-number" line="8">      - ./arex-data/mongodb:/data/db
+</span><span class="code-line line-number" line="9">      - ./mongo-allone-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+</span><span class="code-line line-number" line="10">      - ./arex-logs/mongodb:/var/log/mongodb
+</span><span class="code-line line-number" line="11">    command: --auth
+</span><span class="code-line line-number" line="12">    environment:
+</span><span class="code-line line-number" line="13">      - MONGO_INITDB_ROOT_USERNAME=citizix
+</span><span class="code-line line-number" line="14">      - MONGO_INITDB_ROOT_PASSWORD=S3cret
+</span><span class="code-line line-number" line="15">      - MONGO_INITDB_DATABASE=rootdb
+</span><span class="code-line line-number" line="16">      - MONGO_USERNAME=arex
+</span><span class="code-line line-number" line="17">      - MONGO_PASSWORD=iLoveArex
+</span></code><input type="hidden" value=" mongodb:
+    image: mongo:4.4.4
+    container_name: arex-mongodb
+    restart: always
+    ports:
+      - 27017:27017
+    volumes:
+      - ./arex-data/mongodb:/data/db
+      - ./mongo-allone-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+      - ./arex-logs/mongodb:/var/log/mongodb
+    command: --auth
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=citizix
+      - MONGO_INITDB_ROOT_PASSWORD=S3cret
+      - MONGO_INITDB_DATABASE=rootdb
+      - MONGO_USERNAME=arex
+      - MONGO_PASSWORD=iLoveArex
+"><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
         <div class="previous"><span></span><a class="next" href="../chapter1/introduce.html"><span>AREX介绍
 </span><svg viewBox="0 0 1024 1024" width="16" height="16" fill="currentColor">
               <path d="M544 522.666667c0-8.533333-4.266667-17.066667-10.666667-23.466667L192 189.866667c-12.8-12.8-34.133333-10.666667-44.8 2.133333-12.8 12.8-10.666667 34.133333 2.133333 44.8l315.733334 285.866667L149.333333 808.533333c-12.8 12.8-14.933333 32-2.133333 44.8 6.4 6.4 14.933333 10.666667 23.466667 10.666667 8.533333 0 14.933333-2.133333 21.333333-8.533333l341.333333-309.333334c6.4-6.4 10.666667-14.933333 10.666667-23.466666z"></path>
@@ -90,21 +353,35 @@ docker-compose up -d
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
             </svg>
 <span>Edit this page on GitHub</span>
-</a><span class="atime">2022/08/04</span></section>
+</a><span class="atime">2022/08/05</span></section>
       </markdown-style>
       <nav class="tocs">
         <aside class="inner toc">
           <ol class="tocs-list">
-            <li><a href="#arex-arch" class="tocs-link">AREX Arch</a></li>
-            <li><a href="#install-arexs-services" class="tocs-link">Install AREX's Services</a></li>
-            <li><a href="#extension-by-yourself" class="tocs-link">Extension by yourself</a></li>
-            <li><a href="#a-live-demo" class="tocs-link">A live demo</a></li>
+            <li><a href="#arex服务安装" class="tocs-link">AREX服务安装</a>
+              <ol class="tocs-list is-collapsed">
+                <li><a href="#快速安装-fast-install" class="tocs-link">快速安装 Fast Install</a></li>
+                <li><a href="#检查服务运行情况及端口" class="tocs-link">检查服务运行情况及端口</a></li>
+              </ol>
+            </li>
+            <li><a href="#docker-compose文件说明" class="tocs-link">Docker-Compose文件说明</a>
+              <ol class="tocs-list is-collapsed">
+                <li><a href="#arex前端" class="tocs-link">AREX前端</a></li>
+                <li><a href="#storage-service" class="tocs-link">Storage Service</a></li>
+                <li><a href="#调度服务-schedule-serive" class="tocs-link">调度服务 Schedule Serive</a></li>
+                <li><a href="#report-service" class="tocs-link">Report service</a></li>
+                <li><a href="#config-service" class="tocs-link">Config Service</a></li>
+                <li><a href="#redis" class="tocs-link">Redis</a></li>
+                <li><a href="#mysql" class="tocs-link">MySQL</a></li>
+                <li><a href="#mongodb" class="tocs-link">Mongodb</a></li>
+              </ol>
+            </li>
           </ol>
         </aside>
       </nav>
     </div>
     <script src="../js/demo-preview.js?v=1.21.11"></script>
-    <div class="footer warpper">Released under the MIT License. Copyright © 2022 AREX TEST<br>Generated by <a href="http://www.arextest.com" target="_blank">idoc</a></div>
+    <div class="footer warpper">Released under the MIT License. Copyright © 2022 arextest.com<br>Generated by <a href="http://www.arextest.com" target="_blank">idoc</a></div>
     <script src="../js/tocbot.js?v=1.21.11"></script>
   </body>
 </html>
