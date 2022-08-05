@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AREX AREX入门教程</title>
-    <meta name="description" content="接口测试是软件测试的一种，它包括两种测试类型：狭义上指的是直接针对应用程序接口（缩写API测试）的功能进行的测试；广义上指集成测试中，通过调用API测试整体的功能完成度、可靠性、安全性与性能等指标. 接口测试的活动包括,测试设计, 测试用例">
+    <title>Compare Testing AREX入门教程</title>
+    <meta name="description" content="AREX agent运行依赖AREX配置服务(AREX config service)和AREX存储服务(AREX storage service).">
     <link rel="stylesheet" type="text/css" href="../css/main.css?v=1.21.11">
     <link rel="stylesheet" type="text/css" href="../css/tocbot.css?v=1.21.11">
     <link rel="stylesheet" type="text/css" href="../css/media.css?v=1.21.11">
@@ -65,11 +65,143 @@
         </aside>
       </div>
       <markdown-style>
-        <h2 id="arex-agent安装"><a aria-hidden="true" tabindex="-1" href="#arex-agent安装" class="anchor"><span class="icon icon-link"></span></a>AREX Agent安装</h2>
-        <h3 id="export修改环境变量模式"><a aria-hidden="true" tabindex="-1" href="#export修改环境变量模式" class="anchor"><span class="icon icon-link"></span></a>export修改环境变量模式</h3>
-        <h3 id="修改命令行模式"><a aria-hidden="true" tabindex="-1" href="#修改命令行模式" class="anchor"><span class="icon icon-link"></span></a>修改命令行模式</h3>
-        <h2 id="特殊场景"><a aria-hidden="true" tabindex="-1" href="#特殊场景" class="anchor"><span class="icon icon-link"></span></a>特殊场景</h2>
-        <h3 id=""><a aria-hidden="true" tabindex="-1" href="#" class="anchor"><span class="icon icon-link"></span></a></h3>
+        <h2 id="arex-agent部署"><a aria-hidden="true" tabindex="-1" href="#arex-agent部署" class="anchor"><span class="icon icon-link"></span></a>AREX Agent部署</h2>
+        <p><em><strong>配置-javaagent使agent动态注入到jvm,来运行AREX Agent</strong></em></p>
+        <p>AREX agent运行依赖AREX配置服务(<a href="https://github.com/arextest/arex-config">AREX config service</a>)和AREX存储服务(<a href="https://github.com/arextest/arex-storage">AREX storage service</a>).</p>
+        <h3 id="配置java参数运行模式"><a aria-hidden="true" tabindex="-1" href="#配置java参数运行模式" class="anchor"><span class="icon icon-link"></span></a>配置java参数运行模式</h3>
+        <p>调整修改两个依赖服务的主机和端口, 模板如下</p>
+        <ul>
+          <li>arex-agent-
+            <version>.jar 是AREX提供或者自行编译的jar包名称,注意修改路径</version>
+          </li>
+          <li>your-service-name 被测试服务的名称,不同的服务必须不同名称</li>
+          <li>your-application.jar 你被测试服务的JAR</li>
+        </ul>
+        <pre><code class="language-other code-highlight"><span class="code-line line-number" line="1">java -javaagent:/path/to/arex-agent-&#x3C;version>.jar
+</span><span class="code-line line-number" line="2">      -Darex.service.name=your-service-name
+</span><span class="code-line line-number" line="3">      -Darex.storage.service.host=[storage.service.host:port](storage.service.host:port) 
+</span><span class="code-line line-number" line="4">      -Darex.config.service.host=[config.service.host:port](config.service.host:port)
+</span><span class="code-line line-number" line="5">      -jar your-application.jar
+</span></code><input type="hidden" value="java -javaagent:/path/to/arex-agent-<version>.jar
+      -Darex.service.name=your-service-name
+      -Darex.storage.service.host=[storage.service.host:port](storage.service.host:port) 
+      -Darex.config.service.host=[config.service.host:port](config.service.host:port)
+      -jar your-application.jar
+"><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+        <h3 id="配置文件运行模式"><a aria-hidden="true" tabindex="-1" href="#配置文件运行模式" class="anchor"><span class="icon icon-link"></span></a>配置文件运行模式</h3>
+        <p>你可以通过配置<code>arex.agent.conf</code> 配置文件(内容同上),如</p>
+        <pre><code class="language-other code-highlight"><span class="code-line line-number" line="1">arex.service.name=your-service-name  
+</span><span class="code-line line-number" line="2">arex.storage.service.host=&#x3C;storage.service.host:port> 
+</span><span class="code-line line-number" line="3">arex.config.service.host=&#x3C;config.service.host:port> 
+</span></code><input type="hidden" value="arex.service.name=your-service-name  
+arex.storage.service.host=<storage.service.host:port> 
+arex.config.service.host=<config.service.host:port> 
+"><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+        <p>然后运行如下命令:</p>
+        <pre><code class="language-other code-highlight"><span class="code-line line-number" line="1">java -javaagent:/path/to/arex-agent-&#x3C;version>.jar
+</span><span class="code-line line-number" line="2">      -Darex.config.path=/path/to/arex.agent.conf
+</span><span class="code-line line-number" line="3">      -jar your-application.jar
+</span></code><input type="hidden" value="java -javaagent:/path/to/arex-agent-<version>.jar
+      -Darex.config.path=/path/to/arex.agent.conf
+      -jar your-application.jar
+"><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+        <h3 id="通过arexcli运行的本地模式"><a aria-hidden="true" tabindex="-1" href="#通过arexcli运行的本地模式" class="anchor"><span class="icon icon-link"></span></a>通过ArexCli运行的本地模式</h3>
+        <pre><code class="code-highlight"><span class="code-line line-number" line="1">git clone https://github.com/arextest/arex-agent-java.git
+</span><span class="code-line line-number" line="2">cd arex-agent-java
+</span><span class="code-line line-number" line="3">mvn clean install
+</span></code><input type="hidden" value="git clone https://github.com/arextest/arex-agent-java.git
+cd arex-agent-java
+mvn clean install
+"><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+        <p>运行命令行</p>
+        <pre><code class="code-highlight"><span class="code-line line-number" line="1">chmod 550 bin/arex-cli.sh
+</span><span class="code-line line-number" line="2">cd ./bin/
+</span><span class="code-line line-number" line="3">./arex-cli
+</span></code><input type="hidden" value="chmod 550 bin/arex-cli.sh
+cd ./bin/
+./arex-cli
+"><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+        <p>或者运行如下命令行</p>
+        <pre><code class="language-other code-highlight"><span class="code-line line-number" line="1">git clone https://github.com/arextest/arex-agent-java.git
+</span><span class="code-line line-number" line="2">cd arex-agent-java
+</span><span class="code-line line-number" line="3">mvn clean install
+</span><span class="code-line line-number" line="4">java -cp "./arex-cli-parent/arex-cli/target/arex-cli.jar" io.arex.cli.ArexCli
+</span></code><input type="hidden" value="git clone https://github.com/arextest/arex-agent-java.git
+cd arex-agent-java
+mvn clean install
+java -cp &#x22;./arex-cli-parent/arex-cli/target/arex-cli.jar&#x22; io.arex.cli.ArexCli
+"><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+        <h4 id="支持的命令如下"><a aria-hidden="true" tabindex="-1" href="#支持的命令如下" class="anchor"><span class="icon icon-link"></span></a>支持的命令如下:</h4>
+        <ul>
+          <li><strong>record</strong>- record data or set record rate<br><code>[option: -r/--rate]</code> set record rate, default value 1, record once every 60 seconds<br><code>[option: -c/--close]</code> shut down record</li>
+          <li>
+            <strong>replay</strong>- replay recorded data and view differences
+            <code>[option: -n/--num]</code> replay numbers, default the latest 10
+          </li>
+          <li><strong>watch</strong>- view replay result and differences<br><code>[option: -r/--replayId]</code> replay id, multiple are separated by spaces</li>
+          <li><strong>debug</strong>- local debugging of specific cases<br><code>[option: -r/--recordId]</code> record id, required Option</li>
+        </ul>
+        <p>
+          <img src="..\resource\arexcli.png" alt="">
+        </p>
+        <p>在本地模式中,AREX使用<a href="https://www.h2database.com">H2</a>作为本地存储保存测试数据, 不再依赖配置服务和存储服务,但你就无法在使用AREX的前端界面了.</p>
+        <h2 id="getting-started"><a aria-hidden="true" tabindex="-1" href="#getting-started" class="anchor"><span class="icon icon-link"></span></a>Getting Started</h2>
+        <p><em><strong>Enable the instrumentation agent by configuring a <code>javaagent</code> flag to the JVM to run arex：</strong></em></p>
+        <p>AREX agent works along with the <a href="https://github.com/arextest/arex-config">AREX config service</a> and the <a href="https://github.com/arextest/arex-storage">AREX storage service</a>.</p>
+        <p>You could just configure the host and port of them respectively, like below</p>
+        <pre><code class="language-other code-highlight"><span class="code-line line-number" line="1">java -javaagent:/path/to/arex-agent-&#x3C;version>.jar
+</span><span class="code-line line-number" line="2">      -Darex.service.name=your-service-name
+</span><span class="code-line line-number" line="3">      -Darex.storage.service.host=[storage.service.host:port](storage.service.host:port) 
+</span><span class="code-line line-number" line="4">      -Darex.config.service.host=[config.service.host:port](config.service.host:port)
+</span><span class="code-line line-number" line="5">      -jar your-application.jar
+</span></code><input type="hidden" value="java -javaagent:/path/to/arex-agent-<version>.jar
+      -Darex.service.name=your-service-name
+      -Darex.storage.service.host=[storage.service.host:port](storage.service.host:port) 
+      -Darex.config.service.host=[config.service.host:port](config.service.host:port)
+      -jar your-application.jar
+"><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+        <p>Alternatively, you can put those configuration item in <code>arex.agent.conf</code> file, like below</p>
+        <pre><code class="language-other code-highlight"><span class="code-line line-number" line="1">arex.service.name=your-service-name  
+</span><span class="code-line line-number" line="2">arex.storage.service.host=&#x3C;storage.service.host:port> 
+</span><span class="code-line line-number" line="3">arex.config.service.host=&#x3C;config.service.host:port> 
+</span></code><input type="hidden" value="arex.service.name=your-service-name  
+arex.storage.service.host=<storage.service.host:port> 
+arex.config.service.host=<config.service.host:port> 
+"><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+        <p>Then simply run:</p>
+        <pre><code class="language-other code-highlight"><span class="code-line line-number" line="1">java -javaagent:/path/to/arex-agent-&#x3C;version>.jar
+</span><span class="code-line line-number" line="2">      -Darex.config.path=/path/to/arex.agent.conf
+</span><span class="code-line line-number" line="3">      -jar your-application.jar
+</span></code><input type="hidden" value="java -javaagent:/path/to/arex-agent-<version>.jar
+      -Darex.config.path=/path/to/arex.agent.conf
+      -jar your-application.jar
+"><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+        <p><em><strong>Also, You can Run with CLI in local mode:</strong></em></p>
+        <p>Simply click the script in the <code>arex-agent-java/bin</code> directory to start the command line tool, or run it by following <code>java</code> command:</p>
+        <pre><code class="language-other code-highlight"><span class="code-line line-number" line="1">java -cp "/path/to/arex-cli-parent/arex-cli/target/arex-cli.jar" io.arex.cli.ArexCli
+</span></code><input type="hidden" value="java -cp &#x22;/path/to/arex-cli-parent/arex-cli/target/arex-cli.jar&#x22; io.arex.cli.ArexCli
+"><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+        <p>The supported commands are as follows:</p>
+        <ul>
+          <li>
+            <p><strong>record</strong>- record data or set record rate</p>
+            <p><code>[option: -r/--rate]</code> set record rate, default value 1, record once every 60 seconds</p>
+            <p><code>[option: -c/--close]</code> shut down record</p>
+          </li>
+          <li>
+            <p><strong>replay</strong>- replay recorded data and view differences</p>
+            <p><code>[option: -n/--num]</code> replay numbers, default the latest 10</p>
+          </li>
+          <li>
+            <p><strong>watch</strong>- view replay result and differences</p>
+            <p><code>[option: -r/--replayId]</code> replay id, multiple are separated by spaces</p>
+          </li>
+          <li>
+            <p><strong>debug</strong>- local debugging of specific cases</p>
+            <p><code>[option: -r/--recordId]</code> record id, required Option</p>
+          </li>
+        </ul>
+        <p>In local mode, AREX uses <a href="https://www.h2database.com">H2</a> as a local storage to save the recorded data for testing purpose, Config Service and Storage Service are no longer required, But you can't use the AREX-UI in this mode either.</p>
         <div class="previous"><span></span><a class="next" href="../chapter1/introduce.html"><span>AREX介绍
 </span><svg viewBox="0 0 1024 1024" width="16" height="16" fill="currentColor">
               <path d="M544 522.666667c0-8.533333-4.266667-17.066667-10.666667-23.466667L192 189.866667c-12.8-12.8-34.133333-10.666667-44.8 2.133333-12.8 12.8-10.666667 34.133333 2.133333 44.8l315.733334 285.866667L149.333333 808.533333c-12.8 12.8-14.933333 32-2.133333 44.8 6.4 6.4 14.933333 10.666667 23.466667 10.666667 8.533333 0 14.933333-2.133333 21.333333-8.533333l341.333333-309.333334c6.4-6.4 10.666667-14.933333 10.666667-23.466666z"></path>
@@ -84,17 +216,18 @@
       <nav class="tocs">
         <aside class="inner toc">
           <ol class="tocs-list">
-            <li><a href="#arex-agent安装" class="tocs-link">AREX Agent安装</a>
+            <li><a href="#arex-agent部署" class="tocs-link">AREX Agent部署</a>
               <ol class="tocs-list is-collapsed">
-                <li><a href="#export修改环境变量模式" class="tocs-link">export修改环境变量模式</a></li>
-                <li><a href="#修改命令行模式" class="tocs-link">修改命令行模式</a></li>
+                <li><a href="#配置java参数运行模式" class="tocs-link">配置java参数运行模式</a></li>
+                <li><a href="#配置文件运行模式" class="tocs-link">配置文件运行模式</a></li>
+                <li><a href="#通过arexcli运行的本地模式" class="tocs-link">通过ArexCli运行的本地模式</a>
+                  <ol class="tocs-list is-collapsed">
+                    <li><a href="#支持的命令如下" class="tocs-link">支持的命令如下:</a></li>
+                  </ol>
+                </li>
               </ol>
             </li>
-            <li><a href="#特殊场景" class="tocs-link">特殊场景</a>
-              <ol class="tocs-list is-collapsed">
-                <li><a href="#" class="tocs-link"></a></li>
-              </ol>
-            </li>
+            <li><a href="#getting-started" class="tocs-link">Getting Started</a></li>
           </ol>
         </aside>
       </nav>

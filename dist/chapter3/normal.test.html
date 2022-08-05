@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AREX AREX入门教程</title>
-    <meta name="description" content="在业务的全生命周期内，在发布 PipeLine 上设置质量卡点，自动化回归测试【接口 + 链路】，保障接口与链路两个维度的质量，把控发布质量，守好上线前的最后一道防线。本文将介绍基于 AREX 的接口 RECORD、REPLAY &#x26; DIF">
+    <title>Compare Testing AREX入门教程</title>
+    <meta name="description" content="compare Testing introduce">
     <link rel="stylesheet" type="text/css" href="../css/main.css?v=1.21.11">
     <link rel="stylesheet" type="text/css" href="../css/tocbot.css?v=1.21.11">
     <link rel="stylesheet" type="text/css" href="../css/media.css?v=1.21.11">
@@ -65,15 +65,10 @@
         </aside>
       </div>
       <markdown-style>
-        <h2 id="发送请求"><a aria-hidden="true" tabindex="-1" href="#发送请求" class="anchor"><span class="icon icon-link"></span></a>发送请求</h2>
-        <pre><code class="code-highlight"><span class="code-line line-number" line="1">使用、auth、cookies、variables、response
-</span></code><input type="hidden" value="使用、auth、cookies、variables、response
-"><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
-        <h2 id="接口case"><a aria-hidden="true" tabindex="-1" href="#接口case" class="anchor"><span class="icon icon-link"></span></a>接口CASE</h2>
-        <pre><code class="code-highlight"><span class="code-line line-number" line="1">生成、保存、编辑、前置、断言、Test （refer？？？）、执行（with Mock or Not）、批量执行、Collections
-</span></code><input type="hidden" value="生成、保存、编辑、前置、断言、Test （refer？？？）、执行（with Mock or Not）、批量执行、Collections
-"><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
-        <h2 id="环境变量全局变量临时变量"><a aria-hidden="true" tabindex="-1" href="#环境变量全局变量临时变量" class="anchor"><span class="icon icon-link"></span></a>环境变量/全局变量/临时变量</h2>
+        <h2 id="常规测试"><a aria-hidden="true" tabindex="-1" href="#常规测试" class="anchor"><span class="icon icon-link"></span></a>常规测试</h2>
+        <p>
+          <img src="..\resource\normaltest1.png" alt="">
+        </p>
         <div class="previous"><span></span><a class="next" href="../chapter1/introduce.html"><span>AREX介绍
 </span><svg viewBox="0 0 1024 1024" width="16" height="16" fill="currentColor">
               <path d="M544 522.666667c0-8.533333-4.266667-17.066667-10.666667-23.466667L192 189.866667c-12.8-12.8-34.133333-10.666667-44.8 2.133333-12.8 12.8-10.666667 34.133333 2.133333 44.8l315.733334 285.866667L149.333333 808.533333c-12.8 12.8-14.933333 32-2.133333 44.8 6.4 6.4 14.933333 10.666667 23.466667 10.666667 8.533333 0 14.933333-2.133333 21.333333-8.533333l341.333333-309.333334c6.4-6.4 10.666667-14.933333 10.666667-23.466666z"></path>
@@ -83,14 +78,12 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
             </svg>
 <span>Edit this page on GitHub</span>
-</a><span class="atime">2022/08/04</span></section>
+</a><span class="atime">2022/08/05</span></section>
       </markdown-style>
       <nav class="tocs">
         <aside class="inner toc">
           <ol class="tocs-list">
-            <li><a href="#发送请求" class="tocs-link">发送请求</a></li>
-            <li><a href="#接口case" class="tocs-link">接口CASE</a></li>
-            <li><a href="#环境变量全局变量临时变量" class="tocs-link">环境变量/全局变量/临时变量</a></li>
+            <li><a href="#常规测试" class="tocs-link">常规测试</a></li>
           </ol>
         </aside>
       </nav>
