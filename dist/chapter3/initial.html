@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AREX AREX入门教程</title>
-    <meta name="description" content="AREX前端是AREX工具的前端操作界面">
+    <title>使用入门 AREX入门教程</title>
+    <meta name="description" content="AREX服务安装完成后,就可以通过浏览器访问AREX前端, 通过AREX前端执行用例配置执行,
+录制回放记录和报告,管理用例和测试结果等.">
     <link rel="stylesheet" type="text/css" href="../css/main.css?v=1.21.11">
     <link rel="stylesheet" type="text/css" href="../css/tocbot.css?v=1.21.11">
     <link rel="stylesheet" type="text/css" href="../css/media.css?v=1.21.11">
@@ -38,16 +39,16 @@
         <aside class="sidebar" role="navigation">
           <div>
             <label>第1章 初识 AREX</label>
-            <a href="introduce.html" class="">AREX介绍</a>
-            <a href="framework.html" class="">AREX模块</a>
+            <a href="../chapter1/introduce.html" class="">AREX介绍</a>
+            <a href="../chapter1/framework.html" class="">AREX模块</a>
             <label>第2章 AREX 的安装与配置</label>
             <a href="../chapter2/demo.html" class="">新手指南</a>
             <a href="../chapter2/fastsetup.html" class="">快速安装</a>
             <a href="../chapter2/arexsetup.html" class="">自定义安装</a>
             <a href="../chapter2/agentsetup.html" class="">Agent配置</a>
             <label>第3章 AREX的API测试</label>
-            <a href="../chapter3/initial.html" class="">AREX使用入门</a>
-            <a href="../chapter3/normal.test.html" class="">常规测试</a>
+            <a href="initial.html" class="">AREX使用入门</a>
+            <a href="normal.test.html" class="">常规测试</a>
             <label>第4章 AREX的比对测试</label>
             <a href="../chapter4/compare.test.html" class="">比对测试</a>
             <label>第5章 AREX的回放测试</label>
@@ -67,97 +68,85 @@
         </aside>
       </div>
       <markdown-style>
-        <h2 id="arex组成"><a aria-hidden="true" tabindex="-1" href="#arex组成" class="anchor"><span class="icon icon-link"></span></a>AREX组成</h2>
-        <h3 id="组成概要"><a aria-hidden="true" tabindex="-1" href="#组成概要" class="anchor"><span class="icon icon-link"></span></a>组成概要</h3>
+        <h1 id="使用入门"><a aria-hidden="true" tabindex="-1" href="#使用入门" class="anchor"><span class="icon icon-link"></span></a>使用入门</h1>
         <p>
-          <img src="..\resource\arch.png" alt="">
+          AREX服务安装完成后,就可以通过浏览器访问AREX前端, 通过AREX前端执行用例配置执行,
+          录制回放记录和报告,管理用例和测试结果等.
         </p>
-        <h4 id="数据存储"><a aria-hidden="true" tabindex="-1" href="#数据存储" class="anchor"><span class="icon icon-link"></span></a>数据存储</h4>
+        <h2 id="界面简介"><a aria-hidden="true" tabindex="-1" href="#界面简介" class="anchor"><span class="icon icon-link"></span></a>界面简介</h2>
+        <p>安装完成后,通过浏览器访问(假定服务器地址为10.5.153.1)</p>
         <ul>
-          <li>Redis, Storage存储服务在回放过程中缓存数据使用</li>
-          <li>MongoDB, 存储服务存储录制数据和回放结果</li>
-          <li>MySQL, 存储管理类数据</li>
+          <li>未修改端口配置,则直接访问8088端口(DockerCompose暴露端口8088) <a href="http://10.5.153.1:8088/">http://10.5.153.1:8088/</a></li>
+          <li>如果独立部署前端,且未修改端口的(缺省端口8080) <a href="http://10.5.153.1:8080/">http://10.5.153.1:8080/</a></li>
+          <li>如果端口做了修改,则按照修改后的端口访问</li>
         </ul>
-        <h3 id="arex模块"><a aria-hidden="true" tabindex="-1" href="#arex模块" class="anchor"><span class="icon icon-link"></span></a>AREX模块</h3>
-        <h4 id="arex前端-arex"><a aria-hidden="true" tabindex="-1" href="#arex前端-arex" class="anchor"><span class="icon icon-link"></span></a>AREX前端 <a href="https://github.com/arextest/arex">AREX</a></h4>
-        <p>AREX前端是AREX工具的前端操作界面</p>
+        <h3 id="界面组成"><a aria-hidden="true" tabindex="-1" href="#界面组成" class="anchor"><span class="icon icon-link"></span></a>界面组成</h3>
+        <p>
+          <img src="..\resource\c3.menu.png" alt="">
+          包含如下几个区域
+        </p>
         <ul>
-          <li>常规测试, 类Postman的测试,用例设置,执行,结果ASSERT等</li>
-          <li>比对测试, 对不同的接口发送同一个请求,并比对返回结果存在的差异, 支持非MOCK的测试,也支持AREX真实数据MOCK的测试</li>
-          <li>回放测试, 用真实的生产数据进行比对测试<br>
-            <img src="https://github.com/arextest/arex-front-end/raw/main/documents/screenshots/report-detail.png" alt="Report Details">
+          <li>菜单区,Collection菜单(查看常规用例和比对测试用例),Replay菜单(访问AREX录制回放用例),Environment(环境配置)</li>
+          <li>workspace区, 菜单区上方,显示和配置workspace的地方,workspace是用户用例集合存放的地方,每个用户可以配置/删除workspace,在workspace中增加/显示/配置/删除/执行测试用例</li>
+          <li>工作区, 主功能区域,显示和操作AREX操作功能的地方</li>
+          <li>右上方,邀请按钮(邀请其他人参与某Workspace,协同工作)及设置按钮(设置暗黑模式/明亮模式)</li>
+        </ul>
+        <h3 id="首次登陆"><a aria-hidden="true" tabindex="-1" href="#首次登陆" class="anchor"><span class="icon icon-link"></span></a>首次登陆</h3>
+        <p>
+          <img src="..\resource\c3.login.png" alt="">
+          需要输入你个人邮箱,主要用来标识当前用户的唯一性, 也可以通过邮箱用来邀请其他用户,做协同操作.
+          通过"Verification Code"按钮后,AREX会发送验证码到个人邮箱,通过Code登录到AREX系统.
+          
+          <img src="..\resource\c3.logininvide.png" alt="">
+        </p>
+        <h3 id="新建workspace"><a aria-hidden="true" tabindex="-1" href="#新建workspace" class="anchor"><span class="icon icon-link"></span></a>新建workspace</h3>
+        <p>
+          <img src="..\resource\c3.1.png" alt="">
+          输入workspace名字,并确认
+        </p>
+        <h3 id="邀请其他人"><a aria-hidden="true" tabindex="-1" href="#邀请其他人" class="anchor"><span class="icon icon-link"></span></a>邀请其他人</h3>
+        <p>
+          <img src="..\resource\c3.2.png" alt="">
+          通过发送邮件来邀请其他人参与当前Workspace<br>被邀请后用户刷新界面后,workspace会显示在用户的左上角workspace区域,用户可以选择这个WS,查看用例并操作等
+        </p>
+        <h2 id="workspaces"><a aria-hidden="true" tabindex="-1" href="#workspaces" class="anchor"><span class="icon icon-link"></span></a>Workspaces</h2>
+        <h3 id="新建collections"><a aria-hidden="true" tabindex="-1" href="#新建collections" class="anchor"><span class="icon icon-link"></span></a>新建Collections</h3>
+        <p>
+          <img src="..\resource\c3.3.png" alt="">
+        </p>
+        <ul>
+          <li>在根上增加collections</li>
+          <li>可以在Collections中再次增加Collection,包含关系根据用户需要来设置,不做限制</li>
+          <li>在Collection中增加Request(API接口的单位,某一个具体接口)</li>
+          <li>对Collection的管理操作,包括增加,配置,删除等<br>操作界面示例<br>
+            <img src="..\resource\c3.4.png" alt="">
           </li>
         </ul>
-        <h4 id="配置服务-配置服务configuration-service"><a aria-hidden="true" tabindex="-1" href="#配置服务-配置服务configuration-service" class="anchor"><span class="icon icon-link"></span></a>配置服务 <a href="https://github.com/arextest/arex-config">配置服务(Configuration Service)</a></h4>
-        <h5 id="agent录制配置"><a aria-hidden="true" tabindex="-1" href="#agent录制配置" class="anchor"><span class="icon icon-link"></span></a>Agent录制配置</h5>
-        <ul>
-          <li>Agent录制的配置,包括录制的时间段,时间范围,频率等<br>
-            <img src="..\resource\configservice.record.basic.png" alt="">
-          </li>
-          <li>
-            Agent录制的告警配置
-            
-            <img src="..\resource\configservice.record.advance.png" alt="">
-          </li>
-        </ul>
-        <h5 id="arex回放配置"><a aria-hidden="true" tabindex="-1" href="#arex回放配置" class="anchor"><span class="icon icon-link"></span></a>AREX回放配置</h5>
-        <p>目前包括AREX回放用例的时间范围(days)<br>一天内的CASE,则设置 1 days</p>
-        <h5 id="比对差异配置"><a aria-hidden="true" tabindex="-1" href="#比对差异配置" class="anchor"><span class="icon icon-link"></span></a>比对差异配置</h5>
-        <ul>
-          <li>比较差异的排除节点 (不进行比对)</li>
-          <li>比较差异的包含节点 (必须进行比对)</li>
-          <li>Array类型的节点排序方法 (涉及到比对的一对一关系)</li>
-          <li>Reference节点配置 (复杂报文中如何设计到节点间的引用,可以配置Reference关联比对)</li>
-        </ul>
-        <h4 id="调度服务schedule-service"><a aria-hidden="true" tabindex="-1" href="#调度服务schedule-service" class="anchor"><span class="icon icon-link"></span></a>调度服务<a href="https://github.com/arextest/arex-replay-schedule">Schedule Service</a></h4>
-        <p>调度服务负责向被测试服务发送用例回放请求,并在服务响应后触发结果比对及依赖比对</p>
-        <ul>
-          <li>服务调度</li>
-          <li>比对SDK的比对执行</li>
-        </ul>
-        <h4 id="存储服务storage-service"><a aria-hidden="true" tabindex="-1" href="#存储服务storage-service" class="anchor"><span class="icon icon-link"></span></a>存储服务<a href="https://github.com/arextest/arex-storage">Storage Service</a></h4>
-        <ul>
-          <li>存储服务负责接收Agent捕获的请求,应答,依赖的真实数据的存储,</li>
-          <li>提供在回放期间,按照Agent要求返回已存储的数据</li>
-        </ul>
-        <h4 id="报告分析服务-report-service"><a aria-hidden="true" tabindex="-1" href="#报告分析服务-report-service" class="anchor"><span class="icon icon-link"></span></a>报告分析服务 <a href="https://github.com/arextest/arex-report">Report Service</a></h4>
-        <p>报告分析服务,负责在执行回放测试时,测试结果的收集和问题展示</p>
-        <div class="previous"><span></span><a class="next" href="introduce.html"><span>AREX介绍
+        <div class="previous"><span></span><a class="next" href="../chapter1/introduce.html"><span>AREX介绍
 </span><svg viewBox="0 0 1024 1024" width="16" height="16" fill="currentColor">
               <path d="M544 522.666667c0-8.533333-4.266667-17.066667-10.666667-23.466667L192 189.866667c-12.8-12.8-34.133333-10.666667-44.8 2.133333-12.8 12.8-10.666667 34.133333 2.133333 44.8l315.733334 285.866667L149.333333 808.533333c-12.8 12.8-14.933333 32-2.133333 44.8 6.4 6.4 14.933333 10.666667 23.466667 10.666667 8.533333 0 14.933333-2.133333 21.333333-8.533333l341.333333-309.333334c6.4-6.4 10.666667-14.933333 10.666667-23.466666z"></path>
               <path d="M864 499.2l-341.333333-309.333333c-12.8-12.8-34.133333-10.666667-44.8 2.133333-12.8 12.8-10.666667 34.133333 2.133333 44.8l315.733333 285.866667-315.733333 285.866666c-12.8 12.8-14.933333 32-2.133333 44.8 6.4 6.4 14.933333 10.666667 23.466666 10.666667 8.533333 0 14.933333-2.133333 21.333334-8.533333l341.333333-309.333334c6.4-6.4 10.666667-14.933333 10.666667-23.466666 0-8.533333-4.266667-17.066667-10.666667-23.466667z"></path>
             </svg></a></div>
-        <section class="article-footer"><a href="https://github.com/arextest/arex-doc/blob/main/docs\chapter1\framework.md" class="edit-button" target="_blank" rel="noopener noreferrer"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <section class="article-footer"><a href="https://github.com/arextest/arex-doc/blob/main/docs\chapter3\initial.md" class="edit-button" target="_blank" rel="noopener noreferrer"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
             </svg>
 <span>Edit this page on GitHub</span>
-</a><span class="atime">2022/08/05</span></section>
+</a><span class="atime">2022/08/17</span></section>
       </markdown-style>
       <nav class="tocs">
         <aside class="inner toc">
           <ol class="tocs-list">
-            <li><a href="#arex组成" class="tocs-link">AREX组成</a>
+            <li><a href="#界面简介" class="tocs-link">界面简介</a>
               <ol class="tocs-list is-collapsed">
-                <li><a href="#组成概要" class="tocs-link">组成概要</a>
-                  <ol class="tocs-list is-collapsed">
-                    <li><a href="#数据存储" class="tocs-link">数据存储</a></li>
-                  </ol>
-                </li>
-                <li><a href="#arex模块" class="tocs-link">AREX模块</a>
-                  <ol class="tocs-list is-collapsed">
-                    <li><a href="#arex前端-arex" class="tocs-link">AREX前端 AREX</a></li>
-                    <li><a href="#配置服务-配置服务configuration-service" class="tocs-link">配置服务 配置服务(Configuration Service)</a>
-                      <ol class="tocs-list is-collapsed">
-                        <li><a href="#agent录制配置" class="tocs-link">Agent录制配置</a></li>
-                        <li><a href="#arex回放配置" class="tocs-link">AREX回放配置</a></li>
-                        <li><a href="#比对差异配置" class="tocs-link">比对差异配置</a></li>
-                      </ol>
-                    </li>
-                    <li><a href="#调度服务schedule-service" class="tocs-link">调度服务Schedule Service</a></li>
-                    <li><a href="#存储服务storage-service" class="tocs-link">存储服务Storage Service</a></li>
-                    <li><a href="#报告分析服务-report-service" class="tocs-link">报告分析服务 Report Service</a></li>
-                  </ol>
-                </li>
+                <li><a href="#界面组成" class="tocs-link">界面组成</a></li>
+                <li><a href="#首次登陆" class="tocs-link">首次登陆</a></li>
+                <li><a href="#新建workspace" class="tocs-link">新建workspace</a></li>
+                <li><a href="#邀请其他人" class="tocs-link">邀请其他人</a></li>
+              </ol>
+            </li>
+            <li><a href="#workspaces" class="tocs-link">Workspaces</a>
+              <ol class="tocs-list is-collapsed">
+                <li><a href="#新建collections" class="tocs-link">新建Collections</a></li>
               </ol>
             </li>
           </ol>

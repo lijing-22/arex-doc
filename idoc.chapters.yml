@@ -9,12 +9,14 @@
 
 - chapter2/: 第2章 AREX 的安装与配置
 - chapter2/demo.md: 新手指南
-- chapter2/arexsetup.md: AREX安装
+- chapter2/fastsetup.md: 快速安装
+- chapter2/arexsetup.md: 自定义安装
 - chapter2/agentsetup.md: Agent配置
 
 #### 第3章 AREX的API测试
 
 - chapter3/: 第3章 AREX的API测试
+- chapter3/initial.md: AREX使用入门
 - chapter3/normal.test.md: 常规测试
 
 #### 第4章 AREX的比对测试

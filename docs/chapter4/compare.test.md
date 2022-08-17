@@ -1,3 +1,10 @@
 # Compare Testing  
-compare Testing introduce
+
+## 比对测试
+比对测试,就是将同一个报文往两个API地址发送请求,然后比对返回报文的差异  
+使用的场景包括  
+* 新老版本的接口比对,做验证验收测试
+* 重构系统后的验证测试,重构后的新老系统返回结果理论上应该不变的
+等 
+
 ![](../resource/comparetest1.png)
