@@ -5,8 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AREX录制回放测试 AREX入门教程</title>
-    <meta name="description" content="使用AREX提供的docker-compose.yml文件, 直接安装AREX包括服务,数据库,前端等所有组件
-每个组件只有1个实例,无法多实例负载均衡和扩容.">
+    <meta name="description" content="比对测试,就是将同一个报文往两个API地址发送请求,然后比对返回报文的差异使用的场景包括">
     <link rel="stylesheet" type="text/css" href="../css/main.css?v=1.21.11">
     <link rel="stylesheet" type="text/css" href="../css/tocbot.css?v=1.21.11">
     <link rel="stylesheet" type="text/css" href="../css/media.css?v=1.21.11">
@@ -108,9 +107,14 @@
           <img src="..\resource\c5.4.png" alt="">
         </p>
         <ol>
-          <li>左上方,选择差异节点</li>
+          <li>左上方,选择差异节点所在的API调用关系<br>
+            <img src="..\resource\c5.5.png" alt=""><br>被测试API:/Owners,及其接口内部调用的第三方依赖,比如数据库<br>
+            <img src="..\resource\c5.6.png" alt="">
+          </li>
           <li>操作1后,显示场景数,用例数,点击右边"Scenes"</li>
-          <li>Diff Detail显示差异节点,差异信息,如上图</li>
+          <li>Diff Detail显示差异节点,差异信息如下图<br>
+            <img src="..\resource\c5.7.png" alt="">
+          </li>
         </ol>
         <div class="previous"><span></span><a class="next" href="../chapter1/introduce.html"><span>AREX介绍
 </span><svg viewBox="0 0 1024 1024" width="16" height="16" fill="currentColor">
@@ -121,7 +125,7 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
             </svg>
 <span>Edit this page on GitHub</span>
-</a><span class="atime">2022/08/17</span></section>
+</a><span class="atime">2022/08/18</span></section>
       </markdown-style>
       <nav class="tocs">
         <aside class="inner toc">
