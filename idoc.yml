@@ -6,23 +6,19 @@
 # -----------------------
 dir: docs
 
-
 ## output directory of generated documents
 ## defalut: `dist`
 # -----------------------
 output: dist
 
-
 ## site name
 # -----------------------
 site: AREX入门教程
-
 
 ## Customize theme settings.
 ## defalut: `default`
 # -----------------------
 theme: default
-
 
 ## Template Data
 # -----------------------

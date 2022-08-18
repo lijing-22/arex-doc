@@ -15,7 +15,9 @@ docker-compose -f docker-compose-distribute.yml down -v
 docker-compose -f docker-compose-distribute.yml ps
 ```
 
-缺省安装实例
+#### 缺省安装实例
+* 当前的配置schedule和storage是2个实例,可以参考配置文件,配置多实例
+  
 | ID | Instance | Model Name | Description |  
 | :----:| :----:| :----- | :----- |
 | 1 | 1 | [Configuration Service](https://github.com/arextest/arex-config) | A sets of configuration APIs for the   recording and replaying functions. |  
@@ -46,6 +48,19 @@ helm install . -n namespace
 
 ## 各个服务的可配置参数
 
+### 在操作系统中配置环境变量范例
+
+#### Windows
+```
+set   JAVA_OPTS=-Darex.config.service.url=http://10.3.1.3:8080 -Darex.storage.service.url=http://10.3.1.4:8080 -Darex.storage.mongo.host=mongodb://username:password@my-mongodb:27017/arex_storage_db -Darex.report.email.host=smtp.msn.com
+set JAVA_OPTS 查看配置
+```
+#### Linux
+```
+export JAVA_OPTS=-Darex.config.service.url=http://10.3.1.3:8080 -Darex.storage.service.url=http://10.3.1.4:8080 -Darex.storage.mongo.host=mongodb://username:password@my-mongodb:27017/arex_storage_db -Darex.report.email.host=smtp.msn.com
+echo $SERVICE_REPORT_URL 查看配置
+```
+
 ### AREX UI的配置
 包含3个环境变量,分别对应Report的服务地址, 配置服务地址和调度服务地址
 
@@ -53,24 +68,18 @@ helm install . -n namespace
 如下是缺省配置  
 注意端口使用的是docker-compose网络内部的8080端口
 ```
-    environment:
-      - SERVICE_REPORT_URL=http://arex-report-service:8080
-      - SERVICE_CONFIG_URL= http://arex-config-service:8080
-      - SERVICE_SCHEDULE_URL=http://arex-schedule-service:8080
+environment:
+  - SERVICE_REPORT_URL=http://arex-report-service:8080
+  - SERVICE_CONFIG_URL= http://arex-config-service:8080
+  - SERVICE_SCHEDULE_URL=http://arex-schedule-service:8080
 ```
 #### 单独部署的配置举例
 ```
 ##windows
 set SERVICE_REPORT_URL=http://10.192.1.1:8080  设置
-set SERVICE_REPORT_URL 查看
 ##linux
 export SERVICE_REPORT_URL=http://10.192.1.1:8080
-echo $SERVICE_REPORT_URL
 ```
-
-### Mysql配置
-在你自己的MySQL服务器上,执行mysql_init目录下的初始化脚本  
-设置准备好MySQL的用户名和密码,AREX的Config服务中需要对应的配置  
 
 ### AREX Config 服务配置
 #### 源码中配置
@@ -87,8 +96,8 @@ environment:
 ```
 #### 单独部署的配置举例
 ```
- environment:
-  - "JAVA_OPTS=-Dspring.datasource.url=jdbc:mysql://你的MySQL服务器名:MySQL端口/databaseName"
+environment:
+- "JAVA_OPTS=-Dspring.datasource.url=jdbc:mysql://你的MySQL服务器名:MySQL端口/databaseName"
 
 ```
 
@@ -107,8 +116,8 @@ spring.datasource.password=arex_admin_password
 #### 单独部署的配置举例
 ```
 ## eg. 10.3.1.1 Storage Services 10.3.1.2 Report Services
- environment:
-  - "JAVA_OPTS=-Darex.storage.service.api=http://10.3.1.1:8080 -Darex.report.service.api=http://10.3.1.2:8080 "
+environment:
+- "JAVA_OPTS=-Darex.storage.service.api=http://10.3.1.1:8080 -Darex.report.service.api=http://10.3.1.2:8080 "
 ```
 
 ### AREX Storage服务配置
@@ -120,8 +129,8 @@ arex.storage.mongo.host=mongodb://arex:iLoveArex@mongodb:27017/arex_storage_db
 ```
 #### 单独部署的配置举例
 ```
- environment:
-  - "JAVA_OPTS=-Darex.storage.cache.expired.seconds=14400 -Darex.storage.mongo.host=mongodb://username:password@my-mongodb:27017/arex_storage_db "
+environment:
+  - "JAVA_OPTS=-Darex.storage.service.api=http://arex-storage-service:8080 -Darex.report.service.api=http://arex-report-service:8080 -Darex.config.service.api=http://arex-config-service:8080 -Dspring.datasource.url=jdbc:mysql://mysql:3306/arexdb -Dspring.datasource.username=arex_admin -Dspring.datasource.password=arex_admin_password"
 ```
 
 ### AREX Report 服务配置
@@ -138,11 +147,16 @@ arex.report.email.pwd=token
 ```
 #### 单独部署的配置举例
 ```
- environment:
-  - "JAVA_OPTS=-Darex.config.service.url=http://10.3.1.3:8080 -Darex.storage.service.url=http://10.3.1.4:8080 -Darex.storage.mongo.host=mongodb://username:password@my-mongodb:27017/arex_storage_db -Darex.report.email.host=smtp.msn.com"
-
-## windows
-set   JAVA_OPTS=-Darex.config.service.url=http://10.3.1.3:8080 -Darex.storage.service.url=http://10.3.1.4:8080 -Darex.storage.mongo.host=mongodb://username:password@my-mongodb:27017/arex_storage_db -Darex.report.email.host=smtp.msn.com
-## linux
-export JAVA_OPTS=-Darex.config.service.url=http://10.3.1.3:8080 -Darex.storage.service.url=http://10.3.1.4:8080 -Darex.storage.mongo.host=mongodb://username:password@my-mongodb:27017/arex_storage_db -Darex.report.email.host=smtp.msn.com
+environment:
+- "JAVA_OPTS=-Darex.config.service.url=http://10.3.1.3:8080 -Darex.storage.service.url=http://10.3.1.4:8080 -Darex.storage.mongo.host=mongodb://username:password@my-mongodb:27017/arex_storage_db -Darex.report.email.host=smtp.msn.com"
 ```
+## Mongodb和Mysql配置
+* 在你自己的MySQL服务器上,执行mysql_init目录下的初始化脚本  
+* 在docker-compose yaml中,删除MySQL或者Mongodb
+* AREX的Config服务中配置,准备好MySQL的用户名和密码
+```
+ environment:
+  - "JAVA_OPTS=-Dspring.datasource.url=jdbc:mysql://你的MySQL服务器名:MySQL端口/databaseName -Dspring.datasource.username=your_admin -Dspring.datasource.password=your_admin_password"
+```
+* MongoDB没有初始化的配置,其他配置方式同上
+

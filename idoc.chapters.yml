@@ -1,12 +1,10 @@
 #### 第1章 初识 AREX
-
 - chapter1/: 第1章 初识 AREX
 - chapter1/introduce.md: AREX介绍
 - chapter1/framework.md: AREX模块
 
 
 #### 第2章 AREX的安装与配置
-
 - chapter2/: 第2章 AREX 的安装与配置
 - chapter2/demo.md: 新手指南
 - chapter2/fastsetup.md: 快速安装
@@ -14,7 +12,6 @@
 - chapter2/agentsetup.md: Agent配置
 
 #### 第3章 AREX的API测试
-
 - chapter3/: 第3章 AREX的API测试
 - chapter3/initial.md: AREX使用入门
 - chapter3/normal.test.md: 常规测试
@@ -40,7 +37,7 @@
 - chapter7/test.md: 测试
 
 #### 贡献指南...
-- /: 其他
+- reference/: 其他
 - Contributing.md: 贡献指南
 - express.md: 鸣谢
 - License.md: License
