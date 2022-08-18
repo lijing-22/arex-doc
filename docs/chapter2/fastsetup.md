@@ -43,6 +43,7 @@ arex-storage    catalina.sh run                  Up      0.0.0.0:8093->8080/tcp
 cd deployments
 docker-compose logs 
 ```
+* 检查AREX日志命令     docker-compose logs arex
 * 检查配置服务日志命令  docker-compose logs arex-config-service
 * 检查调度服务日志命令  docker-compose logs arex-schedule-service
 * 检查报告服务日志命令  docker-compose logs arex-report-service
@@ -52,30 +53,36 @@ docker-compose logs
 
 ### AREX前端
 ```
-arex-front-end:
-    image: arexadmin01/replay-front-end:0.1
+  arex:
+    image: arexadmin01/arex:0.2
     container_name: arex-front
     restart: always
     ports:
-      - '8088:8088'
+      - '8088:8080'
     volumes:
       - ./arex-logs/arex-front:/usr/src/app/logs
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
     environment:
-      - PAAS_ENV=DEMO
+      - SERVICE_REPORT_URL=http://arex-report-service:8080
+      - SERVICE_CONFIG_URL= http://arex-config-service:8080
+      - SERVICE_SCHEDULE_URL=http://arex-schedule-service:8080
     depends_on:
       - arex-report-service
       - arex-config-service
 ```
 
-### Storage Service
+### 存储服务 Storage Service
 ```
   arex-storage-service:
-    image: arexadmin01/arex-storage-serive:0.1
+    image: arexadmin01/arex-storage-serive:0.2
     container_name: arex-storage
     restart: always
     ports:
       - '8093:8080'
     volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
       - ./arex-logs/arex-storage:/usr/local/tomcat/logs
     depends_on:
       - mongodb
@@ -85,48 +92,55 @@ arex-front-end:
 ### 调度服务 Schedule Serive
 ```
   arex-schedule-service:
-    image: arexadmin01/arex-replay-schedule:0.1
+    image: arexadmin01/arex-replay-schedule:0.2
     container_name: arex-schedule
     restart: always
     ports:
       - '8092:8080'
     volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
       - ./arex-logs/arex-schedule:/usr/local/tomcat/logs
     depends_on:
       - mysql
       - redis
 ```
 
-### Report service
+### 报告与分析服务 Report service
 ```
-arex-report-service:
-    image: arexadmin01/arex-report:0.1
+  arex-report-service:
+    image: arexadmin01/arex-report:0.2
     container_name: arex-report
     restart: always
     ports:
       - '8090:8080'
     volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
       - ./arex-logs/arex-report:/usr/local/tomcat/logs
     depends_on:
       - mongodb  
 ```
 
-### Config Service
-* 配置服务
+### 配置服务 Config Service
 ```
   arex-config-service:
-    image: arexadmin01/arex-config:0.1
+    image: arexadmin01/arex-config:0.2
     container_name: arex-config
     restart: always
     ports:
       - '8091:8080'
     volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
       - ./arex-logs/arex-config:/usr/local/tomcat/logs
+    environment:
+      - "JAVA_OPTS=-Dspring.datasource.url=jdbc:mysql://mysql:3306/arexdb"
     depends_on:
       - mysql
 ```
 
-### Redis
+### 缓存 Redis
 ```
   redis:
     image: redis:6.2.6
@@ -141,7 +155,7 @@ arex-report-service:
 ```
 
 
-### MySQL
+### 数据库 MySQL
 * ./mysql_init/目录下文件是mysql表结构初始化文件
 * 你可以用帐号arex_admin/arex_admin_password来访问MySQL数据库
 * 数据库如需备份,文件所在./arex-data/mysql
@@ -154,6 +168,8 @@ mysql:
     ports:
       - 3306:3306
     environment:
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
       - MYSQL_ROOT_PASSWORD=
       - MYSQL_ALLOW_EMPTY_PASSWORD=true
       - MYSQL_USER=arex_admin
@@ -166,7 +182,7 @@ mysql:
       - ./arex-logs/mysql:/var/log/mysql.log
 ```
 
-### Mongodb
+### 数据库 Mongodb
 * 目前已经验证过的版本 4.4.4, 5.0,两者都支持
 * mongo-allone-init.js文件包含了帐号初始化功能
 * 数据文件放在当前目录的./arex-data/mongodb
@@ -178,6 +194,8 @@ mysql:
     ports:
       - 27017:27017
     volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
       - ./arex-data/mongodb:/data/db
       - ./mongo-allone-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
       - ./arex-logs/mongodb:/var/log/mongodb
