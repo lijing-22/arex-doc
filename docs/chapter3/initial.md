@@ -16,20 +16,26 @@ AREX服务安装完成后,就可以通过浏览器访问AREX前端, 通过AREX�
 * 工作区, 主功能区域,显示和操作AREX操作功能的地方
 * 右上方,邀请按钮(邀请其他人参与某Workspace,协同工作)及设置按钮(设置暗黑模式/明亮模式)
 
+### Chrome插件
+* 推荐浏览器Chrome访问
+* 如果能访问Chrome插件,访问AREX界面时,按照浏览器提示安装插件即可
+* 不能访问Chrome插件时,请下载到本地安装,[链接](https://github.com/zhangtao25/arex-chrome-extension/releases/download/1.0.1/dist.zip)
+
 ### 首次登陆
 ![](../resource/c3.login.png)
-需要输入你个人邮箱,主要用来标识当前用户的唯一性, 也可以通过邮箱用来邀请其他用户,做协同操作.
-通过"Verification Code"按钮后,AREX会发送验证码到个人邮箱,通过Code登录到AREX系统.
-![](../resource/c3.logininvide.png)
+* 需要输入你个人邮箱,主要用来标识当前用户的唯一性  
+* 验证码随便输入,比如arex,点击Login登录 (验证码逻辑暂时取消)
+<!-- ![](../resource/c3.logininvide.png) -->
 
 ### 新建workspace
 ![](../resource/c3.1.png)
 输入workspace名字,并确认
 
-### 邀请其他人
+### 邀请其他人(TODO,此功能暂时不提供)
 ![](../resource/c3.2.png)
-通过发送邮件来邀请其他人参与当前Workspace  
-被邀请后用户刷新界面后,workspace会显示在用户的左上角workspace区域,用户可以选择这个WS,查看用例并操作等
+
+<!-- 通过发送邮件来邀请其他人参与当前Workspace  
+被邀请后用户刷新界面后,workspace会显示在用户的左上角workspace区域,用户可以选择这个WS,查看用例并操作等 -->
 
 ## Workspaces
 
