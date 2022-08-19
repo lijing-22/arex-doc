@@ -11,13 +11,14 @@
 * 配置Header
 * 配置参数
 
-### 新建Request
+### 快速请求
 ![](../resource/c3.5.png)
-在Collection上选择Add Ruquest和Duplicate来新建新的请求
+* 在Collection上选择Add Request来新建新的快速请求
+* Duplicate复制快速请求及其case(如果有的话)
 
-#### 新建CASE
-CASE跟Request关系
-* CASE类似Request,可配置内容是一样的
+#### 测试用例
+CASE跟快速请求(Request)的关系
+* CASE类似快速请求,可配置内容是一样的
 * CASE包含在Request中
 * CASE是继承Request的配置参数,为了方便用户测试同一个接口,只重新修改小部分参数,这样简化用户使用
 
@@ -26,7 +27,7 @@ CASE跟Request关系
 * CASE用例名可以直接修改当前用例名称
 * SAVE按钮保存当前用例
 * 应答报文的结果,Stauts,Time和Size等
-* 结果JSON报文的展示和Pretty
+* 展示: JSON报文和Pretty优化JSON
 
 #### 配置ASSERT
 ![](../resource/c3.6.png)

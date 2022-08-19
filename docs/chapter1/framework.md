@@ -15,7 +15,7 @@ AREX前端是AREX工具的前端操作界面
 * 常规测试, 类Postman的测试,用例设置,执行,结果ASSERT等
 * 比对测试, 对不同的接口发送同一个请求,并比对返回结果存在的差异, 支持非MOCK的测试,也支持AREX真实数据MOCK的测试
 * 回放测试, 用真实的生产数据进行比对测试   
-  ![Report Details](https://github.com/arextest/arex-front-end/raw/main/documents/screenshots/report-detail.png)
+  ![](../resource/c3.4.png)
   
 #### 配置服务 [配置服务(Configuration Service)](https://github.com/arextest/arex-config)
 ##### Agent录制配置
