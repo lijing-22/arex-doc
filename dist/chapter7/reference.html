@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>用例管理 AREX入门教程</title>
-    <meta name="description" content="arex.env.set(&#x22;foo&#x22;, &#x22;bar&#x22;);">
+    <title>使用入门 AREX入门教程</title>
+    <meta name="description" content=".expect returns an expectation object, on which you can call matcher functions. The example below calls the matcher func">
     <link rel="stylesheet" type="text/css" href="../css/main.css?v=1.21.11">
     <link rel="stylesheet" type="text/css" href="../css/tocbot.css?v=1.21.11">
     <link rel="stylesheet" type="text/css" href="../css/media.css?v=1.21.11">
@@ -68,10 +68,178 @@
         </aside>
       </div>
       <markdown-style>
-        <h2 id="参考"><a aria-hidden="true" tabindex="-1" href="#参考" class="anchor"><span class="icon icon-link"></span></a>参考</h2>
-        <p>
-          <img src="..\resource\c7.1.png" alt="">
-        </p>
+        <h2 id="reference"><a aria-hidden="true" tabindex="-1" href="#reference" class="anchor"><span class="icon icon-link"></span></a>Reference</h2>
+        <h3 id="arex-api"><a aria-hidden="true" tabindex="-1" href="#arex-api" class="anchor"><span class="icon icon-link"></span></a>AREX API</h3>
+        <ul>
+          <li>.expect(value)</li>
+          <li>.response</li>
+          <li>.not</li>
+          <li>.toBe(value)</li>
+          <li>.toBeLevel2xx(value)</li>
+          <li>.toBeLevel3xx(value)</li>
+          <li>.toBeLevel4xx(value)</li>
+          <li>.toBeLevel5xx(value)</li>
+          <li>.toBeType(type)</li>
+          <li>.toHaveLength(number)</li>
+          <li>.test(name, fn)</li>
+          <li>.expect(value)</li>
+        </ul>
+        <h4 id="expect"><a aria-hidden="true" tabindex="-1" href="#expect" class="anchor"><span class="icon icon-link"></span></a>.expect</h4>
+        <p>.expect returns an expectation object, on which you can call matcher functions. The example below calls the matcher function toBe on the expectation object that is returned by calling arex.expect with the response id (arex.response.body.id) as an argument.</p>
+        <pre><code class="code-highlight"><span class="code-line line-number" line="1">arex.test("Id of the response is equal to 1", () => {
+</span><span class="code-line line-number" line="2">  arex.expect(arex.response.body.id).toBe(1);
+</span><span class="code-line line-number" line="3">});
+</span></code><input type="hidden" value="arex.test(&#x22;Id of the response is equal to 1&#x22;, () => {
+  arex.expect(arex.response.body.id).toBe(1);
+});
+"><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+        <p>Note that you can pass any valid JavaScript as an argument for expect.</p>
+        <pre><code class="code-highlight"><span class="code-line line-number" line="1">arex.test("Price is between $100 and $150", () => {
+</span><span class="code-line line-number" line="2">  const price = arex.response.body.price;
+</span><span class="code-line line-number" line="3">  arex.expect(price > 100 &#x26;&#x26; price &#x3C; 150).toBe(true);
+</span><span class="code-line line-number" line="4">  arex.expect(arex.response.body.currency).toBe("USD");
+</span><span class="code-line line-number" line="5">});
+</span></code><input type="hidden" value="arex.test(&#x22;Price is between $100 and $150&#x22;, () => {
+  const price = arex.response.body.price;
+  arex.expect(price > 100 &#x26;&#x26; price < 150).toBe(true);
+  arex.expect(arex.response.body.currency).toBe(&#x22;USD&#x22;);
+});
+"><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+        <h4 id="response"><a aria-hidden="true" tabindex="-1" href="#response" class="anchor"><span class="icon icon-link"></span></a>.response</h4>
+        <p>Assert response data by accessing the arex.response object.</p>
+        <pre><code class="code-highlight"><span class="code-line line-number" line="1">// This test will pass
+</span><span class="code-line line-number" line="2">arex.test("Response is ok", () => {
+</span><span class="code-line line-number" line="3">  arex.expect(arex.response.status).toBe(200);
+</span><span class="code-line line-number" line="4">  arex.expect(arex.response.body).not.toHaveProperty("errors");
+</span><span class="code-line line-number" line="5">});
+</span></code><input type="hidden" value="// This test will pass
+arex.test(&#x22;Response is ok&#x22;, () => {
+  arex.expect(arex.response.status).toBe(200);
+  arex.expect(arex.response.body).not.toHaveProperty(&#x22;errors&#x22;);
+});
+"><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+        <p>Currently supported response values</p>
+        <ul>
+          <li>status: -number- The status code as an integer.</li>
+          <li>headers: -object- The response headers.</li>
+          <li>body: -object- the data in the response. In many requests, this is the JSON sent by the server.</li>
+        </ul>
+        <h4 id="not"><a aria-hidden="true" tabindex="-1" href="#not" class="anchor"><span class="icon icon-link"></span></a>.not</h4>
+        <p>Test for the inverse by adding .not before calling the matcher function.</p>
+        <pre><code class="code-highlight"><span class="code-line line-number" line="1">// These tests will pass
+</span><span class="code-line line-number" line="2">arex.expect(true).not.toBe(false);
+</span><span class="code-line line-number" line="3">arex.expect(200).not.toBeLevel3xx();
+</span></code><input type="hidden" value="// These tests will pass
+arex.expect(true).not.toBe(false);
+arex.expect(200).not.toBeLevel3xx();
+"><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+        <h4 id="tobevalue"><a aria-hidden="true" tabindex="-1" href="#tobevalue" class="anchor"><span class="icon icon-link"></span></a>.toBe(value)</h4>
+        <p>Test for exact equality using toBe.</p>
+        <pre><code class="code-highlight"><span class="code-line line-number" line="1">arex.expect(arex.response.body.category).toBe("Sneakers");
+</span></code><input type="hidden" value="arex.expect(arex.response.body.category).toBe(&#x22;Sneakers&#x22;);
+"><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+        <p>toBe uses strict equality and is recommended for primitive data types.</p>
+        <pre><code class="code-highlight"><span class="code-line line-number" line="1">// These tests will fail
+</span><span class="code-line line-number" line="2">arex.expect("hello").toBe("Hello");
+</span><span class="code-line line-number" line="3">arex.expect(5).toBe("5");
+</span><span class="code-line line-number" line="4">arex.expect([]).toBe([]);
+</span></code><input type="hidden" value="// These tests will fail
+arex.expect(&#x22;hello&#x22;).toBe(&#x22;Hello&#x22;);
+arex.expect(5).toBe(&#x22;5&#x22;);
+arex.expect([]).toBe([]);
+"><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+        <h4 id="tobelevelxxx"><a aria-hidden="true" tabindex="-1" href="#tobelevelxxx" class="anchor"><span class="icon icon-link"></span></a>.toBeLevelxxx()</h4>
+        <p>There are four different matcher functions for quick and convenient testing of the http status code that is returned:</p>
+        <pre><code class="code-highlight"><span class="code-line line-number" line="1">toBeLevel2xx()
+</span><span class="code-line line-number" line="2">toBeLevel3xx()
+</span><span class="code-line line-number" line="3">toBeLevel4xx()
+</span><span class="code-line line-number" line="4">toBeLevel5xx()
+</span></code><input type="hidden" value="toBeLevel2xx()
+toBeLevel3xx()
+toBeLevel4xx()
+toBeLevel5xx()
+"><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+        <p>For example, an argument passed to expect must be within 200 and 299 inclusive to pass toBeLevel2xx().</p>
+        <pre><code class="code-highlight"><span class="code-line line-number" line="1">// These tests will pass
+</span><span class="code-line line-number" line="2">arex.expect(204).toBeLevel2xx();
+</span><span class="code-line line-number" line="3">arex.expect(308).toBeLevel3xx();
+</span><span class="code-line line-number" line="4">arex.expect(404).toBeLevel4xx();
+</span><span class="code-line line-number" line="5">arex.expect(503).toBeLevel5xx();
+</span></code><input type="hidden" value="// These tests will pass
+arex.expect(204).toBeLevel2xx();
+arex.expect(308).toBeLevel3xx();
+arex.expect(404).toBeLevel4xx();
+arex.expect(503).toBeLevel5xx();
+"><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+        <p>If the argument passed to expect is a non-numeric value, it is first parsed with parseInt().</p>
+        <pre><code class="code-highlight"><span class="code-line line-number" line="1">// This test will pass
+</span><span class="code-line line-number" line="2">arex.expect("404").toBeLevel4xx();
+</span></code><input type="hidden" value="// This test will pass
+arex.expect(&#x22;404&#x22;).toBeLevel4xx();
+"><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+        <h4 id="tobetypetype"><a aria-hidden="true" tabindex="-1" href="#tobetypetype" class="anchor"><span class="icon icon-link"></span></a>.toBeType(type)</h4>
+        <p>Use .toBeType(type) for type checking. The argument for this method should be "string", "boolean", "number", "object", "undefined", "bigint", "symbol" or "function".</p>
+        <pre><code class="code-highlight"><span class="code-line line-number" line="1">// These tests will pass
+</span><span class="code-line line-number" line="2">arex.expect(5).toBeType("number");
+</span><span class="code-line line-number" line="3">arex.expect("Hello, world!").toBeType("string");
+</span><span class="code-line line-number" line="4">
+</span><span class="code-line line-number" line="5">arex.expect(5).not.toBeType("string");
+</span><span class="code-line line-number" line="6">arex.expect("Hello, world!").not.toBeType("number");
+</span></code><input type="hidden" value="// These tests will pass
+arex.expect(5).toBeType(&#x22;number&#x22;);
+arex.expect(&#x22;Hello, world!&#x22;).toBeType(&#x22;string&#x22;);
+
+arex.expect(5).not.toBeType(&#x22;string&#x22;);
+arex.expect(&#x22;Hello, world!&#x22;).not.toBeType(&#x22;number&#x22;);
+"><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+        <h4 id="tohavelengthnumber"><a aria-hidden="true" tabindex="-1" href="#tohavelengthnumber" class="anchor"><span class="icon icon-link"></span></a>.toHaveLength(number)</h4>
+        <p>Use .toHaveLength(number) to check that an object has a .length property and it is set to a certain numeric value.</p>
+        <pre><code class="code-highlight"><span class="code-line line-number" line="1">// These expectations will pass
+</span><span class="code-line line-number" line="2">arex.expect("hoppscotch").toHaveLength(10);
+</span><span class="code-line line-number" line="3">arex.expect("hoppscotch").not.toHaveLength(9);
+</span><span class="code-line line-number" line="4">
+</span><span class="code-line line-number" line="5">arex.expect(["apple", "banana", "coconut"]).toHaveLength(3);
+</span><span class="code-line line-number" line="6">arex.expect(["apple", "banana", "coconut"]).not.toHaveLength(4);
+</span></code><input type="hidden" value="// These expectations will pass
+arex.expect(&#x22;hoppscotch&#x22;).toHaveLength(10);
+arex.expect(&#x22;hoppscotch&#x22;).not.toHaveLength(9);
+
+arex.expect([&#x22;apple&#x22;, &#x22;banana&#x22;, &#x22;coconut&#x22;]).toHaveLength(3);
+arex.expect([&#x22;apple&#x22;, &#x22;banana&#x22;, &#x22;coconut&#x22;]).not.toHaveLength(4);
+"><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+        <h4 id="testname-fn"><a aria-hidden="true" tabindex="-1" href="#testname-fn" class="anchor"><span class="icon icon-link"></span></a>.test(name, fn)</h4>
+        <p>Create a group of tests, with the name as a string and fn as a callback function to write tests associated with the group. The test results will include the given name for better organization.</p>
+        <p>You cannot nest .test within a .test callback function.</p>
+        <pre><code class="code-highlight"><span class="code-line line-number" line="1">arex.test("a group of tests", () => {
+</span><span class="code-line line-number" line="2">  arex.expect(10).toBe(10);
+</span><span class="code-line line-number" line="3">  // more tests here
+</span><span class="code-line line-number" line="4">});
+</span></code><input type="hidden" value="arex.test(&#x22;a group of tests&#x22;, () => {
+  arex.expect(10).toBe(10);
+  // more tests here
+});
+"><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+        <h5 id="examples"><a aria-hidden="true" tabindex="-1" href="#examples" class="anchor"><span class="icon icon-link"></span></a>Examples</h5>
+        <p>Test whether the response status code is 200.</p>
+        <pre><code class="code-highlight"><span class="code-line line-number" line="1">arex.test("Response status is 200", () => {
+</span><span class="code-line line-number" line="2">  arex.expect(arex.response.status).toBe(200);
+</span><span class="code-line line-number" line="3">});
+</span></code><input type="hidden" value="arex.test(&#x22;Response status is 200&#x22;, () => {
+  arex.expect(arex.response.status).toBe(200);
+});
+"><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+        <p>Parse the data as JSON and assert properties from the response body.</p>
+        <pre><code class="code-highlight"><span class="code-line line-number" line="1">arex.test("Project name is Hoppscotch", () => {
+</span><span class="code-line line-number" line="2">  const project = arex.response.body.json();
+</span><span class="code-line line-number" line="3">  arex.expect(project.name).toBe("Hoppscotch");
+</span><span class="code-line line-number" line="4">  arex.expect(project.name).toBeType("string");
+</span><span class="code-line line-number" line="5">});
+</span></code><input type="hidden" value="arex.test(&#x22;Project name is Hoppscotch&#x22;, () => {
+  const project = arex.response.body.json();
+  arex.expect(project.name).toBe(&#x22;Hoppscotch&#x22;);
+  arex.expect(project.name).toBeType(&#x22;string&#x22;);
+});
+"><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
         <div class="previous"><span></span><a class="next" href="../chapter1/introduce.html"><span>AREX介绍
 </span><svg viewBox="0 0 1024 1024" width="16" height="16" fill="currentColor">
               <path d="M544 522.666667c0-8.533333-4.266667-17.066667-10.666667-23.466667L192 189.866667c-12.8-12.8-34.133333-10.666667-44.8 2.133333-12.8 12.8-10.666667 34.133333 2.133333 44.8l315.733334 285.866667L149.333333 808.533333c-12.8 12.8-14.933333 32-2.133333 44.8 6.4 6.4 14.933333 10.666667 23.466667 10.666667 8.533333 0 14.933333-2.133333 21.333333-8.533333l341.333333-309.333334c6.4-6.4 10.666667-14.933333 10.666667-23.466666z"></path>
@@ -81,12 +249,31 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
             </svg>
 <span>Edit this page on GitHub</span>
-</a><span class="atime">2022/08/18</span></section>
+</a><span class="atime">2022/08/19</span></section>
       </markdown-style>
       <nav class="tocs">
         <aside class="inner toc">
           <ol class="tocs-list">
-            <li><a href="#参考" class="tocs-link">参考</a></li>
+            <li><a href="#reference" class="tocs-link">Reference</a>
+              <ol class="tocs-list is-collapsed">
+                <li><a href="#arex-api" class="tocs-link">AREX API</a>
+                  <ol class="tocs-list is-collapsed">
+                    <li><a href="#expect" class="tocs-link">.expect</a></li>
+                    <li><a href="#response" class="tocs-link">.response</a></li>
+                    <li><a href="#not" class="tocs-link">.not</a></li>
+                    <li><a href="#tobevalue" class="tocs-link">.toBe(value)</a></li>
+                    <li><a href="#tobelevelxxx" class="tocs-link">.toBeLevelxxx()</a></li>
+                    <li><a href="#tobetypetype" class="tocs-link">.toBeType(type)</a></li>
+                    <li><a href="#tohavelengthnumber" class="tocs-link">.toHaveLength(number)</a></li>
+                    <li><a href="#testname-fn" class="tocs-link">.test(name, fn)</a>
+                      <ol class="tocs-list is-collapsed">
+                        <li><a href="#examples" class="tocs-link">Examples</a></li>
+                      </ol>
+                    </li>
+                  </ol>
+                </li>
+              </ol>
+            </li>
           </ol>
         </aside>
       </nav>
