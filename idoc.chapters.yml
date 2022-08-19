@@ -3,7 +3,6 @@
 - chapter1/introduce.md: AREX介绍
 - chapter1/framework.md: AREX模块
 
-
 #### 第2章 AREX的安装与配置
 - chapter2/: 第2章 AREX 的安装与配置
 - chapter2/demo.md: 新手指南
@@ -30,7 +29,7 @@
 - chapter6/templates.md: 模板管理
 
 #### 第7章 Script
-- chapter7/: 第7章 Script
+- chapter7/: 第7章 脚本Script
 - chapter7/script.md: 脚本介绍
 - chapter7/reference.md: 参考
 - chapter7/prepare.md: 前置
