@@ -1,6 +1,10 @@
 # AREX服务安装
 ![](../resource/arch.png)
 
+## Agent通用配置
+```
+JAVA_OPTS="$JAVA_OPTS -Darex.config.path=/usr/your-path-to-arexconf/arex.agent.conf"
+```
 
 ## 自定义安装
 ### 多实例Docker-Compose安装
@@ -25,13 +29,12 @@ docker-compose -f docker-compose-distribute.yml ps
 | 3 | 1 | [Replay Report Service](https://github.com/arextest/arex-report)  | A set of report APIs that provide difference summaries and show the difference result details after the responses are compared. |  
 | 4 | 2 | [Storage Service](https://github.com/arextest/arex-storage) | A set of remote storage APIs that  provide [Agent Hook Service](https://github.com/arextest/arex-agent-java) to save records and get responses as mocks. |  
 | 5 | 1 | [Front-End](https://github.com/arextest/arex-front-end)  | A visual web site that provide entry to all operations in your **AREX**.  |  
-| 6 | 1 | MySQL | 配置管理数据库,计划下线  |  
-| 7 | 1 | MongoDB | 数据存储及配置管理数据库  |  
-| 8 | 1 | Redis | 高速回放缓存  |  
-| 9 | 1 | Nginx | Schedule负载均衡服务  |  
-| 10 | 1 | Nginx | Storage负载均衡服务  |  
+| 6 | 1 | MongoDB | 数据存储及配置管理数据库  |  
+| 7 | 1 | Redis | 高速回放缓存  |  
+| 8 | 1 | Nginx | Schedule负载均衡服务  |  
+| 9 | 1 | Nginx | Storage负载均衡服务  |  
 
-### HELM安装(TODO)
+### HELM安装(调试中)
 ```
 git clone https://github.com/arextest/deployments.git
 cd deployments/helm
@@ -41,7 +44,6 @@ helm install . -n namespace
 ### 服务单独部署及非容器化安装
 服务单独部署及非容器化安装,你可以单独安装服务,但服务间调用的配置需要你自己配置完成  
 常见的场景  
-* 使用用户已有的MySQL服务
 * 使用用户以后的Mongodb服务
 * 使用用户自己的分布式环境,对Schedule,Storage等高CPU服务进行扩缩容  
 调用参数配置详见以下文档
@@ -84,20 +86,19 @@ export SERVICE_REPORT_URL=http://10.192.1.1:8080
 ### AREX Config 服务配置
 #### 源码中配置
 ```
-arex.config.mongo.uri=mongodb://arex:iLoveArex@ip:27017/arex_storage_db
-spring.datasource.url=jdbc:mysql://mysql:3306/arexdb
+mongo.uri=mongodb://arex:iLoveArex@ip:27017/arex_storage_db
 spring.datasource.username=arex_admin
 spring.datasource.password=arex_admin_password
 ```
 #### 缺省配置
 ```
-environment:
-  - "JAVA_OPTS=-Dspring.datasource.url=jdbc:mysql://mysql:3306/arexdb"
+    environment:
+      - JAVA_OPTS=-Dmongo.uri=mongodb://arex:iLoveArex@mongodb:27017/arex_storage_db
 ```
 #### 单独部署的配置举例
 ```
-environment:
-- "JAVA_OPTS=-Dspring.datasource.url=jdbc:mysql://你的MySQL服务器名:MySQL端口/databaseName"
+      - JAVA_OPTS=-Dmongo.uri=mongodb://arex-m-name:arex-m-passwd@your-mongodb-address:27017/arex_storage_db
+
 
 ```
 
@@ -108,10 +109,6 @@ arex.storage.service.api=http://arex-storage-service:8080
 arex.report.service.api=http://arex-report-service:8080
 arex.config.service.api=http://arex-config-service:8080
 
-# mysql
-spring.datasource.url=jdbc:mysql://mysql:3306/arexdb
-spring.datasource.username=arex_admin
-spring.datasource.password=arex_admin_password
 ```
 #### 单独部署的配置举例
 ```
@@ -125,12 +122,12 @@ environment:
 ```
 arex.storage.cache.expired.seconds=7200
 arex.storage.cache.provider.host=
-arex.storage.mongo.host=mongodb://arex:iLoveArex@mongodb:27017/arex_storage_db
+mongo.host=mongodb://arex:iLoveArex@mongodb:27017/arex_storage_db
 ```
 #### 单独部署的配置举例
 ```
 environment:
-  - "JAVA_OPTS=-Darex.storage.service.api=http://arex-storage-service:8080 -Darex.report.service.api=http://arex-report-service:8080 -Darex.config.service.api=http://arex-config-service:8080 -Dspring.datasource.url=jdbc:mysql://mysql:3306/arexdb -Dspring.datasource.username=arex_admin -Dspring.datasource.password=arex_admin_password"
+  - "JAVA_OPTS=-Darex.storage.service.api=http://arex-storage-service:8080 -Darex.report.service.api=http://arex-report-service:8080 -Darex.config.service.api=http://arex-config-service:8080"
 ```
 
 ### AREX Report 服务配置
@@ -139,24 +136,16 @@ environment:
 arex.report.mongo.uri=mongodb://arex:iLoveArex@ip:27017/arex_storage_db
 arex.config.service.url=http://arex-config-service:8080
 arex.storage.service.url=http://arex-storage-service:8080
+arex.ui.url=http://your_arex_ip_address:port
 
-arex.report.email.host=smtp.163.com
-arex.report.email.from=arextestdemo@163.com
-arex.report.email.pwd=token
 
 ```
 #### 单独部署的配置举例
 ```
 environment:
-- "JAVA_OPTS=-Darex.config.service.url=http://10.3.1.3:8080 -Darex.storage.service.url=http://10.3.1.4:8080 -Darex.storage.mongo.host=mongodb://username:password@my-mongodb:27017/arex_storage_db -Darex.report.email.host=smtp.msn.com"
+- "JAVA_OPTS=-Darex.config.service.url=http://10.3.1.3:8080 -Darex.storage.service.url=http://10.3.1.4:8080 -Darex.storage.mongo.host=mongodb://username:password@my-mongodb:27017/arex_storage_db -Darex.report.email.host=smtp.msn.com -Darex.ui.url=http://your_arex_ip_address:port"
 ```
-## Mongodb和Mysql配置
-* 在你自己的MySQL服务器上,执行mysql_init目录下的初始化脚本  
-* 在docker-compose yaml中,删除MySQL或者Mongodb
-* AREX的Config服务中配置,准备好MySQL的用户名和密码
-```
- environment:
-  - "JAVA_OPTS=-Dspring.datasource.url=jdbc:mysql://你的MySQL服务器名:MySQL端口/databaseName -Dspring.datasource.username=your_admin -Dspring.datasource.password=your_admin_password"
-```
-* MongoDB没有初始化的配置,其他配置方式同上
+## Mongodb配置
+* 在docker-compose yaml中删除Mongodb的相关配置,
+* MongoDB没有初始化的配置,依赖mongodb的服务,其参数中按照你自己的实际服务来配置
 

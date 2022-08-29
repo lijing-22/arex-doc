@@ -119,17 +119,11 @@
             <tr>
               <td align="center">6</td>
               <td align="center">1</td>
-              <td align="left">MySQL</td>
-              <td align="left">配置管理数据库,计划下线</td>
-            </tr>
-            <tr>
-              <td align="center">7</td>
-              <td align="center">1</td>
               <td align="left">MongoDB</td>
               <td align="left">数据存储及配置管理数据库</td>
             </tr>
             <tr>
-              <td align="center">8</td>
+              <td align="center">7</td>
               <td align="center">1</td>
               <td align="left">Redis</td>
               <td align="left">高速回放缓存</td>
@@ -151,18 +145,16 @@ docker-compose up -d
 </span><span class="code-line line-number" line="4">arex-config     catalina.sh run                  Up      0.0.0.0:8091->8080/tcp           
 </span><span class="code-line line-number" line="5">arex-front      docker-entrypoint.sh node  ...   Up      0.0.0.0:8088->8080/tcp           
 </span><span class="code-line line-number" line="6">arex-mongodb    docker-entrypoint.sh --auth      Up      0.0.0.0:27017->27017/tcp         
-</span><span class="code-line line-number" line="7">arex-mysql      docker-entrypoint.sh mysqld      Up      0.0.0.0:3306->3306/tcp, 33060/tcp
-</span><span class="code-line line-number" line="8">arex-redis      docker-entrypoint.sh --app ...   Up      0.0.0.0:6379->6379/tcp           
-</span><span class="code-line line-number" line="9">arex-report     catalina.sh run                  Up      0.0.0.0:8090->8080/tcp           
-</span><span class="code-line line-number" line="10">arex-schedule   catalina.sh run                  Up      0.0.0.0:8092->8080/tcp           
-</span><span class="code-line line-number" line="11">arex-storage    catalina.sh run                  Up      0.0.0.0:8093->8080/tcp    
+</span><span class="code-line line-number" line="7">arex-redis      docker-entrypoint.sh --app ...   Up      0.0.0.0:6379->6379/tcp           
+</span><span class="code-line line-number" line="8">arex-report     catalina.sh run                  Up      0.0.0.0:8090->8080/tcp           
+</span><span class="code-line line-number" line="9">arex-schedule   catalina.sh run                  Up      0.0.0.0:8092->8080/tcp           
+</span><span class="code-line line-number" line="10">arex-storage    catalina.sh run                  Up      0.0.0.0:8093->8080/tcp    
 </span></code><input type="hidden" value="[~ deployments]# docker-compose ps
     Name                   Command               State                 Ports              
 ------------------------------------------------------------------------------------------
 arex-config     catalina.sh run                  Up      0.0.0.0:8091->8080/tcp           
 arex-front      docker-entrypoint.sh node  ...   Up      0.0.0.0:8088->8080/tcp           
 arex-mongodb    docker-entrypoint.sh --auth      Up      0.0.0.0:27017->27017/tcp         
-arex-mysql      docker-entrypoint.sh mysqld      Up      0.0.0.0:3306->3306/tcp, 33060/tcp
 arex-redis      docker-entrypoint.sh --app ...   Up      0.0.0.0:6379->6379/tcp           
 arex-report     catalina.sh run                  Up      0.0.0.0:8090->8080/tcp           
 arex-schedule   catalina.sh run                  Up      0.0.0.0:8092->8080/tcp           
@@ -186,151 +178,143 @@ docker-compose logs
         <h2 id="docker-compose文件说明"><a aria-hidden="true" tabindex="-1" href="#docker-compose文件说明" class="anchor"><span class="icon icon-link"></span></a>Docker-Compose文件说明</h2>
         <h3 id="arex前端"><a aria-hidden="true" tabindex="-1" href="#arex前端" class="anchor"><span class="icon icon-link"></span></a>AREX前端</h3>
         <pre><code class="code-highlight"><span class="code-line line-number" line="1">  arex:
-</span><span class="code-line line-number" line="2">    image: arexadmin01/arex:0.2
+</span><span class="code-line line-number" line="2">    image: arexadmin01/arex:0.2.1
 </span><span class="code-line line-number" line="3">    container_name: arex-front
 </span><span class="code-line line-number" line="4">    restart: always
 </span><span class="code-line line-number" line="5">    ports:
 </span><span class="code-line line-number" line="6">      - '8088:8080'
 </span><span class="code-line line-number" line="7">    volumes:
 </span><span class="code-line line-number" line="8">      - ./arex-logs/arex-front:/usr/src/app/logs
-</span><span class="code-line line-number" line="9">      - /etc/localtime:/etc/localtime:ro
-</span><span class="code-line line-number" line="10">      - /etc/timezone:/etc/timezone:ro
-</span><span class="code-line line-number" line="11">    environment:
-</span><span class="code-line line-number" line="12">      - SERVICE_REPORT_URL=http://arex-report-service:8080
-</span><span class="code-line line-number" line="13">      - SERVICE_CONFIG_URL= http://arex-config-service:8080
-</span><span class="code-line line-number" line="14">      - SERVICE_SCHEDULE_URL=http://arex-schedule-service:8080
-</span><span class="code-line line-number" line="15">    depends_on:
-</span><span class="code-line line-number" line="16">      - arex-report-service
-</span><span class="code-line line-number" line="17">      - arex-config-service
+</span><span class="code-line line-number" line="9">    environment:
+</span><span class="code-line line-number" line="10">      - SERVICE_REPORT_URL=http://arex-report-service:8080
+</span><span class="code-line line-number" line="11">      - SERVICE_CONFIG_URL= http://arex-config-service:8080
+</span><span class="code-line line-number" line="12">      - SERVICE_SCHEDULE_URL=http://arex-schedule-service:8080
+</span><span class="code-line line-number" line="13">    depends_on:
+</span><span class="code-line line-number" line="14">      - arex-report-service
+</span><span class="code-line line-number" line="15">      - arex-config-service  
 </span></code><input type="hidden" value="  arex:
-    image: arexadmin01/arex:0.2
+    image: arexadmin01/arex:0.2.1
     container_name: arex-front
     restart: always
     ports:
       - &#x27;8088:8080&#x27;
     volumes:
       - ./arex-logs/arex-front:/usr/src/app/logs
-      - /etc/localtime:/etc/localtime:ro
-      - /etc/timezone:/etc/timezone:ro
     environment:
       - SERVICE_REPORT_URL=http://arex-report-service:8080
       - SERVICE_CONFIG_URL= http://arex-config-service:8080
       - SERVICE_SCHEDULE_URL=http://arex-schedule-service:8080
     depends_on:
       - arex-report-service
-      - arex-config-service
+      - arex-config-service  
 "><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
         <h3 id="存储服务-storage-service"><a aria-hidden="true" tabindex="-1" href="#存储服务-storage-service" class="anchor"><span class="icon icon-link"></span></a>存储服务 Storage Service</h3>
         <pre><code class="code-highlight"><span class="code-line line-number" line="1">  arex-storage-service:
-</span><span class="code-line line-number" line="2">    image: arexadmin01/arex-storage-serive:0.2
+</span><span class="code-line line-number" line="2">    image: arexadmin01/arex-storage-serive:0.2.1
 </span><span class="code-line line-number" line="3">    container_name: arex-storage
 </span><span class="code-line line-number" line="4">    restart: always
 </span><span class="code-line line-number" line="5">    ports:
 </span><span class="code-line line-number" line="6">      - '8093:8080'
 </span><span class="code-line line-number" line="7">    volumes:
-</span><span class="code-line line-number" line="8">      - /etc/localtime:/etc/localtime:ro
-</span><span class="code-line line-number" line="9">      - /etc/timezone:/etc/timezone:ro
-</span><span class="code-line line-number" line="10">      - ./arex-logs/arex-storage:/usr/local/tomcat/logs
+</span><span class="code-line line-number" line="8">      - ./arex-logs/arex-storage:/usr/local/tomcat/logs
+</span><span class="code-line line-number" line="9">    environment:
+</span><span class="code-line line-number" line="10">      - "JAVA_OPTS=-Darex.storage.mongo.host=mongodb://arex:iLoveArex@mongodb:27017/arex_storage_db"
 </span><span class="code-line line-number" line="11">    depends_on:
 </span><span class="code-line line-number" line="12">      - mongodb
 </span><span class="code-line line-number" line="13">      - redis
 </span></code><input type="hidden" value="  arex-storage-service:
-    image: arexadmin01/arex-storage-serive:0.2
+    image: arexadmin01/arex-storage-serive:0.2.1
     container_name: arex-storage
     restart: always
     ports:
       - &#x27;8093:8080&#x27;
     volumes:
-      - /etc/localtime:/etc/localtime:ro
-      - /etc/timezone:/etc/timezone:ro
       - ./arex-logs/arex-storage:/usr/local/tomcat/logs
+    environment:
+      - &#x22;JAVA_OPTS=-Darex.storage.mongo.host=mongodb://arex:iLoveArex@mongodb:27017/arex_storage_db&#x22;
     depends_on:
       - mongodb
       - redis
 "><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
         <h3 id="调度服务-schedule-serive"><a aria-hidden="true" tabindex="-1" href="#调度服务-schedule-serive" class="anchor"><span class="icon icon-link"></span></a>调度服务 Schedule Serive</h3>
         <pre><code class="code-highlight"><span class="code-line line-number" line="1">  arex-schedule-service:
-</span><span class="code-line line-number" line="2">    image: arexadmin01/arex-replay-schedule:0.2
+</span><span class="code-line line-number" line="2">    image: arexadmin01/arex-replay-schedule:0.2.1
 </span><span class="code-line line-number" line="3">    container_name: arex-schedule
 </span><span class="code-line line-number" line="4">    restart: always
 </span><span class="code-line line-number" line="5">    ports:
 </span><span class="code-line line-number" line="6">      - '8092:8080'
 </span><span class="code-line line-number" line="7">    volumes:
-</span><span class="code-line line-number" line="8">      - /etc/localtime:/etc/localtime:ro
-</span><span class="code-line line-number" line="9">      - /etc/timezone:/etc/timezone:ro
-</span><span class="code-line line-number" line="10">      - ./arex-logs/arex-schedule:/usr/local/tomcat/logs
+</span><span class="code-line line-number" line="8">      - ./arex-logs/arex-schedule:/usr/local/tomcat/logs
+</span><span class="code-line line-number" line="9">    environment:
+</span><span class="code-line line-number" line="10">      - JAVA_OPTS=-Dmongo.uri=mongodb://arex:iLoveArex@mongodb:27017/arex_storage_db -Darex.storage.service.api=http://arex-storage-service:8080 -Darex.report.service.api=http://arex-report-service:8080 -Darex.config.service.api=http://arex-config-service:8080
 </span><span class="code-line line-number" line="11">    depends_on:
-</span><span class="code-line line-number" line="12">      - mysql
+</span><span class="code-line line-number" line="12">      - mongodb
 </span><span class="code-line line-number" line="13">      - redis
 </span></code><input type="hidden" value="  arex-schedule-service:
-    image: arexadmin01/arex-replay-schedule:0.2
+    image: arexadmin01/arex-replay-schedule:0.2.1
     container_name: arex-schedule
     restart: always
     ports:
       - &#x27;8092:8080&#x27;
     volumes:
-      - /etc/localtime:/etc/localtime:ro
-      - /etc/timezone:/etc/timezone:ro
       - ./arex-logs/arex-schedule:/usr/local/tomcat/logs
+    environment:
+      - JAVA_OPTS=-Dmongo.uri=mongodb://arex:iLoveArex@mongodb:27017/arex_storage_db -Darex.storage.service.api=http://arex-storage-service:8080 -Darex.report.service.api=http://arex-report-service:8080 -Darex.config.service.api=http://arex-config-service:8080
     depends_on:
-      - mysql
+      - mongodb
       - redis
 "><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
         <h3 id="报告与分析服务-report-service"><a aria-hidden="true" tabindex="-1" href="#报告与分析服务-report-service" class="anchor"><span class="icon icon-link"></span></a>报告与分析服务 Report service</h3>
         <pre><code class="code-highlight"><span class="code-line line-number" line="1">  arex-report-service:
-</span><span class="code-line line-number" line="2">    image: arexadmin01/arex-report:0.2
+</span><span class="code-line line-number" line="2">    image: arexadmin01/arex-report:0.2.1
 </span><span class="code-line line-number" line="3">    container_name: arex-report
 </span><span class="code-line line-number" line="4">    restart: always
 </span><span class="code-line line-number" line="5">    ports:
 </span><span class="code-line line-number" line="6">      - '8090:8080'
 </span><span class="code-line line-number" line="7">    volumes:
-</span><span class="code-line line-number" line="8">      - /etc/localtime:/etc/localtime:ro
-</span><span class="code-line line-number" line="9">      - /etc/timezone:/etc/timezone:ro
-</span><span class="code-line line-number" line="10">      - ./arex-logs/arex-report:/usr/local/tomcat/logs
+</span><span class="code-line line-number" line="8">      - ./arex-logs/arex-report:/usr/local/tomcat/logs
+</span><span class="code-line line-number" line="9">    environment:
+</span><span class="code-line line-number" line="10">      - JAVA_OPTS=-Dmongo.uri=mongodb://arex:iLoveArex@mongodb:27017/arex_storage_db -Darex.config.service.url=http://arex-config-service:8080 -Darex.storage.service.url=http://arex-storage-service:8080 -Darex.ui.url=http://arex:8088      
 </span><span class="code-line line-number" line="11">    depends_on:
 </span><span class="code-line line-number" line="12">      - mongodb  
 </span></code><input type="hidden" value="  arex-report-service:
-    image: arexadmin01/arex-report:0.2
+    image: arexadmin01/arex-report:0.2.1
     container_name: arex-report
     restart: always
     ports:
       - &#x27;8090:8080&#x27;
     volumes:
-      - /etc/localtime:/etc/localtime:ro
-      - /etc/timezone:/etc/timezone:ro
       - ./arex-logs/arex-report:/usr/local/tomcat/logs
+    environment:
+      - JAVA_OPTS=-Dmongo.uri=mongodb://arex:iLoveArex@mongodb:27017/arex_storage_db -Darex.config.service.url=http://arex-config-service:8080 -Darex.storage.service.url=http://arex-storage-service:8080 -Darex.ui.url=http://arex:8088      
     depends_on:
       - mongodb  
 "><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
         <h3 id="配置服务-config-service"><a aria-hidden="true" tabindex="-1" href="#配置服务-config-service" class="anchor"><span class="icon icon-link"></span></a>配置服务 Config Service</h3>
         <pre><code class="code-highlight"><span class="code-line line-number" line="1">  arex-config-service:
-</span><span class="code-line line-number" line="2">    image: arexadmin01/arex-config:0.2
+</span><span class="code-line line-number" line="2">    image: arexadmin01/arex-config:0.2.1
 </span><span class="code-line line-number" line="3">    container_name: arex-config
 </span><span class="code-line line-number" line="4">    restart: always
 </span><span class="code-line line-number" line="5">    ports:
 </span><span class="code-line line-number" line="6">      - '8091:8080'
 </span><span class="code-line line-number" line="7">    volumes:
-</span><span class="code-line line-number" line="8">      - /etc/localtime:/etc/localtime:ro
-</span><span class="code-line line-number" line="9">      - /etc/timezone:/etc/timezone:ro
-</span><span class="code-line line-number" line="10">      - ./arex-logs/arex-config:/usr/local/tomcat/logs
-</span><span class="code-line line-number" line="11">    environment:
-</span><span class="code-line line-number" line="12">      - "JAVA_OPTS=-Dspring.datasource.url=jdbc:mysql://mysql:3306/arexdb"
-</span><span class="code-line line-number" line="13">    depends_on:
-</span><span class="code-line line-number" line="14">      - mysql
+</span><span class="code-line line-number" line="8">      - ./arex-logs/arex-config:/usr/local/tomcat/logs
+</span><span class="code-line line-number" line="9">    environment:
+</span><span class="code-line line-number" line="10">      - JAVA_OPTS=-Dmongo.uri=mongodb://arex:iLoveArex@mongodb:27017/arex_storage_db
+</span><span class="code-line line-number" line="11">    depends_on:
+</span><span class="code-line line-number" line="12">      - mongodb
 </span></code><input type="hidden" value="  arex-config-service:
-    image: arexadmin01/arex-config:0.2
+    image: arexadmin01/arex-config:0.2.1
     container_name: arex-config
     restart: always
     ports:
       - &#x27;8091:8080&#x27;
     volumes:
-      - /etc/localtime:/etc/localtime:ro
-      - /etc/timezone:/etc/timezone:ro
       - ./arex-logs/arex-config:/usr/local/tomcat/logs
     environment:
-      - &#x22;JAVA_OPTS=-Dspring.datasource.url=jdbc:mysql://mysql:3306/arexdb&#x22;
+      - JAVA_OPTS=-Dmongo.uri=mongodb://arex:iLoveArex@mongodb:27017/arex_storage_db
     depends_on:
-      - mysql
+      - mongodb
 "><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
         <h3 id="缓存-redis"><a aria-hidden="true" tabindex="-1" href="#缓存-redis" class="anchor"><span class="icon icon-link"></span></a>缓存 Redis</h3>
         <pre><code class="code-highlight"><span class="code-line line-number" line="1">  redis:
@@ -354,52 +338,6 @@ docker-compose logs
       - ./arex-data/redis:/data
       - ./arex-logs/redis:/var/log/redis
 "><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
-        <h3 id="数据库-mysql"><a aria-hidden="true" tabindex="-1" href="#数据库-mysql" class="anchor"><span class="icon icon-link"></span></a>数据库 MySQL</h3>
-        <ul>
-          <li>./mysql_init/目录下文件是mysql表结构初始化文件</li>
-          <li>你可以用帐号arex_admin/arex_admin_password来访问MySQL数据库</li>
-          <li>数据库如需备份,文件所在./arex-data/mysql</li>
-          <li>8.0.29版本在Linux和Mac M1上运行通过</li>
-        </ul>
-        <pre><code class="code-highlight"><span class="code-line line-number" line="1">mysql:
-</span><span class="code-line line-number" line="2">    image: mysql:8.0.29
-</span><span class="code-line line-number" line="3">    container_name: arex-mysql
-</span><span class="code-line line-number" line="4">    restart: always
-</span><span class="code-line line-number" line="5">    ports:
-</span><span class="code-line line-number" line="6">      - 3306:3306
-</span><span class="code-line line-number" line="7">    environment:
-</span><span class="code-line line-number" line="8">      - /etc/localtime:/etc/localtime:ro
-</span><span class="code-line line-number" line="9">      - /etc/timezone:/etc/timezone:ro
-</span><span class="code-line line-number" line="10">      - MYSQL_ROOT_PASSWORD=
-</span><span class="code-line line-number" line="11">      - MYSQL_ALLOW_EMPTY_PASSWORD=true
-</span><span class="code-line line-number" line="12">      - MYSQL_USER=arex_admin
-</span><span class="code-line line-number" line="13">      - MYSQL_PASSWORD=arex_admin_password
-</span><span class="code-line line-number" line="14">      - MYSQL_DATABASE=arexdb
-</span><span class="code-line line-number" line="15">    volumes:
-</span><span class="code-line line-number" line="16">      - ./mysql_init/:/docker-entrypoint-initdb.d/
-</span><span class="code-line line-number" line="17">      - ./conf.d:/etc/mysql/conf.d:ro
-</span><span class="code-line line-number" line="18">      - ./arex-data/mysql:/var/lib/mysql
-</span><span class="code-line line-number" line="19">      - ./arex-logs/mysql:/var/log/mysql.log
-</span></code><input type="hidden" value="mysql:
-    image: mysql:8.0.29
-    container_name: arex-mysql
-    restart: always
-    ports:
-      - 3306:3306
-    environment:
-      - /etc/localtime:/etc/localtime:ro
-      - /etc/timezone:/etc/timezone:ro
-      - MYSQL_ROOT_PASSWORD=
-      - MYSQL_ALLOW_EMPTY_PASSWORD=true
-      - MYSQL_USER=arex_admin
-      - MYSQL_PASSWORD=arex_admin_password
-      - MYSQL_DATABASE=arexdb
-    volumes:
-      - ./mysql_init/:/docker-entrypoint-initdb.d/
-      - ./conf.d:/etc/mysql/conf.d:ro
-      - ./arex-data/mysql:/var/lib/mysql
-      - ./arex-logs/mysql:/var/log/mysql.log
-"><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
         <h3 id="数据库-mongodb"><a aria-hidden="true" tabindex="-1" href="#数据库-mongodb" class="anchor"><span class="icon icon-link"></span></a>数据库 Mongodb</h3>
         <ul>
           <li>目前已经验证过的版本 4.4.4, 5.0,两者都支持</li>
@@ -413,18 +351,16 @@ docker-compose logs
 </span><span class="code-line line-number" line="5">    ports:
 </span><span class="code-line line-number" line="6">      - 27017:27017
 </span><span class="code-line line-number" line="7">    volumes:
-</span><span class="code-line line-number" line="8">      - /etc/localtime:/etc/localtime:ro
-</span><span class="code-line line-number" line="9">      - /etc/timezone:/etc/timezone:ro
-</span><span class="code-line line-number" line="10">      - ./arex-data/mongodb:/data/db
-</span><span class="code-line line-number" line="11">      - ./mongo-allone-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
-</span><span class="code-line line-number" line="12">      - ./arex-logs/mongodb:/var/log/mongodb
-</span><span class="code-line line-number" line="13">    command: --auth
-</span><span class="code-line line-number" line="14">    environment:
-</span><span class="code-line line-number" line="15">      - MONGO_INITDB_ROOT_USERNAME=citizix
-</span><span class="code-line line-number" line="16">      - MONGO_INITDB_ROOT_PASSWORD=S3cret
-</span><span class="code-line line-number" line="17">      - MONGO_INITDB_DATABASE=rootdb
-</span><span class="code-line line-number" line="18">      - MONGO_USERNAME=arex
-</span><span class="code-line line-number" line="19">      - MONGO_PASSWORD=iLoveArex
+</span><span class="code-line line-number" line="8">      - ./arex-data/mongodb:/data/db
+</span><span class="code-line line-number" line="9">      - ./mongo-allone-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+</span><span class="code-line line-number" line="10">      - ./arex-logs/mongodb:/var/log/mongodb
+</span><span class="code-line line-number" line="11">    command: --auth
+</span><span class="code-line line-number" line="12">    environment:
+</span><span class="code-line line-number" line="13">      - MONGO_INITDB_ROOT_USERNAME=citizix
+</span><span class="code-line line-number" line="14">      - MONGO_INITDB_ROOT_PASSWORD=S3cret
+</span><span class="code-line line-number" line="15">      - MONGO_INITDB_DATABASE=rootdb
+</span><span class="code-line line-number" line="16">      - MONGO_USERNAME=arex
+</span><span class="code-line line-number" line="17">      - MONGO_PASSWORD=iLoveArex
 </span></code><input type="hidden" value=" mongodb:
     image: mongo:4.4.4
     container_name: arex-mongodb
@@ -432,8 +368,6 @@ docker-compose logs
     ports:
       - 27017:27017
     volumes:
-      - /etc/localtime:/etc/localtime:ro
-      - /etc/timezone:/etc/timezone:ro
       - ./arex-data/mongodb:/data/db
       - ./mongo-allone-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
       - ./arex-logs/mongodb:/var/log/mongodb
@@ -454,7 +388,7 @@ docker-compose logs
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
             </svg>
 <span>Edit this page on GitHub</span>
-</a><span class="atime">2022/08/18</span></section>
+</a><span class="atime">2022/08/29</span></section>
       </markdown-style>
       <nav class="tocs">
         <aside class="inner toc">
@@ -474,7 +408,6 @@ docker-compose logs
                 <li><a href="#报告与分析服务-report-service" class="tocs-link">报告与分析服务 Report service</a></li>
                 <li><a href="#配置服务-config-service" class="tocs-link">配置服务 Config Service</a></li>
                 <li><a href="#缓存-redis" class="tocs-link">缓存 Redis</a></li>
-                <li><a href="#数据库-mysql" class="tocs-link">数据库 MySQL</a></li>
                 <li><a href="#数据库-mongodb" class="tocs-link">数据库 Mongodb</a></li>
               </ol>
             </li>

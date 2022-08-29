@@ -24,8 +24,9 @@ AREX服务安装完成后,就可以通过浏览器访问AREX前端, 通过AREX�
 ### 首次登陆
 ![](../resource/c3.login.png)
 * 需要输入你个人邮箱,主要用来标识当前用户的唯一性  
-* 验证码随便输入,比如arex,点击Login登录 (验证码逻辑暂时取消)
-<!-- ![](../resource/c3.logininvide.png) -->
+* 也可以直接下面链接"guest"登录,但guest登录后不具备邀请功能(即用例分享功能)
+* 邮箱收到验证码后,点击Login登录 
+![](../resource/c3.logininvide.png)
 
 ### 新建workspace
 ![](../resource/c3.1.png)
@@ -34,8 +35,8 @@ AREX服务安装完成后,就可以通过浏览器访问AREX前端, 通过AREX�
 ### 邀请其他人(TODO,此功能暂时不提供)
 ![](../resource/c3.2.png)
 
-<!-- 通过发送邮件来邀请其他人参与当前Workspace  
-被邀请后用户刷新界面后,workspace会显示在用户的左上角workspace区域,用户可以选择这个WS,查看用例并操作等 -->
+通过发送邮件来邀请其他人参与当前Workspace  
+被邀请后用户刷新界面后,workspace会显示在用户的左上角workspace区域,用户可以选择这个WS,查看用例并操作等
 
 ## Workspaces
 

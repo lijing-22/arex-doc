@@ -28,7 +28,7 @@ mvn clean install
 
 #### 将 AREX-AGENT 注入被测服务，完成录制
 ```
-java -javaagent:./arex-agent-0.0.1.jar 
+java -javaagent:./arex-agent-0.1.0.jar 
      -Darex.config.path=./arex.agent.conf 
      -jar spring-petclinic-2.7.0-SNAPSHOT.jar
 ```

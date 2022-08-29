@@ -12,9 +12,8 @@
 | 3 | 1 | [Replay Report Service](https://github.com/arextest/arex-report)  | A set of report APIs that provide difference summaries and show the difference result details after the responses are compared. |  
 | 4 | 1 | [Storage Service](https://github.com/arextest/arex-storage) | A set of remote storage APIs that  provide [Agent Hook Service](https://github.com/arextest/arex-agent-java) to save records and get responses as mocks. |  
 | 5 | 1 | [Front-End](https://github.com/arextest/arex-front-end)  | A visual web site that provide entry to all operations in your **AREX**.  |  
-| 6 | 1 | MySQL | 配置管理数据库,计划下线  |  
-| 7 | 1 | MongoDB | 数据存储及配置管理数据库  |  
-| 8 | 1 | Redis | 高速回放缓存  |  
+| 6 | 1 | MongoDB | 数据存储及配置管理数据库  |  
+| 7 | 1 | Redis | 高速回放缓存  |  
 
 ### 快速安装
 
@@ -32,7 +31,6 @@ docker-compose up -d
 arex-config     catalina.sh run                  Up      0.0.0.0:8091->8080/tcp           
 arex-front      docker-entrypoint.sh node  ...   Up      0.0.0.0:8088->8080/tcp           
 arex-mongodb    docker-entrypoint.sh --auth      Up      0.0.0.0:27017->27017/tcp         
-arex-mysql      docker-entrypoint.sh mysqld      Up      0.0.0.0:3306->3306/tcp, 33060/tcp
 arex-redis      docker-entrypoint.sh --app ...   Up      0.0.0.0:6379->6379/tcp           
 arex-report     catalina.sh run                  Up      0.0.0.0:8090->8080/tcp           
 arex-schedule   catalina.sh run                  Up      0.0.0.0:8092->8080/tcp           
@@ -54,36 +52,34 @@ docker-compose logs
 ### AREX前端
 ```
   arex:
-    image: arexadmin01/arex:0.2
+    image: arexadmin01/arex:0.2.1
     container_name: arex-front
     restart: always
     ports:
       - '8088:8080'
     volumes:
       - ./arex-logs/arex-front:/usr/src/app/logs
-      - /etc/localtime:/etc/localtime:ro
-      - /etc/timezone:/etc/timezone:ro
     environment:
       - SERVICE_REPORT_URL=http://arex-report-service:8080
       - SERVICE_CONFIG_URL= http://arex-config-service:8080
       - SERVICE_SCHEDULE_URL=http://arex-schedule-service:8080
     depends_on:
       - arex-report-service
-      - arex-config-service
+      - arex-config-service  
 ```
 
 ### 存储服务 Storage Service
 ```
   arex-storage-service:
-    image: arexadmin01/arex-storage-serive:0.2
+    image: arexadmin01/arex-storage-serive:0.2.1
     container_name: arex-storage
     restart: always
     ports:
       - '8093:8080'
     volumes:
-      - /etc/localtime:/etc/localtime:ro
-      - /etc/timezone:/etc/timezone:ro
       - ./arex-logs/arex-storage:/usr/local/tomcat/logs
+    environment:
+      - "JAVA_OPTS=-Darex.storage.mongo.host=mongodb://arex:iLoveArex@mongodb:27017/arex_storage_db"
     depends_on:
       - mongodb
       - redis
@@ -92,32 +88,32 @@ docker-compose logs
 ### 调度服务 Schedule Serive
 ```
   arex-schedule-service:
-    image: arexadmin01/arex-replay-schedule:0.2
+    image: arexadmin01/arex-replay-schedule:0.2.1
     container_name: arex-schedule
     restart: always
     ports:
       - '8092:8080'
     volumes:
-      - /etc/localtime:/etc/localtime:ro
-      - /etc/timezone:/etc/timezone:ro
       - ./arex-logs/arex-schedule:/usr/local/tomcat/logs
+    environment:
+      - JAVA_OPTS=-Dmongo.uri=mongodb://arex:iLoveArex@mongodb:27017/arex_storage_db -Darex.storage.service.api=http://arex-storage-service:8080 -Darex.report.service.api=http://arex-report-service:8080 -Darex.config.service.api=http://arex-config-service:8080
     depends_on:
-      - mysql
+      - mongodb
       - redis
 ```
 
 ### 报告与分析服务 Report service
 ```
   arex-report-service:
-    image: arexadmin01/arex-report:0.2
+    image: arexadmin01/arex-report:0.2.1
     container_name: arex-report
     restart: always
     ports:
       - '8090:8080'
     volumes:
-      - /etc/localtime:/etc/localtime:ro
-      - /etc/timezone:/etc/timezone:ro
       - ./arex-logs/arex-report:/usr/local/tomcat/logs
+    environment:
+      - JAVA_OPTS=-Dmongo.uri=mongodb://arex:iLoveArex@mongodb:27017/arex_storage_db -Darex.config.service.url=http://arex-config-service:8080 -Darex.storage.service.url=http://arex-storage-service:8080 -Darex.ui.url=http://arex:8088      
     depends_on:
       - mongodb  
 ```
@@ -125,19 +121,17 @@ docker-compose logs
 ### 配置服务 Config Service
 ```
   arex-config-service:
-    image: arexadmin01/arex-config:0.2
+    image: arexadmin01/arex-config:0.2.1
     container_name: arex-config
     restart: always
     ports:
       - '8091:8080'
     volumes:
-      - /etc/localtime:/etc/localtime:ro
-      - /etc/timezone:/etc/timezone:ro
       - ./arex-logs/arex-config:/usr/local/tomcat/logs
     environment:
-      - "JAVA_OPTS=-Dspring.datasource.url=jdbc:mysql://mysql:3306/arexdb"
+      - JAVA_OPTS=-Dmongo.uri=mongodb://arex:iLoveArex@mongodb:27017/arex_storage_db
     depends_on:
-      - mysql
+      - mongodb
 ```
 
 ### 缓存 Redis
@@ -155,32 +149,6 @@ docker-compose logs
 ```
 
 
-### 数据库 MySQL
-* ./mysql_init/目录下文件是mysql表结构初始化文件
-* 你可以用帐号arex_admin/arex_admin_password来访问MySQL数据库
-* 数据库如需备份,文件所在./arex-data/mysql
-* 8.0.29版本在Linux和Mac M1上运行通过
-```
-mysql:
-    image: mysql:8.0.29
-    container_name: arex-mysql
-    restart: always
-    ports:
-      - 3306:3306
-    environment:
-      - /etc/localtime:/etc/localtime:ro
-      - /etc/timezone:/etc/timezone:ro
-      - MYSQL_ROOT_PASSWORD=
-      - MYSQL_ALLOW_EMPTY_PASSWORD=true
-      - MYSQL_USER=arex_admin
-      - MYSQL_PASSWORD=arex_admin_password
-      - MYSQL_DATABASE=arexdb
-    volumes:
-      - ./mysql_init/:/docker-entrypoint-initdb.d/
-      - ./conf.d:/etc/mysql/conf.d:ro
-      - ./arex-data/mysql:/var/lib/mysql
-      - ./arex-logs/mysql:/var/log/mysql.log
-```
 
 ### 数据库 Mongodb
 * 目前已经验证过的版本 4.4.4, 5.0,两者都支持
@@ -194,8 +162,6 @@ mysql:
     ports:
       - 27017:27017
     volumes:
-      - /etc/localtime:/etc/localtime:ro
-      - /etc/timezone:/etc/timezone:ro
       - ./arex-data/mongodb:/data/db
       - ./mongo-allone-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
       - ./arex-logs/mongodb:/var/log/mongodb

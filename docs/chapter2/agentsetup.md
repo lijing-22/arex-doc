@@ -34,6 +34,13 @@ java -javaagent:/path/to/arex-agent-<version>.jar
       -jar your-application.jar
 ```
 
+### 修改JAVA_OPTS运行
+比如运行tomcat,可以直接修改catalina.sh,修改JAVA_OPTS运行,也可以直接在环境变量中配置  
+以Linux运行为例  
+export JAVA_OPTS=-Djavaagent:/path/to/arex-agent-<version>.jar -Darex.config.path=/path/to/arex.agent.conf
+
+
+
 ### 通过ArexCli运行的本地模式
 
 ```
