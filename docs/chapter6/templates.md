@@ -1,10 +1,12 @@
 ## 模板管理(TODO)
-v0.2版本模板暂时没有完成,如下仅是示例,预期0.2.1版本提供
+v0.2.2 版本提供配置
+![](../resource/c6.1.png)  
 
 ### Record配置(0.1版本截图)
-![](../resource/configservice.record.basic.png)    
-![](../resource/configservice.record.advance.png)   
+![](../resource/c6.2.png)    
+
 ### Replay配置
+![](../resource/c6.3.png)    
 
 ## 比对模式 TODO
 ### 比对配置模板 Comparing diff template

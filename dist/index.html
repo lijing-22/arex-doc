@@ -81,6 +81,21 @@
         <p><strong>AREX</strong>可以最大程度的降低测试活动的实施成本,提高测试覆盖率, 提升质量, 释放更多开发工程师和测试工程师的时间.</p>
         <h2 id="版本更新"><a aria-hidden="true" tabindex="-1" href="#版本更新" class="anchor"><span class="icon icon-link"></span></a>版本更新</h2>
         <ul>
+          <li>v0.2.2版本 2022/09/09</li>
+        </ul>
+        <ol>
+          <li>Deployment仓库中Docker-compose中版本设置为latest,不再写指定版本号<br>1.1 本次生成的docker版本为 0.2.2, 已经更新Latest Tag,都已上传Docker HUB<br>1.2 demo.arextest.com 已同步更新最新版本(arex-aws-demo可以执行回放)</li>
+          <li>修复0.2.1中的BUG<br>2.1 前端界面优化界面优化<br>2.2 Arex Agent版本已经升级,用户需更新AREX-Agent</li>
+          <li>增加功能<br>3.1 前端的Record配置,Replay配置等功能<br>3.2 增加Sidecar配置demo(sidecar目录)<br>3.3 Helm配置(arex-chart目录)<br>需要用户自行修改storageClass<br>安装命令 helm install your-demo-name ./arex-chart --namespace yourNamespace</li>
+          <li>计划9/26日版本(0.2.3)的主要目标<br>a. 修复0.2.2的BUG<br>b. 增加AREX录制回放测试用例抽取(接口已经完成/Report, 前端开发中)<br>c. 优化比对测试的结果展示界面(推迟)</li>
+          <li>已知问题
+            <ol>
+              <li>AREX回放测试中,单用例Rerun失败</li>
+              <li>常规测试用例中自定义cookie设置未生效</li>
+            </ol>
+          </li>
+        </ol>
+        <ul>
           <li>
             <p>v0.2.1 2022/08/29</p>
             <ol>
@@ -132,7 +147,7 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
             </svg>
 <span>Edit this page on GitHub</span>
-</a><span class="atime">2022/08/29</span></section>
+</a><span class="atime">2022/09/09</span></section>
       </markdown-style>
       <nav class="tocs">
         <aside class="inner toc">
