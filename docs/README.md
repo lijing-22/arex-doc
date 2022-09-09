@@ -15,7 +15,7 @@
    1.1 本次生成的docker版本为 0.2.2, 已经更新Latest Tag,都已上传Docker HUB  
    1.2 demo.arextest.com 已同步更新最新版本(arex-aws-demo可以执行回放)  
 2. 修复0.2.1中的BUG  
-   2.1 前端界面优化界面优化  
+   2.1 前端界面优化  
    2.2 Arex Agent版本已经升级,用户需更新AREX-Agent  
 3. 增加功能  
    3.1 前端的Record配置,Replay配置等功能  
@@ -27,9 +27,10 @@
    a. 修复0.2.2的BUG  
    b. 增加AREX录制回放测试用例抽取(接口已经完成/Report, 前端开发中)  
    c. 优化比对测试的结果展示界面(推迟)  
+   d. 模板管理基本功能
 5. 已知问题  
 	1. AREX回放测试中,单用例Rerun失败  
-	2. 常规测试用例中自定义cookie设置未生效  
+	2. 常规测试用例中自定义cookie设置未生效(浏览器插件)  
 
 * v0.2.1 2022/08/29
 	1. 去MySQL: Config服务,schedule服务去mysql,改为读写mongodb
