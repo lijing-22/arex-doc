@@ -119,67 +119,66 @@ There is a [live demo](https://github.com/arextest/arex) created from [Spring-Pe
 
 # API Testing  
 API Testing Introduction
+## send request
 
-## 发送请求
-
-	使用、auth、cookies、variables、response
-
-
-## 接口CASE
-
-	生成、保存、编辑、前置、断言、Test （refer？？？）、执行（with Mock or Not）、批量执行、Collections
+use, auth, cookies, variables, response
 
 
-## 环境变量/全局变量/临时变量
+## Interface CASE
+
+Generate, Save, Edit, Prepend, Assert, Test (refer???), Execute (with Mock or Not), Batch Execute, Collections
 
 
-# Compare Testing  
+## Environment variables/global variables/temporary variables
+
+
+# Compare Testing
 compare Testing introduce
 
-## Build compare testing
+## Build compare tests
 
 ## Case Management
 
 # Replay real data Testing
 
-## 执行回放  
-todo  
-## 查看回放记录  
-todo 
+## execute playback
+todo
+## View playback record
+todo
 
-## 查看Report  
-todo 
+## View Report
+todo
 
-## 固化CASE
-todo  
+## CURING CASE
+todo
 
-# API管理? 模板管理
+# API management? Template management
 
-## Record配置
-## Replay配置
+## Record configuration
+## Replay configuration
 
-## 比对配置模板 Comparing diff template
+## Comparing diff template
 
-## 模版管理, Global, Application, Temp template
+## Template management, Global, Application, Temp template
 
-# Script  （可参考ApiFox、Postman）
+# Script (refer to ApiFox, Postman)
 
-##  介绍
+##  introduce
 
-##  参考
+##  refer to
 
-## 前置
-todo  
-##  TEST
-todo  
+## prepend
+todo
+## TEST
+todo
 
-## 断言
-todo  
+## assert
+todo
 
 
-# 贡献指南
+# Contribution Guidelines
 
-# 鸣谢
+# thanks
 
 # Contributing
 

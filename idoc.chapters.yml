@@ -1,42 +1,33 @@
-#### 第1章 初识 AREX
-- chapter1/: 第1章 初识 AREX
-- chapter1/introduce.md: AREX介绍
-- chapter1/framework.md: AREX模块
+- chapter1/: Chapter 1 AREX Introduction
+- chapter1/introduce.md: What is AREX 
+- chapter1/framework.md: AREX Framework
 
-#### 第2章 AREX的安装与配置
-- chapter2/: 第2章 AREX 的安装与配置
-- chapter2/demo.md: 新手指南
-- chapter2/fastsetup.md: 快速安装
-- chapter2/arexsetup.md: 自定义安装
-- chapter2/agentsetup.md: Agent配置
+- chapter2/: Chapter 2 Install and Config
+- chapter2/fastsetup.md: Fast Install
+- chapter2/arexsetup.md: Customize Install
+- chapter2/agentsetup.md: Java Agent Config
 
-#### 第3章 AREX的API测试
-- chapter3/: 第3章 AREX的API测试
-- chapter3/initial.md: AREX使用入门
-- chapter3/normal.test.md: 常规测试
+- chapter3/: Chapter 3 Restful API Testing
+- chapter3/initial.md: How to use AREX
+- chapter3/normal.test.md: Normal Testing
 
-#### 第4章 AREX的比对测试
-- chapter4/: 第4章 AREX的比对测试
-- chapter4/compare.test.md: 比对测试
+- chapter4/: Chapter 4 Comparing Testing
+- chapter4/compare.test.md: Comparing Testing
 
-#### 第5章 AREX的回放测试
-- chapter5/: 第5章 AREX的回放测试
-- chapter5/replay.test.md: AREX回放测试
+- chapter5/: Chapter 5 Special Testing
+- chapter5/replay.test.md: Record and Replay Testing
 
-#### 第6章 用例管理和模板管理
-- chapter6/: 第6章 用例管理和模板管理
-- chapter6/cases.md: 用例管理
-- chapter6/templates.md: 模板管理
+- chapter6/: Chapter 6 Management
+- chapter6/cases.md: TestCases Management
+- chapter6/templates.md: Templates Management
 
-#### 第7章 Script
-- chapter7/: 第7章 脚本Script
-- chapter7/script.md: 脚本介绍
-- chapter7/reference.md: 参考
-- chapter7/prepare.md: 前置
-- chapter7/test.md: 测试
+- chapter7/: Chapter 7 Script
+- chapter7/script.md: What is AREX Script.
+- chapter7/reference.md: Reference
+- chapter7/prepare.md: Prescript
+- chapter7/test.md: Test ASSERT
 
-#### 贡献指南...
-- reference/: 其他
-- Contributing.md: 贡献指南
-- express.md: 鸣谢
+- reference/: Others
+- Contributing.md: Contributes
+- express.md: Thanks
 - License.md: License

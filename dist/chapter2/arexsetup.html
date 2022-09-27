@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AREX服务安装 AREX入门教程</title>
-    <meta name="description" content="服务单独部署及非容器化安装,你可以单独安装服务,但服务间调用的配置需要你自己配置完成常见的场景">
+    <title>AREX service installation AREX Handbook</title>
+    <meta name="description" content="For separate deployment and non-containerized installation of services, you can install services separately, but the con">
     <link rel="stylesheet" type="text/css" href="../css/main.css?v=1.21.11">
     <link rel="stylesheet" type="text/css" href="../css/tocbot.css?v=1.21.11">
     <link rel="stylesheet" type="text/css" href="../css/media.css?v=1.21.11">
@@ -19,8 +19,8 @@
   </head>
   <body id="idoctotop"><a href="#idoctotop" class="gototop">top</a>
     <header class="header">
-      <article class="inner warpper"><a class="logo" href="../index.html"><img alt="AREX入门教程 logo" src="data:image/png;base64,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">
-<span class="title">AREX入门教程</span></a>
+      <article class="inner warpper"><a class="logo" href="../index.html"><img alt="AREX Handbook logo" src="data:image/png;base64,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">
+<span class="title">AREX Handbook</span></a>
         <div class="content">
           <ul class="menu">
             <li><a href="../index.html" target="" class="">Home</a></li>
@@ -37,67 +37,66 @@
       <div class="sidebar-border">
         <aside class="sidebar" role="navigation">
           <div>
-            <label>第1章 初识 AREX</label>
-            <a href="../chapter1/introduce.html" class="">AREX介绍</a>
-            <a href="../chapter1/framework.html" class="">AREX模块</a>
-            <label>第2章 AREX 的安装与配置</label>
-            <a href="demo.html" class="">新手指南</a>
-            <a href="fastsetup.html" class="">快速安装</a>
-            <a href="arexsetup.html" class="">自定义安装</a>
-            <a href="agentsetup.html" class="">Agent配置</a>
-            <label>第3章 AREX的API测试</label>
-            <a href="../chapter3/initial.html" class="">AREX使用入门</a>
-            <a href="../chapter3/normal.test.html" class="">常规测试</a>
-            <label>第4章 AREX的比对测试</label>
-            <a href="../chapter4/compare.test.html" class="">比对测试</a>
-            <label>第5章 AREX的回放测试</label>
-            <a href="../chapter5/replay.test.html" class="">AREX回放测试</a>
-            <label>第6章 用例管理和模板管理</label>
-            <a href="../chapter6/cases.html" class="">用例管理</a>
-            <a href="../chapter6/templates.html" class="">模板管理</a>
-            <label>第7章 脚本Script</label>
-            <a href="../chapter7/script.html" class="">脚本介绍</a>
-            <a href="../chapter7/reference.html" class="">参考</a>
-            <a href="../chapter7/prepare.html" class="">前置</a>
-            <a href="../chapter7/test.html" class="">测试</a>
-            <label>其他</label>
-            <a href="../Contributing.html" class="">贡献指南</a>
-            <a href="../express.html" class="">鸣谢</a>
+            <label>Chapter 1 AREX Introduction</label>
+            <a href="../chapter1/introduce.html" class="">What is AREX</a>
+            <a href="../chapter1/framework.html" class="">AREX Framework</a>
+            <label>Chapter 2 Install and Config</label>
+            <a href="fastsetup.html" class="">Fast Install</a>
+            <a href="arexsetup.html" class="">Customize Install</a>
+            <a href="agentsetup.html" class="">Java Agent Config</a>
+            <label>Chapter 3 Restful API Testing</label>
+            <a href="../chapter3/initial.html" class="">How to use AREX</a>
+            <a href="../chapter3/normal.test.html" class="">Normal Testing</a>
+            <label>Chapter 4 Comparing Testing</label>
+            <a href="../chapter4/compare.test.html" class="">Comparing Testing</a>
+            <label>Chapter 5 Special Testing</label>
+            <a href="../chapter5/replay.test.html" class="">Record and Replay Testing</a>
+            <label>Chapter 6 Management</label>
+            <a href="../chapter6/cases.html" class="">TestCases Management</a>
+            <a href="../chapter6/templates.html" class="">Templates Management</a>
+            <label>Chapter 7 Script</label>
+            <a href="../chapter7/script.html" class="">What is AREX Script.</a>
+            <a href="../chapter7/reference.html" class="">Reference</a>
+            <a href="../chapter7/prepare.html" class="">Prescript</a>
+            <a href="../chapter7/test.html" class="">Test ASSERT</a>
+            <label>Others</label>
+            <a href="../Contributing.html" class="">Contributes</a>
+            <a href="../express.html" class="">Thanks</a>
             <a href="../License.html" class="">License</a>
           </div>
         </aside>
       </div>
       <markdown-style>
-        <h1 id="arex服务安装"><a aria-hidden="true" tabindex="-1" href="#arex服务安装" class="anchor"><span class="icon icon-link"></span></a>AREX服务安装</h1>
+        <h1 id="arex-service-installation"><a aria-hidden="true" tabindex="-1" href="#arex-service-installation" class="anchor"><span class="icon icon-link"></span></a>AREX service installation</h1>
         <p>
           <img src="..\resource\arch.png" alt="">
         </p>
-        <h2 id="agent通用配置"><a aria-hidden="true" tabindex="-1" href="#agent通用配置" class="anchor"><span class="icon icon-link"></span></a>Agent通用配置</h2>
+        <h2 id="agent-general-configuration"><a aria-hidden="true" tabindex="-1" href="#agent-general-configuration" class="anchor"><span class="icon icon-link"></span></a>Agent general configuration</h2>
         <pre><code class="code-highlight"><span class="code-line line-number" line="1">JAVA_OPTS="$JAVA_OPTS -Darex.config.path=/usr/your-path-to-arexconf/arex.agent.conf"
 </span></code><input type="hidden" value="JAVA_OPTS=&#x22;$JAVA_OPTS -Darex.config.path=/usr/your-path-to-arexconf/arex.agent.conf&#x22;
 "><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
-        <h2 id="自定义安装"><a aria-hidden="true" tabindex="-1" href="#自定义安装" class="anchor"><span class="icon icon-link"></span></a>自定义安装</h2>
-        <h3 id="多实例docker-compose安装"><a aria-hidden="true" tabindex="-1" href="#多实例docker-compose安装" class="anchor"><span class="icon icon-link"></span></a>多实例Docker-Compose安装</h3>
+        <h2 id="custom-installation"><a aria-hidden="true" tabindex="-1" href="#custom-installation" class="anchor"><span class="icon icon-link"></span></a>custom installation</h2>
+        <h3 id="multi-instance-docker-compose-installation"><a aria-hidden="true" tabindex="-1" href="#multi-instance-docker-compose-installation" class="anchor"><span class="icon icon-link"></span></a>Multi-instance Docker-Compose installation</h3>
         <pre><code class="code-highlight"><span class="code-line line-number" line="1">git clone https://github.com/arextest/deployments.git
 </span><span class="code-line line-number" line="2">cd deployments
 </span><span class="code-line line-number" line="3">docker-compose -f docker-compose-distribute.yml up -d
 </span><span class="code-line line-number" line="4">
-</span><span class="code-line line-number" line="5">## 停止命令
+</span><span class="code-line line-number" line="5">## stop command
 </span><span class="code-line line-number" line="6">docker-compose -f docker-compose-distribute.yml down -v
-</span><span class="code-line line-number" line="7">## PS命令
+</span><span class="code-line line-number" line="7">##PS command
 </span><span class="code-line line-number" line="8">docker-compose -f docker-compose-distribute.yml ps
 </span></code><input type="hidden" value="git clone https://github.com/arextest/deployments.git
 cd deployments
 docker-compose -f docker-compose-distribute.yml up -d
 
-## 停止命令
+## stop command
 docker-compose -f docker-compose-distribute.yml down -v
-## PS命令
+##PS command
 docker-compose -f docker-compose-distribute.yml ps
 "><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
-        <h4 id="缺省安装实例"><a aria-hidden="true" tabindex="-1" href="#缺省安装实例" class="anchor"><span class="icon icon-link"></span></a>缺省安装实例</h4>
+        <h4 id="default-installation-instance"><a aria-hidden="true" tabindex="-1" href="#default-installation-instance" class="anchor"><span class="icon icon-link"></span></a>Default installation instance</h4>
         <ul>
-          <li>当前的配置schedule和storage是2个实例,可以参考配置文件,配置多实例</li>
+          <li>The current configuration schedule and storage are 2 instances, you can refer to the configuration file to configure multiple instances</li>
         </ul>
         <table>
           <thead>
@@ -131,7 +130,7 @@ docker-compose -f docker-compose-distribute.yml ps
               <td align="center">4</td>
               <td align="center">2</td>
               <td align="left"><a href="https://github.com/arextest/arex-storage">Storage Service</a></td>
-              <td align="left">A set of remote storage APIs that provide <a href="https://github.com/arextest/arex-agent-java">Agent Hook Service</a> to save records and get responses as mocks.</td>
+              <td align="left">A set of remote storage APIs that provide [Agent Hook Service](<a href="https://github.com/arextest/arex">https://github.com/arextest/arex</a> -agent-java) to save records and get responses as mocks.</td>
             </tr>
             <tr>
               <td align="center">5</td>
@@ -143,29 +142,29 @@ docker-compose -f docker-compose-distribute.yml ps
               <td align="center">6</td>
               <td align="center">1</td>
               <td align="left">MongoDB</td>
-              <td align="left">数据存储及配置管理数据库</td>
+              <td align="left">Data storage and configuration management database</td>
             </tr>
             <tr>
               <td align="center">7</td>
               <td align="center">1</td>
               <td align="left">Redis</td>
-              <td align="left">高速回放缓存</td>
+              <td align="left">Replay Cache</td>
             </tr>
             <tr>
               <td align="center">8</td>
               <td align="center">1</td>
               <td align="left">Nginx</td>
-              <td align="left">Schedule负载均衡服务</td>
+              <td align="left">​​Schedule Load Balancing Service</td>
             </tr>
             <tr>
               <td align="center">9</td>
               <td align="center">1</td>
               <td align="left">Nginx</td>
-              <td align="left">Storage负载均衡服务</td>
+              <td align="left">​​Storage Load Balancing Service</td>
             </tr>
           </tbody>
         </table>
-        <h3 id="helm安装调试中"><a aria-hidden="true" tabindex="-1" href="#helm安装调试中" class="anchor"><span class="icon icon-link"></span></a>HELM安装(调试中)</h3>
+        <h3 id="helm-installation-debugging"><a aria-hidden="true" tabindex="-1" href="#helm-installation-debugging" class="anchor"><span class="icon icon-link"></span></a>HELM installation (debugging)</h3>
         <pre><code class="code-highlight"><span class="code-line line-number" line="1">git clone https://github.com/arextest/deployments.git
 </span><span class="code-line line-number" line="2">cd deployments/helm
 </span><span class="code-line line-number" line="3">helm install . -n namespace
@@ -173,30 +172,39 @@ docker-compose -f docker-compose-distribute.yml ps
 cd deployments/helm
 helm install . -n namespace
 "><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
-        <h3 id="服务单独部署及非容器化安装"><a aria-hidden="true" tabindex="-1" href="#服务单独部署及非容器化安装" class="anchor"><span class="icon icon-link"></span></a>服务单独部署及非容器化安装</h3>
-        <p>服务单独部署及非容器化安装,你可以单独安装服务,但服务间调用的配置需要你自己配置完成<br>常见的场景</p>
+        <h3 id="service-deployment-and-non-containerized-installation"><a aria-hidden="true" tabindex="-1" href="#service-deployment-and-non-containerized-installation" class="anchor"><span class="icon icon-link"></span></a>Service deployment and non-containerized installation</h3>
+        <p>
+          For separate deployment and non-containerized installation of services, you can install services separately, but the configuration of calls between services needs to be configured by yourself
+          common scenarios
+        </p>
         <ul>
-          <li>使用用户以后的Mongodb服务</li>
-          <li>使用用户自己的分布式环境,对Schedule,Storage等高CPU服务进行扩缩容<br>调用参数配置详见以下文档</li>
+          <li>Use the user's future MongoDB service</li>
+          <li>
+            Use the user's own distributed environment to expand and shrink the capacity of Schedule, Storage and other high CPU services
+            For details on calling parameter configuration, please refer to the following documents
+          </li>
         </ul>
-        <h2 id="各个服务的可配置参数"><a aria-hidden="true" tabindex="-1" href="#各个服务的可配置参数" class="anchor"><span class="icon icon-link"></span></a>各个服务的可配置参数</h2>
-        <h3 id="在操作系统中配置环境变量范例"><a aria-hidden="true" tabindex="-1" href="#在操作系统中配置环境变量范例" class="anchor"><span class="icon icon-link"></span></a>在操作系统中配置环境变量范例</h3>
+        <h2 id="configurable-parameters-for-each-service"><a aria-hidden="true" tabindex="-1" href="#configurable-parameters-for-each-service" class="anchor"><span class="icon icon-link"></span></a>Configurable parameters for each service</h2>
+        <h3 id="example-of-configuring-environment-variables-in-the-operating-system"><a aria-hidden="true" tabindex="-1" href="#example-of-configuring-environment-variables-in-the-operating-system" class="anchor"><span class="icon icon-link"></span></a>Example of configuring environment variables in the operating system</h3>
         <h4 id="windows"><a aria-hidden="true" tabindex="-1" href="#windows" class="anchor"><span class="icon icon-link"></span></a>Windows</h4>
-        <pre><code class="code-highlight"><span class="code-line line-number" line="1">set   JAVA_OPTS=-Darex.config.service.url=http://10.3.1.3:8080 -Darex.storage.service.url=http://10.3.1.4:8080 -Darex.storage.mongo.host=mongodb://username:password@my-mongodb:27017/arex_storage_db -Darex.report.email.host=smtp.msn.com
-</span><span class="code-line line-number" line="2">set JAVA_OPTS 查看配置
-</span></code><input type="hidden" value="set   JAVA_OPTS=-Darex.config.service.url=http://10.3.1.3:8080 -Darex.storage.service.url=http://10.3.1.4:8080 -Darex.storage.mongo.host=mongodb://username:password@my-mongodb:27017/arex_storage_db -Darex.report.email.host=smtp.msn.com
-set JAVA_OPTS 查看配置
+        <pre><code class="code-highlight"><span class="code-line line-number" line="1">set JAVA_OPTS=-Darex.config.service.url=http://10.3.1.3:8080 -Darex.storage.service.url=http://10.3.1.4:8080 -Darex.storage.mongo.host=mongodb: //username:password@my-mongodb:27017/arex_storage_db -Darex.report.email.host=smtp.msn.com
+</span><span class="code-line line-number" line="2">set JAVA_OPTS View configuration
+</span></code><input type="hidden" value="set JAVA_OPTS=-Darex.config.service.url=http://10.3.1.3:8080 -Darex.storage.service.url=http://10.3.1.4:8080 -Darex.storage.mongo.host=mongodb: //username:password@my-mongodb:27017/arex_storage_db -Darex.report.email.host=smtp.msn.com
+set JAVA_OPTS View configuration
 "><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
         <h4 id="linux"><a aria-hidden="true" tabindex="-1" href="#linux" class="anchor"><span class="icon icon-link"></span></a>Linux</h4>
-        <pre><code class="code-highlight"><span class="code-line line-number" line="1">export JAVA_OPTS=-Darex.config.service.url=http://10.3.1.3:8080 -Darex.storage.service.url=http://10.3.1.4:8080 -Darex.storage.mongo.host=mongodb://username:password@my-mongodb:27017/arex_storage_db -Darex.report.email.host=smtp.msn.com
-</span><span class="code-line line-number" line="2">echo $SERVICE_REPORT_URL 查看配置
-</span></code><input type="hidden" value="export JAVA_OPTS=-Darex.config.service.url=http://10.3.1.3:8080 -Darex.storage.service.url=http://10.3.1.4:8080 -Darex.storage.mongo.host=mongodb://username:password@my-mongodb:27017/arex_storage_db -Darex.report.email.host=smtp.msn.com
-echo $SERVICE_REPORT_URL 查看配置
+        <pre><code class="code-highlight"><span class="code-line line-number" line="1">export JAVA_OPTS=-Darex.config.service.url=http://10.3.1.3:8080 -Darex.storage.service.url=http://10.3.1.4:8080 -Darex.storage.mongo.host=mongodb: //username:password@my-mongodb:27017/arex_storage_db -Darex.report.email.host=smtp.msn.com
+</span><span class="code-line line-number" line="2">echo $SERVICE_REPORT_URL View configuration
+</span></code><input type="hidden" value="export JAVA_OPTS=-Darex.config.service.url=http://10.3.1.3:8080 -Darex.storage.service.url=http://10.3.1.4:8080 -Darex.storage.mongo.host=mongodb: //username:password@my-mongodb:27017/arex_storage_db -Darex.report.email.host=smtp.msn.com
+echo $SERVICE_REPORT_URL View configuration
 "><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
-        <h3 id="arex-ui的配置"><a aria-hidden="true" tabindex="-1" href="#arex-ui的配置" class="anchor"><span class="icon icon-link"></span></a>AREX UI的配置</h3>
-        <p>包含3个环境变量,分别对应Report的服务地址, 配置服务地址和调度服务地址</p>
-        <h4 id="docker-compose配置举例"><a aria-hidden="true" tabindex="-1" href="#docker-compose配置举例" class="anchor"><span class="icon icon-link"></span></a>docker compose配置举例</h4>
-        <p>如下是缺省配置<br>注意端口使用的是docker-compose网络内部的8080端口</p>
+        <h3 id="configuration-of-arex-ui"><a aria-hidden="true" tabindex="-1" href="#configuration-of-arex-ui" class="anchor"><span class="icon icon-link"></span></a>Configuration of AREX UI</h3>
+        <p>Contains 3 environment variables, corresponding to the service address of the Report, the configuration service address and the scheduling service address</p>
+        <h4 id="docker-compose-configuration-example"><a aria-hidden="true" tabindex="-1" href="#docker-compose-configuration-example" class="anchor"><span class="icon icon-link"></span></a>docker compose configuration example</h4>
+        <p>
+          The following is the default configuration
+          Note that the port is using port 8080 inside the docker-compose network
+        </p>
         <pre><code class="code-highlight"><span class="code-line line-number" line="1">environment:
 </span><span class="code-line line-number" line="2">  - SERVICE_REPORT_URL=http://arex-report-service:8080
 </span><span class="code-line line-number" line="3">  - SERVICE_CONFIG_URL= http://arex-config-service:8080
@@ -206,18 +214,18 @@ echo $SERVICE_REPORT_URL 查看配置
   - SERVICE_CONFIG_URL= http://arex-config-service:8080
   - SERVICE_SCHEDULE_URL=http://arex-schedule-service:8080
 "><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
-        <h4 id="单独部署的配置举例"><a aria-hidden="true" tabindex="-1" href="#单独部署的配置举例" class="anchor"><span class="icon icon-link"></span></a>单独部署的配置举例</h4>
+        <h4 id="configuration-example-for-separate-deployment"><a aria-hidden="true" tabindex="-1" href="#configuration-example-for-separate-deployment" class="anchor"><span class="icon icon-link"></span></a>Configuration example for separate deployment</h4>
         <pre><code class="code-highlight"><span class="code-line line-number" line="1">##windows
-</span><span class="code-line line-number" line="2">set SERVICE_REPORT_URL=http://10.192.1.1:8080  设置
+</span><span class="code-line line-number" line="2">set SERVICE_REPORT_URL=http://10.192.1.1:8080 set
 </span><span class="code-line line-number" line="3">##linux
 </span><span class="code-line line-number" line="4">export SERVICE_REPORT_URL=http://10.192.1.1:8080
 </span></code><input type="hidden" value="##windows
-set SERVICE_REPORT_URL=http://10.192.1.1:8080  设置
+set SERVICE_REPORT_URL=http://10.192.1.1:8080 set
 ##linux
 export SERVICE_REPORT_URL=http://10.192.1.1:8080
 "><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
-        <h3 id="arex-config-服务配置"><a aria-hidden="true" tabindex="-1" href="#arex-config-服务配置" class="anchor"><span class="icon icon-link"></span></a>AREX Config 服务配置</h3>
-        <h4 id="源码中配置"><a aria-hidden="true" tabindex="-1" href="#源码中配置" class="anchor"><span class="icon icon-link"></span></a>源码中配置</h4>
+        <h3 id="arex-config-service-configuration"><a aria-hidden="true" tabindex="-1" href="#arex-config-service-configuration" class="anchor"><span class="icon icon-link"></span></a>AREX Config service configuration</h3>
+        <h4 id="configuration-in-source-code"><a aria-hidden="true" tabindex="-1" href="#configuration-in-source-code" class="anchor"><span class="icon icon-link"></span></a>Configuration in source code</h4>
         <pre><code class="code-highlight"><span class="code-line line-number" line="1">mongo.uri=mongodb://arex:iLoveArex@ip:27017/arex_storage_db
 </span><span class="code-line line-number" line="2">spring.datasource.username=arex_admin
 </span><span class="code-line line-number" line="3">spring.datasource.password=arex_admin_password
@@ -225,13 +233,13 @@ export SERVICE_REPORT_URL=http://10.192.1.1:8080
 spring.datasource.username=arex_admin
 spring.datasource.password=arex_admin_password
 "><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
-        <h4 id="缺省配置"><a aria-hidden="true" tabindex="-1" href="#缺省配置" class="anchor"><span class="icon icon-link"></span></a>缺省配置</h4>
+        <h4 id="default-configuration"><a aria-hidden="true" tabindex="-1" href="#default-configuration" class="anchor"><span class="icon icon-link"></span></a>Default configuration</h4>
         <pre><code class="code-highlight"><span class="code-line line-number" line="1">    environment:
 </span><span class="code-line line-number" line="2">      - JAVA_OPTS=-Dmongo.uri=mongodb://arex:iLoveArex@mongodb:27017/arex_storage_db
 </span></code><input type="hidden" value="    environment:
       - JAVA_OPTS=-Dmongo.uri=mongodb://arex:iLoveArex@mongodb:27017/arex_storage_db
 "><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
-        <h4 id="单独部署的配置举例-1"><a aria-hidden="true" tabindex="-1" href="#单独部署的配置举例-1" class="anchor"><span class="icon icon-link"></span></a>单独部署的配置举例</h4>
+        <h4 id="configuration-example-for-separate-deployment-1"><a aria-hidden="true" tabindex="-1" href="#configuration-example-for-separate-deployment-1" class="anchor"><span class="icon icon-link"></span></a>Configuration example for separate deployment</h4>
         <pre><code class="code-highlight"><span class="code-line line-number" line="1">      - JAVA_OPTS=-Dmongo.uri=mongodb://arex-m-name:arex-m-passwd@your-mongodb-address:27017/arex_storage_db
 </span><span class="code-line line-number" line="2">
 </span><span class="code-line line-number" line="3">
@@ -239,8 +247,8 @@ spring.datasource.password=arex_admin_password
 
 
 "><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
-        <h3 id="arex-schedule-服务配置"><a aria-hidden="true" tabindex="-1" href="#arex-schedule-服务配置" class="anchor"><span class="icon icon-link"></span></a>AREX Schedule 服务配置</h3>
-        <h4 id="源码配置"><a aria-hidden="true" tabindex="-1" href="#源码配置" class="anchor"><span class="icon icon-link"></span></a>源码配置</h4>
+        <h3 id="arex-schedule-service-configuration"><a aria-hidden="true" tabindex="-1" href="#arex-schedule-service-configuration" class="anchor"><span class="icon icon-link"></span></a>AREX Schedule service configuration</h3>
+        <h4 id="source-configuration"><a aria-hidden="true" tabindex="-1" href="#source-configuration" class="anchor"><span class="icon icon-link"></span></a>Source configuration</h4>
         <pre><code class="code-highlight"><span class="code-line line-number" line="1">arex.storage.service.api=http://arex-storage-service:8080
 </span><span class="code-line line-number" line="2">arex.report.service.api=http://arex-report-service:8080
 </span><span class="code-line line-number" line="3">arex.config.service.api=http://arex-config-service:8080
@@ -250,7 +258,7 @@ arex.report.service.api=http://arex-report-service:8080
 arex.config.service.api=http://arex-config-service:8080
 
 "><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
-        <h4 id="单独部署的配置举例-2"><a aria-hidden="true" tabindex="-1" href="#单独部署的配置举例-2" class="anchor"><span class="icon icon-link"></span></a>单独部署的配置举例</h4>
+        <h4 id="configuration-example-for-separate-deployment-2"><a aria-hidden="true" tabindex="-1" href="#configuration-example-for-separate-deployment-2" class="anchor"><span class="icon icon-link"></span></a>Configuration example for separate deployment</h4>
         <pre><code class="code-highlight"><span class="code-line line-number" line="1">## eg. 10.3.1.1 Storage Services 10.3.1.2 Report Services
 </span><span class="code-line line-number" line="2">environment:
 </span><span class="code-line line-number" line="3">- "JAVA_OPTS=-Darex.storage.service.api=http://10.3.1.1:8080 -Darex.report.service.api=http://10.3.1.2:8080 "
@@ -258,8 +266,8 @@ arex.config.service.api=http://arex-config-service:8080
 environment:
 - &#x22;JAVA_OPTS=-Darex.storage.service.api=http://10.3.1.1:8080 -Darex.report.service.api=http://10.3.1.2:8080 &#x22;
 "><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
-        <h3 id="arex-storage服务配置"><a aria-hidden="true" tabindex="-1" href="#arex-storage服务配置" class="anchor"><span class="icon icon-link"></span></a>AREX Storage服务配置</h3>
-        <h4 id="源码配置-1"><a aria-hidden="true" tabindex="-1" href="#源码配置-1" class="anchor"><span class="icon icon-link"></span></a>源码配置</h4>
+        <h3 id="arex-storage-service-configuration"><a aria-hidden="true" tabindex="-1" href="#arex-storage-service-configuration" class="anchor"><span class="icon icon-link"></span></a>AREX Storage Service Configuration</h3>
+        <h4 id="source-configuration-1"><a aria-hidden="true" tabindex="-1" href="#source-configuration-1" class="anchor"><span class="icon icon-link"></span></a>Source configuration</h4>
         <pre><code class="code-highlight"><span class="code-line line-number" line="1">arex.storage.cache.expired.seconds=7200
 </span><span class="code-line line-number" line="2">arex.storage.cache.provider.host=
 </span><span class="code-line line-number" line="3">mongo.host=mongodb://arex:iLoveArex@mongodb:27017/arex_storage_db
@@ -267,14 +275,14 @@ environment:
 arex.storage.cache.provider.host=
 mongo.host=mongodb://arex:iLoveArex@mongodb:27017/arex_storage_db
 "><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
-        <h4 id="单独部署的配置举例-3"><a aria-hidden="true" tabindex="-1" href="#单独部署的配置举例-3" class="anchor"><span class="icon icon-link"></span></a>单独部署的配置举例</h4>
+        <h4 id="configuration-example-for-separate-deployment-3"><a aria-hidden="true" tabindex="-1" href="#configuration-example-for-separate-deployment-3" class="anchor"><span class="icon icon-link"></span></a>Configuration example for separate deployment</h4>
         <pre><code class="code-highlight"><span class="code-line line-number" line="1">environment:
-</span><span class="code-line line-number" line="2">  - "JAVA_OPTS=-Darex.storage.service.api=http://arex-storage-service:8080 -Darex.report.service.api=http://arex-report-service:8080 -Darex.config.service.api=http://arex-config-service:8080"
+</span><span class="code-line line-number" line="2">  - "JAVA_OPTS=-Darex.storage.service.api=http://arex-storage-service:8080 -Darex.report.service.api=http://arex-report-service:8080 -Darex.config.service .api=http://arex-config-service:8080"
 </span></code><input type="hidden" value="environment:
-  - &#x22;JAVA_OPTS=-Darex.storage.service.api=http://arex-storage-service:8080 -Darex.report.service.api=http://arex-report-service:8080 -Darex.config.service.api=http://arex-config-service:8080&#x22;
+  - &#x22;JAVA_OPTS=-Darex.storage.service.api=http://arex-storage-service:8080 -Darex.report.service.api=http://arex-report-service:8080 -Darex.config.service .api=http://arex-config-service:8080&#x22;
 "><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
-        <h3 id="arex-report-服务配置"><a aria-hidden="true" tabindex="-1" href="#arex-report-服务配置" class="anchor"><span class="icon icon-link"></span></a>AREX Report 服务配置</h3>
-        <h4 id="源码配置-2"><a aria-hidden="true" tabindex="-1" href="#源码配置-2" class="anchor"><span class="icon icon-link"></span></a>源码配置</h4>
+        <h3 id="arex-report-service-configuration"><a aria-hidden="true" tabindex="-1" href="#arex-report-service-configuration" class="anchor"><span class="icon icon-link"></span></a>AREX Report Service Configuration</h3>
+        <h4 id="source-configuration-2"><a aria-hidden="true" tabindex="-1" href="#source-configuration-2" class="anchor"><span class="icon icon-link"></span></a>Source configuration</h4>
         <pre><code class="code-highlight"><span class="code-line line-number" line="1">arex.report.mongo.uri=mongodb://arex:iLoveArex@ip:27017/arex_storage_db
 </span><span class="code-line line-number" line="2">arex.config.service.url=http://arex-config-service:8080
 </span><span class="code-line line-number" line="3">arex.storage.service.url=http://arex-storage-service:8080
@@ -288,18 +296,18 @@ arex.ui.url=http://your_arex_ip_address:port
 
 
 "><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
-        <h4 id="单独部署的配置举例-4"><a aria-hidden="true" tabindex="-1" href="#单独部署的配置举例-4" class="anchor"><span class="icon icon-link"></span></a>单独部署的配置举例</h4>
+        <h4 id="configuration-example-for-separate-deployment-4"><a aria-hidden="true" tabindex="-1" href="#configuration-example-for-separate-deployment-4" class="anchor"><span class="icon icon-link"></span></a>Configuration example for separate deployment</h4>
         <pre><code class="code-highlight"><span class="code-line line-number" line="1">environment:
-</span><span class="code-line line-number" line="2">- "JAVA_OPTS=-Darex.config.service.url=http://10.3.1.3:8080 -Darex.storage.service.url=http://10.3.1.4:8080 -Darex.storage.mongo.host=mongodb://username:password@my-mongodb:27017/arex_storage_db -Darex.report.email.host=smtp.msn.com -Darex.ui.url=http://your_arex_ip_address:port"
+</span><span class="code-line line-number" line="2">- "JAVA_OPTS=-Darex.config.service.url=http://10.3.1.3:8080 -Darex.storage.service.url=http://10.3.1.4:8080 -Darex.storage.mongo.host=mongodb ://username:password@my-mongodb:27017/arex_storage_db -Darex.report.email.host=smtp.msn.com -Darex.ui.url=http://your_arex_ip_address:port"
 </span></code><input type="hidden" value="environment:
-- &#x22;JAVA_OPTS=-Darex.config.service.url=http://10.3.1.3:8080 -Darex.storage.service.url=http://10.3.1.4:8080 -Darex.storage.mongo.host=mongodb://username:password@my-mongodb:27017/arex_storage_db -Darex.report.email.host=smtp.msn.com -Darex.ui.url=http://your_arex_ip_address:port&#x22;
+- &#x22;JAVA_OPTS=-Darex.config.service.url=http://10.3.1.3:8080 -Darex.storage.service.url=http://10.3.1.4:8080 -Darex.storage.mongo.host=mongodb ://username:password@my-mongodb:27017/arex_storage_db -Darex.report.email.host=smtp.msn.com -Darex.ui.url=http://your_arex_ip_address:port&#x22;
 "><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
-        <h2 id="mongodb配置"><a aria-hidden="true" tabindex="-1" href="#mongodb配置" class="anchor"><span class="icon icon-link"></span></a>Mongodb配置</h2>
+        <h2 id="mongodb-configuration"><a aria-hidden="true" tabindex="-1" href="#mongodb-configuration" class="anchor"><span class="icon icon-link"></span></a>MongoDB configuration</h2>
         <ul>
-          <li>在docker-compose yaml中删除Mongodb的相关配置,</li>
-          <li>MongoDB没有初始化的配置,依赖mongodb的服务,其参数中按照你自己的实际服务来配置</li>
+          <li>Delete the related configuration of Mongodb in docker-compose yaml,</li>
+          <li>MongoDB has no initial configuration, it depends on the service of mongodb, and its parameters are configured according to your own actual service</li>
         </ul>
-        <div class="previous"><span></span><a class="next" href="../chapter1/introduce.html"><span>AREX介绍
+        <div class="previous"><span></span><a class="next" href="../chapter1/introduce.html"><span>What is AREX
 </span><svg viewBox="0 0 1024 1024" width="16" height="16" fill="currentColor">
               <path d="M544 522.666667c0-8.533333-4.266667-17.066667-10.666667-23.466667L192 189.866667c-12.8-12.8-34.133333-10.666667-44.8 2.133333-12.8 12.8-10.666667 34.133333 2.133333 44.8l315.733334 285.866667L149.333333 808.533333c-12.8 12.8-14.933333 32-2.133333 44.8 6.4 6.4 14.933333 10.666667 23.466667 10.666667 8.533333 0 14.933333-2.133333 21.333333-8.533333l341.333333-309.333334c6.4-6.4 10.666667-14.933333 10.666667-23.466666z"></path>
               <path d="M864 499.2l-341.333333-309.333333c-12.8-12.8-34.133333-10.666667-44.8 2.133333-12.8 12.8-10.666667 34.133333 2.133333 44.8l315.733333 285.866667-315.733333 285.866666c-12.8 12.8-14.933333 32-2.133333 44.8 6.4 6.4 14.933333 10.666667 23.466666 10.666667 8.533333 0 14.933333-2.133333 21.333334-8.533333l341.333333-309.333334c6.4-6.4 10.666667-14.933333 10.666667-23.466666 0-8.533333-4.266667-17.066667-10.666667-23.466667z"></path>
@@ -308,65 +316,65 @@ arex.ui.url=http://your_arex_ip_address:port
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
             </svg>
 <span>Edit this page on GitHub</span>
-</a><span class="atime">2022/08/29</span></section>
+</a><span class="atime">2022/09/27</span></section>
       </markdown-style>
       <nav class="tocs">
         <aside class="inner toc">
           <ol class="tocs-list">
-            <li><a href="#agent通用配置" class="tocs-link">Agent通用配置</a></li>
-            <li><a href="#自定义安装" class="tocs-link">自定义安装</a>
+            <li><a href="#agent-general-configuration" class="tocs-link">Agent general configuration</a></li>
+            <li><a href="#custom-installation" class="tocs-link">custom installation</a>
               <ol class="tocs-list is-collapsed">
-                <li><a href="#多实例docker-compose安装" class="tocs-link">多实例Docker-Compose安装</a>
+                <li><a href="#multi-instance-docker-compose-installation" class="tocs-link">Multi-instance Docker-Compose installation</a>
                   <ol class="tocs-list is-collapsed">
-                    <li><a href="#缺省安装实例" class="tocs-link">缺省安装实例</a></li>
+                    <li><a href="#default-installation-instance" class="tocs-link">Default installation instance</a></li>
                   </ol>
                 </li>
-                <li><a href="#helm安装调试中" class="tocs-link">HELM安装(调试中)</a></li>
-                <li><a href="#服务单独部署及非容器化安装" class="tocs-link">服务单独部署及非容器化安装</a></li>
+                <li><a href="#helm-installation-debugging" class="tocs-link">HELM installation (debugging)</a></li>
+                <li><a href="#service-deployment-and-non-containerized-installation" class="tocs-link">Service deployment and non-containerized installation</a></li>
               </ol>
             </li>
-            <li><a href="#各个服务的可配置参数" class="tocs-link">各个服务的可配置参数</a>
+            <li><a href="#configurable-parameters-for-each-service" class="tocs-link">Configurable parameters for each service</a>
               <ol class="tocs-list is-collapsed">
-                <li><a href="#在操作系统中配置环境变量范例" class="tocs-link">在操作系统中配置环境变量范例</a>
+                <li><a href="#example-of-configuring-environment-variables-in-the-operating-system" class="tocs-link">Example of configuring environment variables in the operating system</a>
                   <ol class="tocs-list is-collapsed">
                     <li><a href="#windows" class="tocs-link">Windows</a></li>
                     <li><a href="#linux" class="tocs-link">Linux</a></li>
                   </ol>
                 </li>
-                <li><a href="#arex-ui的配置" class="tocs-link">AREX UI的配置</a>
+                <li><a href="#configuration-of-arex-ui" class="tocs-link">Configuration of AREX UI</a>
                   <ol class="tocs-list is-collapsed">
-                    <li><a href="#docker-compose配置举例" class="tocs-link">docker compose配置举例</a></li>
-                    <li><a href="#单独部署的配置举例" class="tocs-link">单独部署的配置举例</a></li>
+                    <li><a href="#docker-compose-configuration-example" class="tocs-link">docker compose configuration example</a></li>
+                    <li><a href="#configuration-example-for-separate-deployment" class="tocs-link">Configuration example for separate deployment</a></li>
                   </ol>
                 </li>
-                <li><a href="#arex-config-服务配置" class="tocs-link">AREX Config 服务配置</a>
+                <li><a href="#arex-config-service-configuration" class="tocs-link">AREX Config service configuration</a>
                   <ol class="tocs-list is-collapsed">
-                    <li><a href="#源码中配置" class="tocs-link">源码中配置</a></li>
-                    <li><a href="#缺省配置" class="tocs-link">缺省配置</a></li>
-                    <li><a href="#单独部署的配置举例-1" class="tocs-link">单独部署的配置举例</a></li>
+                    <li><a href="#configuration-in-source-code" class="tocs-link">Configuration in source code</a></li>
+                    <li><a href="#default-configuration" class="tocs-link">Default configuration</a></li>
+                    <li><a href="#configuration-example-for-separate-deployment-1" class="tocs-link">Configuration example for separate deployment</a></li>
                   </ol>
                 </li>
-                <li><a href="#arex-schedule-服务配置" class="tocs-link">AREX Schedule 服务配置</a>
+                <li><a href="#arex-schedule-service-configuration" class="tocs-link">AREX Schedule service configuration</a>
                   <ol class="tocs-list is-collapsed">
-                    <li><a href="#源码配置" class="tocs-link">源码配置</a></li>
-                    <li><a href="#单独部署的配置举例-2" class="tocs-link">单独部署的配置举例</a></li>
+                    <li><a href="#source-configuration" class="tocs-link">Source configuration</a></li>
+                    <li><a href="#configuration-example-for-separate-deployment-2" class="tocs-link">Configuration example for separate deployment</a></li>
                   </ol>
                 </li>
-                <li><a href="#arex-storage服务配置" class="tocs-link">AREX Storage服务配置</a>
+                <li><a href="#arex-storage-service-configuration" class="tocs-link">AREX Storage Service Configuration</a>
                   <ol class="tocs-list is-collapsed">
-                    <li><a href="#源码配置-1" class="tocs-link">源码配置</a></li>
-                    <li><a href="#单独部署的配置举例-3" class="tocs-link">单独部署的配置举例</a></li>
+                    <li><a href="#source-configuration-1" class="tocs-link">Source configuration</a></li>
+                    <li><a href="#configuration-example-for-separate-deployment-3" class="tocs-link">Configuration example for separate deployment</a></li>
                   </ol>
                 </li>
-                <li><a href="#arex-report-服务配置" class="tocs-link">AREX Report 服务配置</a>
+                <li><a href="#arex-report-service-configuration" class="tocs-link">AREX Report Service Configuration</a>
                   <ol class="tocs-list is-collapsed">
-                    <li><a href="#源码配置-2" class="tocs-link">源码配置</a></li>
-                    <li><a href="#单独部署的配置举例-4" class="tocs-link">单独部署的配置举例</a></li>
+                    <li><a href="#source-configuration-2" class="tocs-link">Source configuration</a></li>
+                    <li><a href="#configuration-example-for-separate-deployment-4" class="tocs-link">Configuration example for separate deployment</a></li>
                   </ol>
                 </li>
               </ol>
             </li>
-            <li><a href="#mongodb配置" class="tocs-link">Mongodb配置</a></li>
+            <li><a href="#mongodb-configuration" class="tocs-link">MongoDB configuration</a></li>
           </ol>
         </aside>
       </nav>

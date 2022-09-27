@@ -1,50 +1,50 @@
-# 使用入门
-AREX服务安装完成后,就可以通过浏览器访问AREX前端, 通过AREX前端执行用例配置执行,
-录制回放记录和报告,管理用例和测试结果等.
+# Getting started
+After the AREX service is installed, you can access the AREX front-end through the browser, and execute the use case configuration execution through the AREX front-end.
+Record playback records and reports, manage use cases and test results, etc.
 
-## 界面简介
-安装完成后,通过浏览器访问(假定服务器地址为10.5.153.1)
-* 未修改端口配置,则直接访问8088端口(DockerCompose暴露端口8088) http://10.5.153.1:8088/
-* 如果独立部署前端,且未修改端口的(缺省端口8080) http://10.5.153.1:8080/
-* 如果端口做了修改,则按照修改后的端口访问
+## Interface introduction
+After the installation is complete, access it through a browser (assuming the server address is 10.5.153.1)
+* If the port configuration is not modified, directly access port 8088 (DockerCompose exposes port 8088) http://10.5.153.1:8088/
+* If the front end is deployed independently, and the port is not modified (default port 8080) http://10.5.153.1:8080/
+* If the port is modified, access it according to the modified port
 
-### 界面组成
+### Interface composition
 ![](../resource/c3.menu.png)
-包含如下几个区域
-* 菜单区,Collection菜单(查看常规用例和比对测试用例),Replay菜单(访问AREX录制回放用例),Environment(环境配置)
-* workspace区, 菜单区上方,显示和配置workspace的地方,workspace是用户用例集合存放的地方,每个用户可以配置/删除workspace,在workspace中增加/显示/配置/删除/执行测试用例
-* 工作区, 主功能区域,显示和操作AREX操作功能的地方
-* 右上方,邀请按钮(邀请其他人参与某Workspace,协同工作)及设置按钮(设置暗黑模式/明亮模式)
+Contains the following areas
+* Menu area, Collection menu (view common use cases and comparison test cases), Replay menu (access AREX recording and playback use cases), Environment (environment configuration)
+* The workspace area, above the menu area, is where the workspace is displayed and configured. The workspace is where the collection of user use cases is stored. Each user can configure/delete the workspace, and add/display/configure/delete/execute test cases in the workspace
+* Work area, main function area, place to display and operate AREX operation functions
+* In the upper right, invite button (invite others to participate in a Workspace, work together) and setting button (set dark mode/bright mode)
 
-### Chrome插件
-* 推荐浏览器Chrome访问
-* 如果能访问Chrome插件,访问AREX界面时,按照浏览器提示安装插件即可
-* 不能访问Chrome插件时,请下载到本地安装,[Release链接](https://github.com/arextest/arex-chrome-extension/releases)
+### Chrome plugin
+* Recommended browser Chrome access
+* If you can access the Chrome plug-in, when accessing the AREX interface, follow the browser prompts to install the plug-in
+* When you can't access the Chrome extension, please download and install it locally, [Release link](https://github.com/arextest/arex-chrome-extension/releases)
 
-### 首次登陆
+### First login
 ![](../resource/c3.login.png)
-* 需要输入你个人邮箱,主要用来标识当前用户的唯一性  
-* 也可以直接下面链接"guest"登录,但guest登录后不具备邀请功能(即用例分享功能)
-* 邮箱收到验证码后,点击Login登录 
+* You need to enter your personal email address, which is mainly used to identify the uniqueness of the current user
+* You can also log in directly with the "guest" link below, but the guest does not have the invitation function after login (that is, the use case sharing function)
+* After receiving the verification code by email, click Login to log in
 ![](../resource/c3.logininvide.png)
 
-### 新建workspace
+### New workspace
 ![](../resource/c3.1.png)
-输入workspace名字,并确认
+Enter the workspace name and confirm
 
-### 邀请其他人(TODO,此功能暂时不提供)
+### Invite others (TODO, this feature is temporarily unavailable)
 ![](../resource/c3.2.png)
 
-通过发送邮件来邀请其他人参与当前Workspace  
-被邀请后用户刷新界面后,workspace会显示在用户的左上角workspace区域,用户可以选择这个WS,查看用例并操作等
+Invite others to participate in the current Workspace by sending an email
+After the user refreshes the interface after being invited, the workspace will be displayed in the workspace area in the upper left corner of the user. The user can select this WS, view the use case and operate it, etc.
 
 ## Workspaces
 
-### 新建Collections
+### New Collections
 ![](../resource/c3.3.png)
-* 在根上增加collections
-* 可以在Collections中再次增加Collection,包含关系根据用户需要来设置,不做限制
-* 在Collection中增加Request(API接口的单位,某一个具体接口)
-* 对Collection的管理操作,包括增加,配置,删除等  
-操作界面示例  
+* Add collections to root
+* Collection can be added again in Collections, and the containment relationship can be set according to user needs without restrictions
+* Add Request in Collection (unit of API interface, a specific interface)
+* Management operations on Collection, including adding, configuring, deleting, etc.
+Operation interface example
 ![](../resource/c3.4.png)

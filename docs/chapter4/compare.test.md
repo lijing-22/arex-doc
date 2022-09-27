@@ -1,12 +1,12 @@
-# Compare Testing  
+# Compare Testing
 
-## 比对测试
-比对测试,就是将同一个报文往两个API地址发送请求,然后比对返回报文的差异  
-使用的场景包括  
-* 新老版本的接口比对,做验证验收测试
-* 重构系统后的验证测试,重构后的新老系统返回结果理论上应该不变的
-等 
+## Comparison test
+The comparison test is to send the same message to two API addresses, and then compare the difference between the returned messages  
+Scenarios used include  
+* Compare the interface of the new and old versions, and do the verification and acceptance test
+* Verification test after refactoring the system, the return results of the old and new systems after refactoring should theoretically remain unchanged
+Wait 
 
 ![](../resource/comparetest1.png)
-* 比对测试结果,如有存在比对差异,则用有色背景来区别显示(如上图黄色背景)
-* 注: 此界面在优化中,多差异点时界面显示不合理
+* Comparison test results, if there is a comparison difference, it will be displayed with a colored background (the yellow background in the above picture)
+* Note: This interface is being optimized, and the interface display is unreasonable when there are multiple differences.

@@ -1,4 +1,4 @@
-# 脚本
+# Script
 
 You can write test scripts (Javascript) in the tab "Tests" to verify if your API is working correctly.
 

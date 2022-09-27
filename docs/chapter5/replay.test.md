@@ -1,36 +1,35 @@
-# AREX录制回放测试
+# AREX recording and playback test
 
-## 录制回放的首页面
+## The first page of the recording and playback
 ![](../resource/c5.0.png)
-* 菜单区选择Replay按钮
-* 选择Workspace区的AREX录制应用(应用配置AREX Agent后,自动显示在此处)
-* 选择了具体应用后,工作区显示此应用的报告信息
+* Select the Replay button in the menu area
+* Select the AREX recording application in the Workspace area (after the application is configured with AREX Agent, it will be automatically displayed here)
+* After selecting a specific application, the work area displays the report information of this application
 
-### 执行录制回放
-* 点击"Start Replay"执行回放  
+### Perform recording playback
+* Click "Start Replay" to perform playback
 ![](../resource/c5.1.png)
 
-### 回放记录和细节
+### Playback records and details
 ![](../resource/c5.2.png)
-* 在列表中选择回放记录(ReportName中包含回放的具体时间)
-* 最新的回放记录显示在最前面,可以通过翻页来查看更多的历史
-* 在选择回放记录后,进入Report看具体的回放结果
+* Select the playback record in the list (ReportName contains the specific time of playback)
+* The latest playback record is displayed at the front, you can view more history by turning the page
+* After selecting the playback record, enter Report to see the specific playback results
 
-### 回放报告
+### Playback report
 ![](../resource/c5.3.png)
-* 报告的最上方,"Rerun"可以在此重新运行测试
-* 显示本次执行的测试统计
-* 显示本次执行的每个API测试结果,时间,案例,通过情况
-* 当发现Failed非0时(比对发现差异),点击Analysis查看报文差异
+* At the top of the report, "Rerun" can rerun the test here
+* Display the test statistics of this execution
+* Display each API test result, time, case and pass status of this execution
+* When it is found that Failed is not 0 (differences are found by comparison), click Analysis to view the packet differences
 
-### 报文差异
+### Packet difference
 
-![](../resource/c5.4.png)  
-* 左上方区域,是主接口及其外部调用  
-![](../resource/c5.5.png)  
-* 被测试API:/Owners,及其接口内部调用的第三方依赖,比如数据库  
-![](../resource/c5.6.png)  
-* 显示场景数,用例数,点击右边"Scenes"  
-* Diff Detail显示差异节点,差异信息如下图  
-![](../resource/c5.7.png)  
-
+![](../resource/c5.4.png)
+* The upper left area is the main interface and its external calls
+![](../resource/c5.5.png)
+* Tested API:/Owners, and third-party dependencies called internally by its interface, such as databases
+![](../resource/c5.6.png)
+* Display the number of scenes, the number of use cases, click "Scenes" on the right
+* Diff Detail shows the difference node, the difference information is as follows
+![](../resource/c5.7.png)

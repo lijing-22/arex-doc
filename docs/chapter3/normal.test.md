@@ -1,36 +1,35 @@
-## 常规测试
+## Routine test
 
-### 界面范例
+### Interface example
 ![](../resource/normaltest1.png)
 
-### 常规测试
-接口测试基本功能,就是配置接口地址及其参数,界面参考Postman
-* 配置HTTP的请求类型,GET/POST/PUT/DELETE/PATCH
-* 配置params
-* 配置Body
-* 配置Header
-* 配置参数
+### Routine testing
+The basic function of the interface test is to configure the interface address and its parameters. Refer to Postman for the interface.
+* Configure HTTP request type, GET/POST/PUT/DELETE/PATCH
+* configure params
+* Configure Body
+* Configure Header
+* Configuration parameters
 
-### 快速请求
+### Quick request
 ![](../resource/c3.5.png)
-* 在Collection上选择Add Request来新建新的快速请求
-* Duplicate复制快速请求及其case(如果有的话)
+* Select Add Request on Collection to create a new quick request
+* Duplicate fast request and its case (if any)
 
-#### 测试用例
-CASE跟快速请求(Request)的关系
-* CASE类似快速请求,可配置内容是一样的
-* CASE包含在Request中
-* CASE是继承Request的配置参数,为了方便用户测试同一个接口,只重新修改小部分参数,这样简化用户使用
+#### test case
+The relationship between CASE and fast request (Request)
+* CASE is similar to fast request, the configurable content is the same
+* CASE is included in Request
+* CASE is a configuration parameter that inherits Request. In order to facilitate users to test the same interface, only a small number of parameters are re-modified, which simplifies the use of users.
 
-#### 配置Request
+#### Configure Request
 ![](../resource/c3.5.png)
-* CASE用例名可以直接修改当前用例名称
-* SAVE按钮保存当前用例
-* 应答报文的结果,Stauts,Time和Size等
-* 展示: JSON报文和Pretty优化JSON
+* CASE use case name can directly modify the current use case name
+* SAVE button to save the current use case
+* The result of the response message, Stauts, Time and Size, etc.
+* Show: JSON messages and Pretty-optimized JSON
 
-#### 配置ASSERT
+#### Configure ASSERT
 ![](../resource/c3.6.png)
-* 配置ASSERT
-* Test Resuts中显示验证结果
-
+* Configure ASSERT
+* Display verification results in Test Resuts

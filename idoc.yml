@@ -13,7 +13,7 @@ output: dist
 
 ## site name
 # -----------------------
-site: AREX入门教程
+site: AREX Handbook
 
 ## Customize theme settings.
 ## defalut: `default`
