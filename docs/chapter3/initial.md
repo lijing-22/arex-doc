@@ -19,7 +19,7 @@ AREX服务安装完成后,就可以通过浏览器访问AREX前端, 通过AREX�
 ### Chrome插件
 * 推荐浏览器Chrome访问
 * 如果能访问Chrome插件,访问AREX界面时,按照浏览器提示安装插件即可
-* 不能访问Chrome插件时,请下载到本地安装,[链接](https://github.com/zhangtao25/arex-chrome-extension/releases/download/1.0.1/dist.zip)
+* 不能访问Chrome插件时,请下载到本地安装,[Release链接](https://github.com/arextest/arex-chrome-extension/releases)
 
 ### 首次登陆
 ![](../resource/c3.login.png)
