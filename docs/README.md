@@ -23,7 +23,6 @@
    * 增加插件版本升级提醒(e.g. Chrome Extension version is incorrect, please install1.0.4)
    * 支持请求参数中可以使用Environment变量功能
    * 支持Environment克隆功能
-   * 新增动态类配置功能。
    * 增加了回放Case列表页的分页功能。
    * 优化对比详情卡片的文字描述。
 3. 计划10/17日版本(0.2.4)的主要目标  
