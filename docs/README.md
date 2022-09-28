@@ -11,7 +11,7 @@
   
 ## 版本更新
 
-* v0.2.3版本 2022/09/26   
+* v0.2.3版本 2022/09/28   
 1. 修复BUG  
    * Chrome插件支持用户自定义cookie,请下载最新插件([链接](https://github.com/arextest/arex-chrome-extension/releases))
    * 修复回放Rerun不生效的错误
@@ -34,8 +34,9 @@
    * 前端增加单个比对用例错误展示页
 4. 已知问题  
 	* 接口测试时,数据量过大页面无法加载
-	* "Start Replay"回放范围使用配置项中的"Case Range"缺省为1. 当录制时间与配置不一致时,回放失败(提示没有用例),需要在此界面增加"回放时间范围"配置.
    * 脚本ASSERT功能存在BUG
+   * Replay中录制回放的配置参数未生效
+	* "Start Replay"回放范围使用配置项中的"Case Range"缺省为1. 当录制时间与配置不一致时,回放失败(提示没有用例),需要在此界面增加"回放时间范围"配置.
 
 * v0.2.2版本 2022/09/09  
 1. Deployment仓库中Docker-compose中版本设置为latest,不再写指定版本号  
