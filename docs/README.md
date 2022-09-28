@@ -11,7 +11,7 @@
   
 ## new version update
 
-##### v0.2.3 version 2022/09/26
+##### v0.2.3 version 2022/09/28
 * Fix bugs
    * Chrome plugin supports user-defined cookies, please download the latest plugin ([link](https://github.com/arextest/arex-chrome-extension/releases))
    * Fix the bug that playback Rerun does not take effect
