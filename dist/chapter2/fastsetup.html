@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>快速安装 AREX入门教程</title>
-    <meta name="description" content="使用AREX提供的docker-compose.yml文件, 直接安装AREX包括服务,数据库,前端等所有组件
-每个组件只有1个实例,无法多实例负载均衡和扩容.">
+    <meta name="description" content="使用 AREX 提供的 docker-compose.yml 文件, 直接安装 AREX 包括服务,数据库,前端等所有组件
+每个组件只有 1 个实例,无法多实例负载均衡和扩容.">
     <link rel="stylesheet" type="text/css" href="../css/main.css?v=1.21.11">
     <link rel="stylesheet" type="text/css" href="../css/tocbot.css?v=1.21.11">
     <link rel="stylesheet" type="text/css" href="../css/media.css?v=1.21.11">
@@ -53,6 +53,7 @@
             <a href="../chapter4/compare.test.html" class="">比对测试</a>
             <label>第5章 AREX的回放测试</label>
             <a href="../chapter5/replay.test.html" class="">AREX回放测试</a>
+            <a href="../chapter5/generate.case.html" class="">固化AREX用例</a>
             <label>第6章 用例管理和模板管理</label>
             <a href="../chapter6/cases.html" class="">用例管理</a>
             <a href="../chapter6/templates.html" class="">模板管理</a>
@@ -72,8 +73,8 @@
         <h1 id="快速安装"><a aria-hidden="true" tabindex="-1" href="#快速安装" class="anchor"><span class="icon icon-link"></span></a>快速安装</h1>
         <h2 id="快速安装-1"><a aria-hidden="true" tabindex="-1" href="#快速安装-1" class="anchor"><span class="icon icon-link"></span></a>快速安装</h2>
         <p>
-          使用AREX提供的docker-compose.yml文件, 直接安装AREX包括服务,数据库,前端等所有组件
-          每个组件只有1个实例,无法多实例负载均衡和扩容.
+          使用 AREX 提供的 docker-compose.yml 文件, 直接安装 AREX 包括服务,数据库,前端等所有组件
+          每个组件只有 1 个实例,无法多实例负载均衡和扩容.
         </p>
         <h3 id="arex-组件实例"><a aria-hidden="true" tabindex="-1" href="#arex-组件实例" class="anchor"><span class="icon icon-link"></span></a>AREX 组件实例</h3>
         <table>
@@ -89,41 +90,35 @@
             <tr>
               <td align="center">1</td>
               <td align="center">1</td>
-              <td align="left"><a href="https://github.com/arextest/arex-config">Configuration Service</a></td>
-              <td align="left">A sets of configuration APIs for the recording and replaying functions.</td>
-            </tr>
-            <tr>
-              <td align="center">2</td>
-              <td align="center">1</td>
               <td align="left"><a href="https://github.com/arextest/arex-replay-schedule">Schedule Service</a></td>
               <td align="left">A set of schedule APIs that provide replay send and retrieve all responses for comparison.</td>
             </tr>
             <tr>
-              <td align="center">3</td>
+              <td align="center">2</td>
               <td align="center">1</td>
               <td align="left"><a href="https://github.com/arextest/arex-report">Replay Report Service</a></td>
               <td align="left">A set of report APIs that provide difference summaries and show the difference result details after the responses are compared.</td>
             </tr>
             <tr>
-              <td align="center">4</td>
+              <td align="center">3</td>
               <td align="center">1</td>
               <td align="left"><a href="https://github.com/arextest/arex-storage">Storage Service</a></td>
               <td align="left">A set of remote storage APIs that provide <a href="https://github.com/arextest/arex-agent-java">Agent Hook Service</a> to save records and get responses as mocks.</td>
             </tr>
             <tr>
-              <td align="center">5</td>
+              <td align="center">4</td>
               <td align="center">1</td>
               <td align="left"><a href="https://github.com/arextest/arex-front-end">Front-End</a></td>
               <td align="left">A visual web site that provide entry to all operations in your <strong>AREX</strong>.</td>
             </tr>
             <tr>
-              <td align="center">6</td>
+              <td align="center">5</td>
               <td align="center">1</td>
               <td align="left">MongoDB</td>
               <td align="left">数据存储及配置管理数据库</td>
             </tr>
             <tr>
-              <td align="center">7</td>
+              <td align="center">6</td>
               <td align="center">1</td>
               <td align="left">Redis</td>
               <td align="left">高速回放缓存</td>
@@ -140,45 +135,59 @@ docker-compose up -d
 "><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
         <h3 id="检查服务运行情况及端口"><a aria-hidden="true" tabindex="-1" href="#检查服务运行情况及端口" class="anchor"><span class="icon icon-link"></span></a>检查服务运行情况及端口</h3>
         <pre><code class="code-highlight"><span class="code-line line-number" line="1">[~ deployments]# docker-compose ps
-</span><span class="code-line line-number" line="2">    Name                   Command               State                 Ports              
+</span><span class="code-line line-number" line="2">    Name                   Command               State                 Ports
 </span><span class="code-line line-number" line="3">------------------------------------------------------------------------------------------
-</span><span class="code-line line-number" line="4">arex-config     catalina.sh run                  Up      0.0.0.0:8091->8080/tcp           
-</span><span class="code-line line-number" line="5">arex-front      docker-entrypoint.sh node  ...   Up      0.0.0.0:8088->8080/tcp           
-</span><span class="code-line line-number" line="6">arex-mongodb    docker-entrypoint.sh --auth      Up      0.0.0.0:27017->27017/tcp         
-</span><span class="code-line line-number" line="7">arex-redis      docker-entrypoint.sh --app ...   Up      0.0.0.0:6379->6379/tcp           
-</span><span class="code-line line-number" line="8">arex-report     catalina.sh run                  Up      0.0.0.0:8090->8080/tcp           
-</span><span class="code-line line-number" line="9">arex-schedule   catalina.sh run                  Up      0.0.0.0:8092->8080/tcp           
-</span><span class="code-line line-number" line="10">arex-storage    catalina.sh run                  Up      0.0.0.0:8093->8080/tcp    
+</span><span class="code-line line-number" line="4">arex-front      docker-entrypoint.sh node  ...   Up      0.0.0.0:8088->8080/tcp
+</span><span class="code-line line-number" line="5">arex-mongodb    docker-entrypoint.sh --auth      Up      0.0.0.0:27017->27017/tcp
+</span><span class="code-line line-number" line="6">arex-redis      docker-entrypoint.sh --app ...   Up      0.0.0.0:6379->6379/tcp
+</span><span class="code-line line-number" line="7">arex-report     catalina.sh run                  Up      0.0.0.0:8090->8080/tcp
+</span><span class="code-line line-number" line="8">arex-schedule   catalina.sh run                  Up      0.0.0.0:8092->8080/tcp
+</span><span class="code-line line-number" line="9">arex-storage    catalina.sh run                  Up      0.0.0.0:8093->8080/tcp
 </span></code><input type="hidden" value="[~ deployments]# docker-compose ps
-    Name                   Command               State                 Ports              
+    Name                   Command               State                 Ports
 ------------------------------------------------------------------------------------------
-arex-config     catalina.sh run                  Up      0.0.0.0:8091->8080/tcp           
-arex-front      docker-entrypoint.sh node  ...   Up      0.0.0.0:8088->8080/tcp           
-arex-mongodb    docker-entrypoint.sh --auth      Up      0.0.0.0:27017->27017/tcp         
-arex-redis      docker-entrypoint.sh --app ...   Up      0.0.0.0:6379->6379/tcp           
-arex-report     catalina.sh run                  Up      0.0.0.0:8090->8080/tcp           
-arex-schedule   catalina.sh run                  Up      0.0.0.0:8092->8080/tcp           
-arex-storage    catalina.sh run                  Up      0.0.0.0:8093->8080/tcp    
+arex-front      docker-entrypoint.sh node  ...   Up      0.0.0.0:8088->8080/tcp
+arex-mongodb    docker-entrypoint.sh --auth      Up      0.0.0.0:27017->27017/tcp
+arex-redis      docker-entrypoint.sh --app ...   Up      0.0.0.0:6379->6379/tcp
+arex-report     catalina.sh run                  Up      0.0.0.0:8090->8080/tcp
+arex-schedule   catalina.sh run                  Up      0.0.0.0:8092->8080/tcp
+arex-storage    catalina.sh run                  Up      0.0.0.0:8093->8080/tcp
 "><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
         <ul>
           <li>检查所有服务日志命令</li>
         </ul>
         <pre><code class="code-highlight"><span class="code-line line-number" line="1">cd deployments
-</span><span class="code-line line-number" line="2">docker-compose logs 
+</span><span class="code-line line-number" line="2">docker-compose logs
 </span></code><input type="hidden" value="cd deployments
-docker-compose logs 
+docker-compose logs
 "><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
         <ul>
-          <li>检查AREX日志命令 docker-compose logs arex</li>
-          <li>检查配置服务日志命令 docker-compose logs arex-config-service</li>
+          <li>检查 AREX 日志命令 docker-compose logs arex</li>
           <li>检查调度服务日志命令 docker-compose logs arex-schedule-service</li>
           <li>检查报告服务日志命令 docker-compose logs arex-report-service</li>
           <li>检查存储服务日志命令 docker-compose logs arex-storage-service</li>
         </ul>
-        <h2 id="docker-compose文件说明"><a aria-hidden="true" tabindex="-1" href="#docker-compose文件说明" class="anchor"><span class="icon icon-link"></span></a>Docker-Compose文件说明</h2>
-        <h3 id="arex前端"><a aria-hidden="true" tabindex="-1" href="#arex前端" class="anchor"><span class="icon icon-link"></span></a>AREX前端</h3>
+        <h3 id="版本升级更新"><a aria-hidden="true" tabindex="-1" href="#版本升级更新" class="anchor"><span class="icon icon-link"></span></a>版本升级更新</h3>
+        <ul>
+          <li>进入 docker-compose.yml 所在目录,git pull 前先停止原有服务(比如 0.2.4 版本去除 Config 服务,先更新会导致 config 没有停止,需要用户自己手动停止)</li>
+          <li>如果不保留原有的 Mongodb 数据或日志,请手动删除当前运行目录的 arex-data,arex-logs 目录,请慎重操作,因为删除了无法回退!</li>
+          <li>更新 deployments 仓库,重新启动 AREX</li>
+        </ul>
+        <pre><code class="code-highlight"><span class="code-line line-number" line="1">cd deployments
+</span><span class="code-line line-number" line="2">docker-compose down -v
+</span><span class="code-line line-number" line="3">
+</span><span class="code-line line-number" line="4">git pull
+</span><span class="code-line line-number" line="5">docker-compose up -d
+</span></code><input type="hidden" value="cd deployments
+docker-compose down -v
+
+git pull
+docker-compose up -d
+"><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+        <h2 id="docker-compose-文件说明"><a aria-hidden="true" tabindex="-1" href="#docker-compose-文件说明" class="anchor"><span class="icon icon-link"></span></a>Docker-Compose 文件说明</h2>
+        <h3 id="arex-前端"><a aria-hidden="true" tabindex="-1" href="#arex-前端" class="anchor"><span class="icon icon-link"></span></a>AREX 前端</h3>
         <pre><code class="code-highlight"><span class="code-line line-number" line="1">  arex:
-</span><span class="code-line line-number" line="2">    image: arexadmin01/arex:0.2.1
+</span><span class="code-line line-number" line="2">    image: arexadmin01/arex:0.2.4
 </span><span class="code-line line-number" line="3">    container_name: arex-front
 </span><span class="code-line line-number" line="4">    restart: always
 </span><span class="code-line line-number" line="5">    ports:
@@ -187,13 +196,13 @@ docker-compose logs
 </span><span class="code-line line-number" line="8">      - ./arex-logs/arex-front:/usr/src/app/logs
 </span><span class="code-line line-number" line="9">    environment:
 </span><span class="code-line line-number" line="10">      - SERVICE_REPORT_URL=http://arex-report-service:8080
-</span><span class="code-line line-number" line="11">      - SERVICE_CONFIG_URL= http://arex-config-service:8080
+</span><span class="code-line line-number" line="11">      - SERVICE_STORAGE_URL= http://arex-report-service:8080
 </span><span class="code-line line-number" line="12">      - SERVICE_SCHEDULE_URL=http://arex-schedule-service:8080
 </span><span class="code-line line-number" line="13">    depends_on:
 </span><span class="code-line line-number" line="14">      - arex-report-service
-</span><span class="code-line line-number" line="15">      - arex-config-service  
+</span><span class="code-line line-number" line="15">      - arex-config-service
 </span></code><input type="hidden" value="  arex:
-    image: arexadmin01/arex:0.2.1
+    image: arexadmin01/arex:0.2.4
     container_name: arex-front
     restart: always
     ports:
@@ -202,15 +211,15 @@ docker-compose logs
       - ./arex-logs/arex-front:/usr/src/app/logs
     environment:
       - SERVICE_REPORT_URL=http://arex-report-service:8080
-      - SERVICE_CONFIG_URL= http://arex-config-service:8080
+      - SERVICE_STORAGE_URL= http://arex-report-service:8080
       - SERVICE_SCHEDULE_URL=http://arex-schedule-service:8080
     depends_on:
       - arex-report-service
-      - arex-config-service  
+      - arex-config-service
 "><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
         <h3 id="存储服务-storage-service"><a aria-hidden="true" tabindex="-1" href="#存储服务-storage-service" class="anchor"><span class="icon icon-link"></span></a>存储服务 Storage Service</h3>
         <pre><code class="code-highlight"><span class="code-line line-number" line="1">  arex-storage-service:
-</span><span class="code-line line-number" line="2">    image: arexadmin01/arex-storage-serive:0.2.1
+</span><span class="code-line line-number" line="2">    image: arexadmin01/arex-storage-serive:0.2.4
 </span><span class="code-line line-number" line="3">    container_name: arex-storage
 </span><span class="code-line line-number" line="4">    restart: always
 </span><span class="code-line line-number" line="5">    ports:
@@ -223,7 +232,7 @@ docker-compose logs
 </span><span class="code-line line-number" line="12">      - mongodb
 </span><span class="code-line line-number" line="13">      - redis
 </span></code><input type="hidden" value="  arex-storage-service:
-    image: arexadmin01/arex-storage-serive:0.2.1
+    image: arexadmin01/arex-storage-serive:0.2.4
     container_name: arex-storage
     restart: always
     ports:
@@ -246,7 +255,7 @@ docker-compose logs
 </span><span class="code-line line-number" line="7">    volumes:
 </span><span class="code-line line-number" line="8">      - ./arex-logs/arex-schedule:/usr/local/tomcat/logs
 </span><span class="code-line line-number" line="9">    environment:
-</span><span class="code-line line-number" line="10">      - JAVA_OPTS=-Dmongo.uri=mongodb://arex:iLoveArex@mongodb:27017/arex_storage_db -Darex.storage.service.api=http://arex-storage-service:8080 -Darex.report.service.api=http://arex-report-service:8080 -Darex.config.service.api=http://arex-config-service:8080
+</span><span class="code-line line-number" line="10">      - JAVA_OPTS=-Dmongo.uri=mongodb://arex:iLoveArex@mongodb:27017/arex_storage_db -Darex.storage.service.api=http://arex-storage-service:8080 -Darex.report.service.api=http://arex-report-service:8080
 </span><span class="code-line line-number" line="11">    depends_on:
 </span><span class="code-line line-number" line="12">      - mongodb
 </span><span class="code-line line-number" line="13">      - redis
@@ -259,7 +268,7 @@ docker-compose logs
     volumes:
       - ./arex-logs/arex-schedule:/usr/local/tomcat/logs
     environment:
-      - JAVA_OPTS=-Dmongo.uri=mongodb://arex:iLoveArex@mongodb:27017/arex_storage_db -Darex.storage.service.api=http://arex-storage-service:8080 -Darex.report.service.api=http://arex-report-service:8080 -Darex.config.service.api=http://arex-config-service:8080
+      - JAVA_OPTS=-Dmongo.uri=mongodb://arex:iLoveArex@mongodb:27017/arex_storage_db -Darex.storage.service.api=http://arex-storage-service:8080 -Darex.report.service.api=http://arex-report-service:8080
     depends_on:
       - mongodb
       - redis
@@ -274,9 +283,9 @@ docker-compose logs
 </span><span class="code-line line-number" line="7">    volumes:
 </span><span class="code-line line-number" line="8">      - ./arex-logs/arex-report:/usr/local/tomcat/logs
 </span><span class="code-line line-number" line="9">    environment:
-</span><span class="code-line line-number" line="10">      - JAVA_OPTS=-Dmongo.uri=mongodb://arex:iLoveArex@mongodb:27017/arex_storage_db -Darex.config.service.url=http://arex-config-service:8080 -Darex.storage.service.url=http://arex-storage-service:8080 -Darex.ui.url=http://arex:8088      
+</span><span class="code-line line-number" line="10">      - JAVA_OPTS=-Dmongo.uri=mongodb://arex:iLoveArex@mongodb:27017/arex_storage_db -Darex.storage.service.url=http://arex-storage-service:8080 -Darex.ui.url=http://arex:8088
 </span><span class="code-line line-number" line="11">    depends_on:
-</span><span class="code-line line-number" line="12">      - mongodb  
+</span><span class="code-line line-number" line="12">      - mongodb
 </span></code><input type="hidden" value="  arex-report-service:
     image: arexadmin01/arex-report:0.2.1
     container_name: arex-report
@@ -286,33 +295,7 @@ docker-compose logs
     volumes:
       - ./arex-logs/arex-report:/usr/local/tomcat/logs
     environment:
-      - JAVA_OPTS=-Dmongo.uri=mongodb://arex:iLoveArex@mongodb:27017/arex_storage_db -Darex.config.service.url=http://arex-config-service:8080 -Darex.storage.service.url=http://arex-storage-service:8080 -Darex.ui.url=http://arex:8088      
-    depends_on:
-      - mongodb  
-"><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
-        <h3 id="配置服务-config-service"><a aria-hidden="true" tabindex="-1" href="#配置服务-config-service" class="anchor"><span class="icon icon-link"></span></a>配置服务 Config Service</h3>
-        <pre><code class="code-highlight"><span class="code-line line-number" line="1">  arex-config-service:
-</span><span class="code-line line-number" line="2">    image: arexadmin01/arex-config:0.2.1
-</span><span class="code-line line-number" line="3">    container_name: arex-config
-</span><span class="code-line line-number" line="4">    restart: always
-</span><span class="code-line line-number" line="5">    ports:
-</span><span class="code-line line-number" line="6">      - '8091:8080'
-</span><span class="code-line line-number" line="7">    volumes:
-</span><span class="code-line line-number" line="8">      - ./arex-logs/arex-config:/usr/local/tomcat/logs
-</span><span class="code-line line-number" line="9">    environment:
-</span><span class="code-line line-number" line="10">      - JAVA_OPTS=-Dmongo.uri=mongodb://arex:iLoveArex@mongodb:27017/arex_storage_db
-</span><span class="code-line line-number" line="11">    depends_on:
-</span><span class="code-line line-number" line="12">      - mongodb
-</span></code><input type="hidden" value="  arex-config-service:
-    image: arexadmin01/arex-config:0.2.1
-    container_name: arex-config
-    restart: always
-    ports:
-      - &#x27;8091:8080&#x27;
-    volumes:
-      - ./arex-logs/arex-config:/usr/local/tomcat/logs
-    environment:
-      - JAVA_OPTS=-Dmongo.uri=mongodb://arex:iLoveArex@mongodb:27017/arex_storage_db
+      - JAVA_OPTS=-Dmongo.uri=mongodb://arex:iLoveArex@mongodb:27017/arex_storage_db -Darex.storage.service.url=http://arex-storage-service:8080 -Darex.ui.url=http://arex:8088
     depends_on:
       - mongodb
 "><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
@@ -341,7 +324,7 @@ docker-compose logs
         <h3 id="数据库-mongodb"><a aria-hidden="true" tabindex="-1" href="#数据库-mongodb" class="anchor"><span class="icon icon-link"></span></a>数据库 Mongodb</h3>
         <ul>
           <li>目前已经验证过的版本 4.4.4, 5.0,两者都支持</li>
-          <li>mongo-allone-init.js文件包含了帐号初始化功能</li>
+          <li>mongo-allone-init.js 文件包含了帐号初始化功能</li>
           <li>数据文件放在当前目录的./arex-data/mongodb</li>
         </ul>
         <pre><code class="code-highlight"><span class="code-line line-number" line="1"> mongodb:
@@ -388,7 +371,7 @@ docker-compose logs
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
             </svg>
 <span>Edit this page on GitHub</span>
-</a><span class="atime">2022/09/28</span></section>
+</a><span class="atime">2022/10/18</span></section>
       </markdown-style>
       <nav class="tocs">
         <aside class="inner toc">
@@ -398,15 +381,15 @@ docker-compose logs
                 <li><a href="#arex-组件实例" class="tocs-link">AREX 组件实例</a></li>
                 <li><a href="#快速安装-2" class="tocs-link">快速安装</a></li>
                 <li><a href="#检查服务运行情况及端口" class="tocs-link">检查服务运行情况及端口</a></li>
+                <li><a href="#版本升级更新" class="tocs-link">版本升级更新</a></li>
               </ol>
             </li>
-            <li><a href="#docker-compose文件说明" class="tocs-link">Docker-Compose文件说明</a>
+            <li><a href="#docker-compose-文件说明" class="tocs-link">Docker-Compose 文件说明</a>
               <ol class="tocs-list is-collapsed">
-                <li><a href="#arex前端" class="tocs-link">AREX前端</a></li>
+                <li><a href="#arex-前端" class="tocs-link">AREX 前端</a></li>
                 <li><a href="#存储服务-storage-service" class="tocs-link">存储服务 Storage Service</a></li>
                 <li><a href="#调度服务-schedule-serive" class="tocs-link">调度服务 Schedule Serive</a></li>
                 <li><a href="#报告与分析服务-report-service" class="tocs-link">报告与分析服务 Report service</a></li>
-                <li><a href="#配置服务-config-service" class="tocs-link">配置服务 Config Service</a></li>
                 <li><a href="#缓存-redis" class="tocs-link">缓存 Redis</a></li>
                 <li><a href="#数据库-mongodb" class="tocs-link">数据库 Mongodb</a></li>
               </ol>

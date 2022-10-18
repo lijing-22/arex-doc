@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AREX AREX入门教程</title>
-    <meta name="description" content="接口测试是软件测试的一种，它包括两种测试类型：狭义上指的是直接针对应用程序接口（缩写API测试）的功能进行的测试；广义上指集成测试中，通过调用API测试整体的功能完成度、可靠性、安全性与性能等指标. 接口测试的活动包括,测试设计, 测试用例">
+    <meta name="description" content="接口测试是软件测试的一种，它包括两种测试类型：狭义上指的是直接针对应用程序接口（缩写 API 测试）的功能进行的测试；广义上指集成测试中，通过调用 API 测试整体的功能完成度、可靠性、安全性与性能等指标. 接口测试的活动包括,测试设计, ">
     <link rel="stylesheet" type="text/css" href="css/main.css?v=1.21.11">
     <link rel="stylesheet" type="text/css" href="css/tocbot.css?v=1.21.11">
     <link rel="stylesheet" type="text/css" href="css/media.css?v=1.21.11">
@@ -52,6 +52,7 @@
             <a href="chapter4/compare.test.html" class="">比对测试</a>
             <label>第5章 AREX的回放测试</label>
             <a href="chapter5/replay.test.html" class="">AREX回放测试</a>
+            <a href="chapter5/generate.case.html" class="">固化AREX用例</a>
             <label>第6章 用例管理和模板管理</label>
             <a href="chapter6/cases.html" class="">用例管理</a>
             <a href="chapter6/templates.html" class="">模板管理</a>
@@ -77,61 +78,94 @@
           <li>降低接口测试成本</li>
           <li>提高接口测试覆盖率</li>
         </ol>
-        <p><strong>接口测试</strong>是软件测试的一种，它包括两种测试类型：狭义上指的是直接针对应用程序接口（缩写API测试）的功能进行的测试；广义上指集成测试中，通过调用API测试整体的功能完成度、可靠性、安全性与性能等指标. 接口测试的活动包括,测试设计, 测试用例编写, 测试脚本编写,测试数据构造,测试执行, 更进一步的是,在持续开发维护过程中,要对此四种活动输出物进行持续的检查和维护.</p>
+        <p><strong>接口测试</strong>是软件测试的一种，它包括两种测试类型：狭义上指的是直接针对应用程序接口（缩写 API 测试）的功能进行的测试；广义上指集成测试中，通过调用 API 测试整体的功能完成度、可靠性、安全性与性能等指标. 接口测试的活动包括,测试设计, 测试用例编写, 测试脚本编写,测试数据构造,测试执行, 更进一步的是,在持续开发维护过程中,要对此四种活动输出物进行持续的检查和维护.</p>
         <p><strong>AREX</strong>可以最大程度的降低测试活动的实施成本,提高测试覆盖率, 提升质量, 释放更多开发工程师和测试工程师的时间.</p>
         <h2 id="版本更新"><a aria-hidden="true" tabindex="-1" href="#版本更新" class="anchor"><span class="icon icon-link"></span></a>版本更新</h2>
         <ul>
-          <li>v0.2.3版本 2022/09/28</li>
+          <li>v0.2.4 版本 2022/10/18</li>
         </ul>
         <ol>
-          <li>修复BUG
+          <li>修复 BUG
             <ul>
-              <li>Chrome插件支持用户自定义cookie,请下载最新插件(<a href="https://github.com/arextest/arex-chrome-extension/releases">链接</a>)</li>
-              <li>修复回放Rerun不生效的错误</li>
+              <li>修复 GET 请求问号后面的参数和 Params 中的参数在请求的时候会重复拼接</li>
+              <li>卡片详情展示中针对 invalidCase 做特殊展示</li>
+              <li>Schedule 中所有 dynamicClass 的类都不进行对比</li>
+            </ul>
+          </li>
+          <li>新增功能
+            <ul>
+              <li>MOCK 数据,增加增删改查接口</li>
+              <li>Arex-Config 项目合并到 Arex-Report 模块中, Agent 和 Storage 模块都已经修改配置</li>
+              <li>AREX 用例固化功能</li>
+            </ul>
+          </li>
+          <li>计划 10/31 日版本(0.2.5)的主要目标
+            <ul>
+              <li>测试用例的导入导出功能(接口已经完成,前端下个版本提供)</li>
+              <li>AREX 固化用例自动添加 URL</li>
+            </ul>
+          </li>
+          <li>已知问题
+            <ul>
+              <li>接口测试时,数据量过大页面无法加载</li>
+              <li>Replay 中录制回放的配置参数未生效</li>
+              <li>Record 中录制回放的配置参数未生效</li>
+              <li>Assert 脚本功能存在 Bug</li>
+            </ul>
+          </li>
+        </ol>
+        <ul>
+          <li>v0.2.3 版本 2022/09/28</li>
+        </ul>
+        <ol>
+          <li>修复 BUG
+            <ul>
+              <li>Chrome 插件支持用户自定义 cookie,请下载最新插件(<a href="https://github.com/arextest/arex-chrome-extension/releases">链接</a>)</li>
+              <li>修复回放 Rerun 不生效的错误</li>
               <li>页面刷新后会根据路由重新定位到当前页，不再显示初始化的空白页面</li>
               <li>修复了点击刷新页面偶尔会报错的错误。</li>
-              <li>修复了设置页面中点击最右侧快速菜单栏而导致整个tab消失的错误。</li>
-              <li>修复了Get请求参数拼接两次的问题</li>
+              <li>修复了设置页面中点击最右侧快速菜单栏而导致整个 tab 消失的错误。</li>
+              <li>修复了 Get 请求参数拼接两次的问题</li>
             </ul>
           </li>
           <li>新增功能
             <ul>
               <li>增加插件版本升级提醒(e.g. Chrome Extension version is incorrect, please install1.0.4)</li>
-              <li>支持请求参数中可以使用Environment变量功能</li>
-              <li>支持Environment克隆功能</li>
-              <li>增加了回放Case列表页的分页功能。</li>
+              <li>支持请求参数中可以使用 Environment 变量功能</li>
+              <li>支持 Environment 克隆功能</li>
+              <li>增加了回放 Case 列表页的分页功能。</li>
               <li>优化对比详情卡片的文字描述。</li>
             </ul>
           </li>
-          <li>计划10/17日版本(0.2.4)的主要目标<br>* 修复0.2.3的BUG
+          <li>计划 10/17 日版本(0.2.4)的主要目标<br>* 修复 0.2.3 的 BUG
             <ul>
-              <li>增加AREX录制回放测试用例抽取(接口已经完成/Report, 前端开发中)</li>
+              <li>增加 AREX 录制回放测试用例抽取(接口已经完成/Report, 前端开发中)</li>
               <li>优化比对测试的结果展示界面(推迟)</li>
-              <li>config模块和report模块合并到arex-api模块中</li>
+              <li>config 模块和 report 模块合并到 arex-api 模块中</li>
               <li>前端增加单个比对用例错误展示页</li>
             </ul>
           </li>
           <li>已知问题
             <ul>
               <li>接口测试时,数据量过大页面无法加载</li>
-              <li>脚本ASSERT功能存在BUG</li>
-              <li>Replay中录制回放的配置参数未生效</li>
-              <li>回放配置项的"Case Range"缺省为1,修改此配置,功能未生效.</li>
+              <li>脚本 ASSERT 功能存在 BUG</li>
+              <li>Replay 中录制回放的配置参数未生效</li>
+              <li>回放配置项的"Case Range"缺省为 1,修改此配置,功能未生效.</li>
             </ul>
           </li>
         </ol>
         <ul>
-          <li>v0.2.2版本 2022/09/09</li>
+          <li>v0.2.2 版本 2022/09/09</li>
         </ul>
         <ol>
-          <li>Deployment仓库中Docker-compose中版本设置为latest,不再写指定版本号<br>1.1 本次生成的docker版本为 0.2.2, 已经更新Latest Tag,都已上传Docker HUB<br>1.2 demo.arextest.com 已同步更新最新版本(arex-aws-demo可以执行回放)</li>
-          <li>修复0.2.1中的BUG<br>2.1 前端界面优化<br>2.2 Arex Agent版本已经升级,用户需更新AREX-Agent</li>
-          <li>增加功能<br>3.1 前端的Record配置,Replay配置等功能<br>3.2 增加Sidecar配置demo(sidecar目录)<br>3.3 Helm配置(arex-chart目录)<br>需要用户自行修改storageClass<br>安装命令 helm install your-demo-name ./arex-chart --namespace yourNamespace</li>
-          <li>计划9/26日版本(0.2.3)的主要目标<br>a. 修复0.2.2的BUG<br>b. 增加AREX录制回放测试用例抽取(接口已经完成/Report, 前端开发中)<br>c. 优化比对测试的结果展示界面(推迟)<br>d. 模板管理基本功能</li>
+          <li>Deployment 仓库中 Docker-compose 中版本设置为 latest,不再写指定版本号<br>1.1 本次生成的 docker 版本为 0.2.2, 已经更新 Latest Tag,都已上传 Docker HUB<br>1.2 demo.arextest.com 已同步更新最新版本(arex-aws-demo 可以执行回放)</li>
+          <li>修复 0.2.1 中的 BUG<br>2.1 前端界面优化<br>2.2 Arex Agent 版本已经升级,用户需更新 AREX-Agent</li>
+          <li>增加功能<br>3.1 前端的 Record 配置,Replay 配置等功能<br>3.2 增加 Sidecar 配置 demo(sidecar 目录)<br>3.3 Helm 配置(arex-chart 目录)<br>需要用户自行修改 storageClass<br>安装命令 helm install your-demo-name ./arex-chart --namespace yourNamespace</li>
+          <li>计划 9/26 日版本(0.2.3)的主要目标<br>a. 修复 0.2.2 的 BUG<br>b. 增加 AREX 录制回放测试用例抽取(接口已经完成/Report, 前端开发中)<br>c. 优化比对测试的结果展示界面(推迟)<br>d. 模板管理基本功能</li>
           <li>已知问题
             <ol>
-              <li>AREX回放测试中,单用例Rerun失败</li>
-              <li>常规测试用例中自定义cookie设置未生效(浏览器插件)</li>
+              <li>AREX 回放测试中,单用例 Rerun 失败</li>
+              <li>常规测试用例中自定义 cookie 设置未生效(浏览器插件)</li>
             </ol>
           </li>
         </ol>
@@ -139,39 +173,39 @@
           <li>
             <p>v0.2.1 2022/08/29</p>
             <ol>
-              <li>去MySQL: Config服务,schedule服务去mysql,改为读写mongodb</li>
-              <li>生成的docker版本tag统一为 0.2.1</li>
-              <li>Arex-agent升级,版本升级为0.1.0</li>
-              <li>登录时邮箱注册码功能升级(不需要用户感知和配置smtp服务器,arex统一提供服务)</li>
-              <li>发布分支: arex项目发布的分支是rel/1.0.1,其他的都是main分支</li>
+              <li>去 MySQL: Config 服务,schedule 服务去 mysql,改为读写 mongodb</li>
+              <li>生成的 docker 版本 tag 统一为 0.2.1</li>
+              <li>Arex-agent 升级,版本升级为 0.1.0</li>
+              <li>登录时邮箱注册码功能升级(不需要用户感知和配置 smtp 服务器,arex 统一提供服务)</li>
+              <li>发布分支: arex 项目发布的分支是 rel/1.0.1,其他的都是 main 分支</li>
               <li>
-                主要修复bug
-                a. 回放提示录制action为空的问题
-                b. tomcat下录制回放失败问题
+                主要修复 bug
+                a. 回放提示录制 action 为空的问题
+                b. tomcat 下录制回放失败问题
               </li>
               <li>
-                在9/2日计划中,延时发布的功能
-                a. 完成Helm配置(调试未完成)
+                在 9/2 日计划中,延时发布的功能
+                a. 完成 Helm 配置(调试未完成)
                 b. 优化比对测试的结果展示界面(推迟)
-                c. 增加AREX录制回放测试用例抽取(接口已经完成/Report, 前端开发中)
+                c. 增加 AREX 录制回放测试用例抽取(接口已经完成/Report, 前端开发中)
               </li>
-              <li>原计划9/2日的版本不再发布,计划9/12日(间隔两周)发布新版本0.2.2</li>
+              <li>原计划 9/2 日的版本不再发布,计划 9/12 日(间隔两周)发布新版本 0.2.2</li>
               <li>
-                9/12日版本 0.2.2 主要目标
+                9/12 日版本 0.2.2 主要目标
                 a. 前端的录制配置,回放配置等功能发布
-                b. 修复BUG
+                b. 修复 BUG
               </li>
             </ol>
           </li>
           <li>
             <p>v0.2 2022/08/19</p>
             <ul>
-              <li>UI全新改版</li>
+              <li>UI 全新改版</li>
               <li>增加常规测试,比对测试</li>
               <li>修改各个服务的参数读取方式,支持用户配置接口地址</li>
-              <li>前端镜像名称从replay-front-end改为arex, 服务名也改为arex</li>
-              <li>镜像版本升级为0.2</li>
-              <li>已知问题:版本不兼容(AREX去MYSQL未完成,当后续升级后(无mysql),历史"录制回放记录"会丢失)</li>
+              <li>前端镜像名称从 replay-front-end 改为 arex, 服务名也改为 arex</li>
+              <li>镜像版本升级为 0.2</li>
+              <li>已知问题:版本不兼容(AREX 去 MYSQL 未完成,当后续升级后(无 mysql),历史"录制回放记录"会丢失)</li>
             </ul>
           </li>
           <li>
@@ -187,7 +221,7 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
             </svg>
 <span>Edit this page on GitHub</span>
-</a><span class="atime">2022/09/28</span></section>
+</a><span class="atime">2022/10/18</span></section>
       </markdown-style>
       <nav class="tocs">
         <aside class="inner toc">

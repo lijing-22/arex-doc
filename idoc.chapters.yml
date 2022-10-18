@@ -22,6 +22,7 @@
 #### 第5章 AREX的回放测试
 - chapter5/: 第5章 AREX的回放测试
 - chapter5/replay.test.md: AREX回放测试
+- chapter5/generate.case.md: 固化AREX用例
 
 #### 第6章 用例管理和模板管理
 - chapter6/: 第6章 用例管理和模板管理

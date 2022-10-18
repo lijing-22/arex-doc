@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AREX录制回放测试 AREX入门教程</title>
-    <meta name="description" content="arex.env.set(&#x22;foo&#x22;, &#x22;bar&#x22;);">
+    <title>固化 AREX 录制回放的测试用例 AREX入门教程</title>
+    <meta name="description" content="在应用录制和回放完成后,进入回放报告页面">
     <link rel="stylesheet" type="text/css" href="../css/main.css?v=1.21.11">
     <link rel="stylesheet" type="text/css" href="../css/tocbot.css?v=1.21.11">
     <link rel="stylesheet" type="text/css" href="../css/media.css?v=1.21.11">
@@ -51,16 +51,16 @@
             <label>第4章 AREX的比对测试</label>
             <a href="../chapter4/compare.test.html" class="">比对测试</a>
             <label>第5章 AREX的回放测试</label>
-            <a href="../chapter5/replay.test.html" class="">AREX回放测试</a>
-            <a href="../chapter5/generate.case.html" class="">固化AREX用例</a>
+            <a href="replay.test.html" class="">AREX回放测试</a>
+            <a href="generate.case.html" class="">固化AREX用例</a>
             <label>第6章 用例管理和模板管理</label>
             <a href="../chapter6/cases.html" class="">用例管理</a>
             <a href="../chapter6/templates.html" class="">模板管理</a>
             <label>第7章 脚本Script</label>
-            <a href="script.html" class="">脚本介绍</a>
-            <a href="reference.html" class="">参考</a>
-            <a href="prepare.html" class="">前置</a>
-            <a href="test.html" class="">测试</a>
+            <a href="../chapter7/script.html" class="">脚本介绍</a>
+            <a href="../chapter7/reference.html" class="">参考</a>
+            <a href="../chapter7/prepare.html" class="">前置</a>
+            <a href="../chapter7/test.html" class="">测试</a>
             <label>其他</label>
             <a href="../Contributing.html" class="">贡献指南</a>
             <a href="../express.html" class="">鸣谢</a>
@@ -69,43 +69,55 @@
         </aside>
       </div>
       <markdown-style>
-        <h2 id="pre-script"><a aria-hidden="true" tabindex="-1" href="#pre-script" class="anchor"><span class="icon icon-link"></span></a>Pre-script</h2>
-        <p>arex.env.set("foo", "bar");</p>
-        <h3 id="getting-started"><a aria-hidden="true" tabindex="-1" href="#getting-started" class="anchor"><span class="icon icon-link"></span></a>Getting Started</h3>
-        <p>A special arex object contains various methods for creating tests and is made available globally. It can be referenced by name to access methods such as arex.env.set().</p>
-        <pre><code class="code-highlight"><span class="code-line line-number" line="1">arex.env.set("foo", "bar");
-</span></code><input type="hidden" value="arex.env.set(&#x22;foo&#x22;, &#x22;bar&#x22;);
-"><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
-        <p>arex.env.set() can be used directly for quick and convenient environment variables definition. Or, if preferred, arex.env.set() can be used to better organize requet code.</p>
-        <pre><code class="code-highlight"><span class="code-line line-number" line="1">arex.env.set("baseURL", "https://httpbin.org");
-</span></code><input type="hidden" value="arex.env.set(&#x22;baseURL&#x22;, &#x22;https://httpbin.org&#x22;);
-"><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+        <h1 id="固化-arex-录制回放的测试用例"><a aria-hidden="true" tabindex="-1" href="#固化-arex-录制回放的测试用例" class="anchor"><span class="icon icon-link"></span></a>固化 AREX 录制回放的测试用例</h1>
+        <h3 id="arex-用例固化准备"><a aria-hidden="true" tabindex="-1" href="#arex-用例固化准备" class="anchor"><span class="icon icon-link"></span></a>AREX 用例固化准备</h3>
+        <h4 id="collection-中增加目录存放计划固化的用例"><a aria-hidden="true" tabindex="-1" href="#collection-中增加目录存放计划固化的用例" class="anchor"><span class="icon icon-link"></span></a>Collection 中增加目录,存放计划固化的用例</h4>
         <p>
-          Accessing environment data.
-          It's desirable to write environment variables against a request. This is done by accessing the &#x3C;&#x3C;variable_name>> object.
+          <img src="..\resource\c5.8.png" alt="">
         </p>
-        <pre><code class="code-highlight"><span class="code-line line-number" line="1">&#x3C;&#x3C;baseURL>>>
-</span></code><input type="hidden" value="<<baseURL>>>
-"><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
-        <p>Use environment variables enclosed in double angular brackets (&#x3C;&#x3C;>>) anywhere in request section.</p>
-        <p>Example: Environment variables with pre-request scripts</p>
+        <ul>
+          <li>Collection 下面新建"Add Request"</li>
+          <li>填入 URL 等配置信息(0.2.5 版本计划缺省配置上,0.2.4 版本尚未提供缺省 URL,需要用户自行配置)</li>
+        </ul>
+        <h4 id="arex-录制和回放"><a aria-hidden="true" tabindex="-1" href="#arex-录制和回放" class="anchor"><span class="icon icon-link"></span></a>AREX 录制和回放</h4>
+        <p>
+          在应用录制和回放完成后,进入回放报告页面
+          
+          <img src="..\resource\c5.9.png" alt="">
+        </p>
+        <p>
+          点击 Case 进入如下 Case 页面
+          
+          <img src="..\resource\c5.10.png" alt="">
+        </p>
+        <p>
+          点击 Save 按钮,将此用例固化到 Collections 中
+          
+          <img src="..\resource\c5.11.png" alt="">
+        </p>
+        <p>
+          界面跟常规用例类似,多出的 MOCK 就是 AREX 录制并回放的数据(编辑功能开发中)
+          
+          <img src="..\resource\c5.12.png" alt="">
+        </p>
         <div class="previous"><span></span><a class="next" href="../chapter1/introduce.html"><span>AREX介绍
 </span><svg viewBox="0 0 1024 1024" width="16" height="16" fill="currentColor">
               <path d="M544 522.666667c0-8.533333-4.266667-17.066667-10.666667-23.466667L192 189.866667c-12.8-12.8-34.133333-10.666667-44.8 2.133333-12.8 12.8-10.666667 34.133333 2.133333 44.8l315.733334 285.866667L149.333333 808.533333c-12.8 12.8-14.933333 32-2.133333 44.8 6.4 6.4 14.933333 10.666667 23.466667 10.666667 8.533333 0 14.933333-2.133333 21.333333-8.533333l341.333333-309.333334c6.4-6.4 10.666667-14.933333 10.666667-23.466666z"></path>
               <path d="M864 499.2l-341.333333-309.333333c-12.8-12.8-34.133333-10.666667-44.8 2.133333-12.8 12.8-10.666667 34.133333 2.133333 44.8l315.733333 285.866667-315.733333 285.866666c-12.8 12.8-14.933333 32-2.133333 44.8 6.4 6.4 14.933333 10.666667 23.466666 10.666667 8.533333 0 14.933333-2.133333 21.333334-8.533333l341.333333-309.333334c6.4-6.4 10.666667-14.933333 10.666667-23.466666 0-8.533333-4.266667-17.066667-10.666667-23.466667z"></path>
             </svg></a></div>
-        <section class="article-footer"><a href="https://github.com/arextest/arex-doc/blob/main/docs\chapter7\prepare.md" class="edit-button" target="_blank" rel="noopener noreferrer"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <section class="article-footer"><a href="https://github.com/arextest/arex-doc/blob/main/docs\chapter5\generate.case.md" class="edit-button" target="_blank" rel="noopener noreferrer"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
             </svg>
 <span>Edit this page on GitHub</span>
-</a><span class="atime">2022/08/18</span></section>
+</a><span class="atime">2022/10/18</span></section>
       </markdown-style>
       <nav class="tocs">
         <aside class="inner toc">
           <ol class="tocs-list">
-            <li><a href="#pre-script" class="tocs-link">Pre-script</a>
+            <li><a href="#arex-用例固化准备" class="tocs-link">AREX 用例固化准备</a>
               <ol class="tocs-list is-collapsed">
-                <li><a href="#getting-started" class="tocs-link">Getting Started</a></li>
+                <li><a href="#collection-中增加目录存放计划固化的用例" class="tocs-link">Collection 中增加目录,存放计划固化的用例</a></li>
+                <li><a href="#arex-录制和回放" class="tocs-link">AREX 录制和回放</a></li>
               </ol>
             </li>
           </ol>
