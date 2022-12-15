@@ -4,18 +4,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AREX AREX入门教程</title>
+    <title>使用入门 AREX入门教程</title>
     <meta name="description" content="对于一个初上线的简单服务，只需通过常规的自动化测试加上人工即可解决，但我们线上核心的业务系统往往比较复杂，通常也会频繁的需求迭代，如何保证被修改后的系统原有业务的正确性就比较重要。常规的自动化测试需要投入大量的人力资源，准备测试数据、脚本等">
-    <link rel="stylesheet" type="text/css" href="../css/main.css?v=1.21.11">
-    <link rel="stylesheet" type="text/css" href="../css/tocbot.css?v=1.21.11">
-    <link rel="stylesheet" type="text/css" href="../css/media.css?v=1.21.11">
-    <link rel="stylesheet" type="text/css" href="../css/sidebar.css?v=1.21.11">
-    <link rel="stylesheet" type="text/css" href="../css/copy.css?v=1.21.11">
-    <link rel="stylesheet" type="text/css" href="../css/demo-preview.css?v=1.21.11">
+    <link rel="stylesheet" type="text/css" href="../css/main.css?v=1.21.13">
+    <link rel="stylesheet" type="text/css" href="../css/tocbot.css?v=1.21.13">
+    <link rel="stylesheet" type="text/css" href="../css/media.css?v=1.21.13">
+    <link rel="stylesheet" type="text/css" href="../css/sidebar.css?v=1.21.13">
+    <link rel="stylesheet" type="text/css" href="../css/copy.css?v=1.21.13">
+    <link rel="stylesheet" type="text/css" href="../css/demo-preview.css?v=1.21.13">
     <link rel="icon" href="data:image/png;base64,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" type="image/x-icon">
-    <script src="../js/copy.js?v=1.21.11"></script>
-    <script src="../js/dark-mode.js?v=1.21.11"></script>
-    <script src="../js/markdown-style.js?v=1.21.11"></script>
+    <script src="../js/copy.js?v=1.21.13"></script>
+    <script src="../js/dark-mode.js?v=1.21.13"></script>
+    <script src="../js/markdown-style.js?v=1.21.13"></script>
   </head>
   <body id="idoctotop"><a href="#idoctotop" class="gototop">top</a>
     <header class="header">
@@ -37,9 +37,8 @@
       <div class="sidebar-border">
         <aside class="sidebar" role="navigation">
           <div>
-            <label>第1章 初识 AREX</label>
-            <a href="introduce.html" class="">AREX介绍</a>
-            <a href="framework.html" class="">AREX模块</a>
+            <label>第1章 快速入门指南</label>
+            <a href="introduce.html" class="">什么是AREX？</a>
             <label>第2章 AREX 的安装与配置</label>
             <a href="../chapter2/demo.html" class="">新手指南</a>
             <a href="../chapter2/fastsetup.html" class="">快速安装</a>
@@ -212,7 +211,27 @@
         <p>业务应用中可能使用了各式的缓存来提升运行时的性能，不同的环境这些数据可能存在较大的差异（多个环境的数据同步往往是一个比较复杂的过程），这些数据差异可能会导致完全不同的执行结果，为了避免这个问题，AREX 也支持了本地缓存数据的采集和 Mock 功能，只需要进行一些简单的配置，即可实现数据的自动采集和 Mock，当然这个功能也可支持各种内存数据的 Mock 功能。</p>
         <h5 id="代码隔离互通"><a aria-hidden="true" tabindex="-1" href="#代码隔离互通" class="anchor"><span class="icon icon-link"></span></a>代码隔离、互通</h5>
         <p>为了系统的稳定性，AREX agent 的框架代码是在一个独立的 Class loader 中加载，和应用代码并不互通，为了保证注入的代码可以正确在运行时被访问，我们也对 ClassLoader 进行了简单的修饰，保证运行时的代码会被正确的 ClassLoader 加载（想想SpringBoot 的 LaunchedURLClassLoader）。</p>
-        <div class="previous"><span></span><a class="next" href="introduce.html"><span>AREX介绍
+        <h3 id="arex-组成"><a aria-hidden="true" tabindex="-1" href="#arex-组成" class="anchor"><span class="icon icon-link"></span></a>AREX 组成</h3>
+        <p>AREX 由 Front（前端）、Schedule Service（调度服务）、Storage Service（存储服务）、Report Service（报告分析服务）及 Mongodb、Redis 数据存储等多模块组成。</p>
+        <p>我们假定生产环境应用会正常的响应用户的请求，通过 aop 的方式将请求入参及返回结果以及执行过程中的一些快照数据例如访问数据库的入参和返回结果、访问远程服务器的入参及结果保存下来。然后将快照数据发送给测试机器（代码发生变化的机器）完成一次回放过程。通过将落库数据、调用后台请求的数据以及返回结果和线上真实请求发生时的数据进行对比，发现其中的差异，从而识别被测试系统的问题。</p>
+        <p>
+          <img src="..\resource\arch.png" alt="组成模块">
+        </p>
+        <h4 id="前端"><a aria-hidden="true" tabindex="-1" href="#前端" class="anchor"><span class="icon icon-link"></span></a>前端</h4>
+        <p>AREX 前端是 AREX 工具的前端操作界面。</p>
+        <p>
+          <img src="..\resource\front.png" alt="前端界面">
+        </p>
+        <h4 id="调度服务"><a aria-hidden="true" tabindex="-1" href="#调度服务" class="anchor"><span class="icon icon-link"></span></a>调度服务</h4>
+        <p>调度服务负责向被测试服务发送用例回放请求，并在服务响应后触发结果比对及依赖比对。</p>
+        <h4 id="存储服务"><a aria-hidden="true" tabindex="-1" href="#存储服务" class="anchor"><span class="icon icon-link"></span></a>存储服务</h4>
+        <p>存储服务负责接收由 Agent 捕获的请求、应答及依赖的真实数据的存储，同时负责在回放期间，按照 Agent 要求返回已存储的数据。</p>
+        <h4 id="报告分析服务"><a aria-hidden="true" tabindex="-1" href="#报告分析服务" class="anchor"><span class="icon icon-link"></span></a>报告分析服务</h4>
+        <p>报告分析服务负责在执行回放测试时收集测试结果及展示问题。</p>
+        <h4 id="数据存储"><a aria-hidden="true" tabindex="-1" href="#数据存储" class="anchor"><span class="icon icon-link"></span></a>数据存储</h4>
+        <p>Redis 存储服务负责在回放过程中缓存数据；</p>
+        <p>MongoDB 存储服务负责存储录制的数据和回放结果。</p>
+        <div class="previous"><span></span><a class="next" href="introduce.html"><span>什么是AREX？
 </span><svg viewBox="0 0 1024 1024" width="16" height="16" fill="currentColor">
               <path d="M544 522.666667c0-8.533333-4.266667-17.066667-10.666667-23.466667L192 189.866667c-12.8-12.8-34.133333-10.666667-44.8 2.133333-12.8 12.8-10.666667 34.133333 2.133333 44.8l315.733334 285.866667L149.333333 808.533333c-12.8 12.8-14.933333 32-2.133333 44.8 6.4 6.4 14.933333 10.666667 23.466667 10.666667 8.533333 0 14.933333-2.133333 21.333333-8.533333l341.333333-309.333334c6.4-6.4 10.666667-14.933333 10.666667-23.466666z"></path>
               <path d="M864 499.2l-341.333333-309.333333c-12.8-12.8-34.133333-10.666667-44.8 2.133333-12.8 12.8-10.666667 34.133333 2.133333 44.8l315.733333 285.866667-315.733333 285.866666c-12.8 12.8-14.933333 32-2.133333 44.8 6.4 6.4 14.933333 10.666667 23.466666 10.666667 8.533333 0 14.933333-2.133333 21.333334-8.533333l341.333333-309.333334c6.4-6.4 10.666667-14.933333 10.666667-23.466666 0-8.533333-4.266667-17.066667-10.666667-23.466667z"></path>
@@ -221,7 +240,7 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
             </svg>
 <span>Edit this page on GitHub</span>
-</a><span class="atime">2022/09/28</span></section>
+</a><span class="atime">2022/12/15</span></section>
       </markdown-style>
       <nav class="tocs">
         <aside class="inner toc">
@@ -267,14 +286,23 @@
                     </li>
                   </ol>
                 </li>
+                <li><a href="#arex-组成" class="tocs-link">AREX 组成</a>
+                  <ol class="tocs-list is-collapsed">
+                    <li><a href="#前端" class="tocs-link">前端</a></li>
+                    <li><a href="#调度服务" class="tocs-link">调度服务</a></li>
+                    <li><a href="#存储服务" class="tocs-link">存储服务</a></li>
+                    <li><a href="#报告分析服务" class="tocs-link">报告分析服务</a></li>
+                    <li><a href="#数据存储" class="tocs-link">数据存储</a></li>
+                  </ol>
+                </li>
               </ol>
             </li>
           </ol>
         </aside>
       </nav>
     </div>
-    <script src="../js/demo-preview.js?v=1.21.11"></script>
+    <script src="../js/demo-preview.js?v=1.21.13"></script>
     <div class="footer warpper">Released under the MIT License. Copyright © 2022 arextest.com<br>Generated by <a href="http://www.arextest.com" target="_blank">idoc</a></div>
-    <script src="../js/tocbot.js?v=1.21.11"></script>
+    <script src="../js/tocbot.js?v=1.21.13"></script>
   </body>
 </html>

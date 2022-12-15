@@ -1,9 +1,8 @@
-#### 第1章 初识 AREX
-- chapter1/: 第1章 初识 AREX
-- chapter1/introduce.md: AREX介绍
-- chapter1/framework.md: AREX模块
+#### 第1章 快速入门指南
+- chapter1/: 第1章 快速入门指南
+- chapter1/introduce.md: 什么是AREX？
 
-#### 第2章 AREX的安装与配置
+#### 第2章 常规测试
 - chapter2/: 第2章 AREX 的安装与配置
 - chapter2/demo.md: 新手指南
 - chapter2/fastsetup.md: 快速安装
